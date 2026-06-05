@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "configurations": [{
+    "name": "wll2026",
+    "runtimeExecutable": "cmd",
+    "runtimeArgs": ["/c", "cd /d C:\\\\Users\\\\dnjay\\\\Downloads\\\\wll-2026 && npx vite --port 5174"],
+    "port": 5174
+  }]
+}

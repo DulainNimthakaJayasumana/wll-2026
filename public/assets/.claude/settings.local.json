@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "PowerShell(Get-Item \"$env:TEMP\\\\wll_design.tar.gz\" -ErrorAction SilentlyContinue | Select-Object Length, LastWriteTime)",
+      "PowerShell(cmd /c \"cd /d C:\\\\Users\\\\dnjay\\\\Downloads && npm create vite@latest wll-2026 -- --template react 2>&1\")",
+      "PowerShell(if \\(Test-Path \"$env:TEMP\\\\wll_design2.tar.gz\"\\) { Write-Host \"Size:\" \\(Get-Item \"$env:TEMP\\\\wll_design2.tar.gz\"\\).Length } else { Write-Host \"Still downloading...\" })"
+    ]
+  }
+}
