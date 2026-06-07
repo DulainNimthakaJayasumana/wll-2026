@@ -24,34 +24,67 @@ function useRunCountdown() {
 
 const PAD = n => String(n).padStart(2, '0');
 
-/* ── Checkpoints ─────────────────────────────────────────── */
+/* ── Checkpoints — coordinates from https://maps.app.goo.gl/s4MfGzNUwXJxv3RW9 ── */
 const CHECKPOINTS = [
   {
-    num: 1,
-    label: 'Starting Point',
-    place: 'Kollupitiya, Galle Road',
-    desc: 'The race kicks off near SLIIT Academy on Galle Road, Kollupitiya. Collect your bib, warm up and get ready to run for the Goals!',
-    color: '#E5243B',
+    num: 'S',
+    label: 'Start',
+    place: 'Marine Drive, Colombo',
+    street: 'Galle Face · Marine Drive',
+    desc: 'Race begins here at Marine Drive. Collect your bib, warm up and line up at the starting arch!',
+    color: '#19486A',
     icon: '🏁',
     km: '0 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9295339,79.8427048',
+    mapsLabel: 'Start — Marine Drive, Colombo',
+  },
+  {
+    num: 1,
+    label: 'Checkpoint 1',
+    place: 'Galle Road South',
+    street: 'Kollupitiya, Galle Road',
+    desc: 'First water station. Head south along Galle Road — hydrate and keep your pace!',
+    color: '#E5243B',
+    icon: '💧',
+    km: '~2 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.911725,79.8497629',
+    mapsLabel: 'Checkpoint 1 — Galle Road South',
   },
   {
     num: 2,
-    label: 'Checkpoint',
-    place: 'Navam Mawatha Junction',
-    desc: 'Midway energy station at the Navam Mawatha / Galle Road junction near Slave Island. Water, electrolytes and an SDG fact board.',
+    label: 'Checkpoint 2',
+    place: 'Galle Road Mid',
+    street: 'Galle Road, Colombo 03',
+    desc: 'Midway checkpoint on the return leg. Electrolytes, SDG fact board and a cheer squad waiting!',
     color: '#FCC30B',
     icon: '⚡',
-    km: '~2 km',
+    km: '~4 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9185754,79.8493959',
+    mapsLabel: 'Checkpoint 2 — Galle Road Mid',
   },
   {
     num: 3,
-    label: 'Finish Line',
-    place: 'Galle Face Urban Park',
-    desc: 'Cross the finish line at the iconic Galle Face Urban Park overlooking the Indian Ocean. Medals, photos and the closing celebration!',
+    label: 'Checkpoint 3',
+    place: 'Near Galle Face',
+    street: 'Galle Face approach, Colombo 03',
+    desc: 'Final push! You can see the finish from here — sprint to the Galle Face finish line!',
     color: '#4C9F38',
+    icon: '🏃',
+    km: '~5.5 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.926469,79.8465784',
+    mapsLabel: 'Checkpoint 3 — Near Galle Face',
+  },
+  {
+    num: 'F',
+    label: 'Finish Line',
+    place: 'Ministry of Defence, Colombo',
+    street: 'Galle Road, Colombo 03',
+    desc: 'Cross the finish line! Medals, photos and the closing celebration await all finishers.',
+    color: '#DD1367',
     icon: '🏆',
-    km: '~4 km',
+    km: '~7 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9296939,79.842734',
+    mapsLabel: 'Finish — Ministry of Defence, Colombo',
   },
 ];
 
@@ -175,14 +208,14 @@ export default function Run({ onBack }) {
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📍</span>
-              <span className={s.heroStatVal}>Kollupitiya</span>
-              <span className={s.heroStatLabel}>Start → Galle Face Finish</span>
+              <span className={s.heroStatVal}>Galle Face Green</span>
+              <span className={s.heroStatLabel}>Start &amp; Finish Point</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>🎯</span>
-              <span className={s.heroStatVal}>5 km</span>
-              <span className={s.heroStatLabel}>Course Distance</span>
+              <span className={s.heroStatVal}>7 km Loop</span>
+              <span className={s.heroStatLabel}>4 Checkpoints</span>
             </div>
           </div>
 
@@ -224,57 +257,49 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Kollupitiya → Galle Face</h2>
-            <p>A scenic ~4 km coastal run along Galle Road through the heart of Colombo — championing the UN Sustainable Development Goals every step of the way.</p>
+            <h2>Galle Face Loop — 7 km</h2>
+            <p>Start at Galle Face Green, run south along Galle Road, turn at Kollupitiya (SLIIT), return north on Sri Uttarananda Mawatha &amp; New Baladaksha Mawatha back to Galle Face. <strong>Click any checkpoint to open in Google Maps.</strong></p>
           </div>
 
           <div className={s.mapLayout}>
-            {/* Map embed */}
+            {/* Fixed route map image + accurate pins */}
             <div className={s.mapContainer}>
-              <div className={s.mapBadge}>Live Route Map</div>
-              {/* Accurate map: centred on route midpoint (6.9025°N, 79.8510°E), zoom 15
-                  covering Kollupitiya → Slave Island → Galle Face Green */}
-              <iframe
-                title="Miles for Lessons 2026 Route"
-                className={s.mapIframe}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7923.8!2d79.8510!3d6.9025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259251d6ddb55%3A0x54e7e2b9f0a51b1e!2sGalle%20Face%20Green%2C%20Colombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000001!5m2!1sen!2slk"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+              <div className={s.mapBadge}>Route Map</div>
+
+              {/* Static route map image — save to public/assets/run-map.jpeg */}
+              <img
+                src="/assets/run-map.jpeg"
+                alt="Miles for Lessons 2026 route map"
+                className={s.mapImg}
+                draggable="false"
               />
-              {/* Checkpoint overlay pins */}
-              <div className={s.mapOverlay}>
-                {CHECKPOINTS.map(cp => (
-                  <div
-                    key={cp.num}
-                    className={`${s.mapPin} ${activeCP === cp.num ? s.mapPinActive : ''}`}
-                    style={{
-                      '--pin-color': cp.color,
-                      /* Positions tuned to Kollupitiya(1) → Navam Mawatha(2) → Galle Face(3) */
-                      '--pin-top':  cp.num === 1 ? '78%' : cp.num === 2 ? '50%' : '14%',
-                      '--pin-left': cp.num === 1 ? '38%' : cp.num === 2 ? '46%' : '32%',
-                    }}
-                    onClick={() => setActiveCP(activeCP === cp.num ? null : cp.num)}
-                  >
-                    <span className={s.pinNum}>{cp.num}</span>
-                    <div className={s.pinPop}>
-                      <strong>{cp.label}</strong>
-                      <span>{cp.place}</span>
-                      <span>{cp.km}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+
+              {/* Full route button */}
+              <a
+                className={s.fullRouteBtn}
+                href="https://maps.app.goo.gl/s4MfGzNUwXJxv3RW9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                View Full Route on Google Maps
+              </a>
             </div>
 
-            {/* Checkpoint cards */}
+            {/* Checkpoint cards — click to open Google Maps */}
             <div className={s.checkpoints}>
               {CHECKPOINTS.map((cp, i) => (
-                <div
+                <a
                   key={cp.num}
                   className={`${s.cpCard} ${activeCP === cp.num ? s.cpCardActive : ''}`}
                   style={{ '--cp-color': cp.color, animationDelay: `${i * 0.1}s` }}
-                  onClick={() => setActiveCP(activeCP === cp.num ? null : cp.num)}
+                  href={cp.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setActiveCP(cp.num)}
+                  title={`Open ${cp.mapsLabel} in Google Maps`}
                 >
                   <div className={s.cpLeft}>
                     <div className={s.cpNumCircle}>{cp.num}</div>
@@ -285,9 +310,14 @@ export default function Run({ onBack }) {
                     <div className={s.cpIcon}>{cp.icon}</div>
                     <div className={s.cpLabel}>{cp.label}</div>
                     <div className={s.cpPlace}>{cp.place}</div>
+                    <div className={s.cpStreet}>{cp.street}</div>
                     <p className={s.cpDesc}>{cp.desc}</p>
+                    <div className={s.cpMapsBtn}>
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      View on Google Maps ↗
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -306,9 +336,9 @@ export default function Run({ onBack }) {
             {[
               { icon:'🗓️', label:'Date',       val:'Saturday, 4 July 2026' },
               { icon:'⏰', label:'Start Time',  val:'9:00 AM sharp' },
-              { icon:'📍', label:'Start Point', val:'Kollupitiya, Galle Road' },
-              { icon:'🏁', label:'Finish',      val:'Galle Face Urban Park' },
-              { icon:'📏', label:'Distance',    val:'~4 km fun run' },
+              { icon:'📍', label:'Start & Finish', val:'Galle Face Green' },
+              { icon:'🔄', label:'Turnaround',  val:'SLIIT, Kollupitiya' },
+              { icon:'📏', label:'Distance',    val:'7 km loop · 4 checkpoints' },
               { icon:'👟', label:'Category',    val:'Open to all ages' },
               { icon:'🎽', label:'Race Kit',    val:'Bib + SDG wristband' },
               { icon:'🏅', label:'Finisher',    val:'Medal for all finishers' },
