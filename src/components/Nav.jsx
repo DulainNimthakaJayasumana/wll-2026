@@ -33,7 +33,7 @@ export default function Nav() {
         {LINKS.map(l => (
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
-        <button className={s.ctaRun} onClick={handleRun}>🏃 WLL Run</button>
+        <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lessons</button>
         <button className={s.cta} onClick={handleRegister}>Register</button>
       </div>
       <button

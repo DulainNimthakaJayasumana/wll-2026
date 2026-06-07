@@ -28,30 +28,30 @@ const PAD = n => String(n).padStart(2, '0');
 const CHECKPOINTS = [
   {
     num: 1,
-    label: 'Start / Checkpoint 1',
-    place: 'Marine Drive',
-    desc: 'The race begins at Marine Drive. Gather at the starting arch, collect your bib and warm up with the team.',
+    label: 'Starting Point',
+    place: 'Kollupitiya, Galle Road',
+    desc: 'The race kicks off near SLIIT Academy on Galle Road, Kollupitiya. Collect your bib, warm up and get ready to run for the Goals!',
     color: '#E5243B',
     icon: '🏁',
     km: '0 km',
   },
   {
     num: 2,
-    label: 'Checkpoint 2',
-    place: 'Galle Road Junction',
-    desc: 'Midway energy station. Water, electrolytes and an SDG fact board to keep you motivated.',
+    label: 'Checkpoint',
+    place: 'Navam Mawatha Junction',
+    desc: 'Midway energy station at the Navam Mawatha / Galle Road junction near Slave Island. Water, electrolytes and an SDG fact board.',
     color: '#FCC30B',
     icon: '⚡',
-    km: '2.5 km',
+    km: '~2 km',
   },
   {
     num: 3,
     label: 'Finish Line',
-    place: 'Galle Face Green',
-    desc: 'Cross the finish line at iconic Galle Face Green. Medals, photos and the closing celebration await!',
+    place: 'Galle Face Urban Park',
+    desc: 'Cross the finish line at the iconic Galle Face Urban Park overlooking the Indian Ocean. Medals, photos and the closing celebration!',
     color: '#4C9F38',
     icon: '🏆',
-    km: '5 km',
+    km: '~4 km',
   },
 ];
 
@@ -157,13 +157,13 @@ export default function Run({ onBack }) {
           </div>
 
           <h1 className={s.heroTitle}>
-            <span className={s.titleRun}>WLL</span>
-            <span className={s.titleRun2}>Run</span>
+            <span className={s.titleRun}>Miles</span>
+            <span className={s.titleRun2}>for Lessons</span>
             <span className={s.titleYear}>2026</span>
           </h1>
 
           <p className={s.heroSub}>
-            Run for the Global Goals · Marine Drive, Colombo
+            Run for the Global Goals · Kollupitiya → Galle Face, Colombo
           </p>
 
           <div className={s.heroCols}>
@@ -175,8 +175,8 @@ export default function Run({ onBack }) {
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📍</span>
-              <span className={s.heroStatVal}>Marine Drive</span>
-              <span className={s.heroStatLabel}>Start Point · Colombo</span>
+              <span className={s.heroStatVal}>Kollupitiya</span>
+              <span className={s.heroStatLabel}>Start → Galle Face Finish</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
@@ -224,18 +224,20 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Marine Drive to Galle Face</h2>
-            <p>A scenic coastal run through the heart of Colombo — championing the UN Sustainable Development Goals every step of the way.</p>
+            <h2>Kollupitiya → Galle Face</h2>
+            <p>A scenic ~4 km coastal run along Galle Road through the heart of Colombo — championing the UN Sustainable Development Goals every step of the way.</p>
           </div>
 
           <div className={s.mapLayout}>
             {/* Map embed */}
             <div className={s.mapContainer}>
               <div className={s.mapBadge}>Live Route Map</div>
+              {/* Accurate map: centred on route midpoint (6.9025°N, 79.8510°E), zoom 15
+                  covering Kollupitiya → Slave Island → Galle Face Green */}
               <iframe
-                title="WLL Run 2026 Route"
+                title="Miles for Lessons 2026 Route"
                 className={s.mapIframe}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7921.432!2d79.8475!3d6.9100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591614a35523%3A0x200d6d9c42af5c7f!2sMarine%20Drive%2C%20Colombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7923.8!2d79.8510!3d6.9025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259251d6ddb55%3A0x54e7e2b9f0a51b1e!2sGalle%20Face%20Green%2C%20Colombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000001!5m2!1sen!2slk"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -248,8 +250,9 @@ export default function Run({ onBack }) {
                     className={`${s.mapPin} ${activeCP === cp.num ? s.mapPinActive : ''}`}
                     style={{
                       '--pin-color': cp.color,
-                      '--pin-top':  cp.num === 1 ? '72%' : cp.num === 2 ? '44%' : '18%',
-                      '--pin-left': cp.num === 1 ? '35%' : cp.num === 2 ? '42%' : '30%',
+                      /* Positions tuned to Kollupitiya(1) → Navam Mawatha(2) → Galle Face(3) */
+                      '--pin-top':  cp.num === 1 ? '78%' : cp.num === 2 ? '50%' : '14%',
+                      '--pin-left': cp.num === 1 ? '38%' : cp.num === 2 ? '46%' : '32%',
                     }}
                     onClick={() => setActiveCP(activeCP === cp.num ? null : cp.num)}
                   >
@@ -303,9 +306,9 @@ export default function Run({ onBack }) {
             {[
               { icon:'🗓️', label:'Date',       val:'Saturday, 4 July 2026' },
               { icon:'⏰', label:'Start Time',  val:'9:00 AM sharp' },
-              { icon:'📍', label:'Start Point', val:'Marine Drive, Colombo' },
-              { icon:'🏁', label:'Finish',      val:'Galle Face Green' },
-              { icon:'📏', label:'Distance',    val:'5 km fun run' },
+              { icon:'📍', label:'Start Point', val:'Kollupitiya, Galle Road' },
+              { icon:'🏁', label:'Finish',      val:'Galle Face Urban Park' },
+              { icon:'📏', label:'Distance',    val:'~4 km fun run' },
               { icon:'👟', label:'Category',    val:'Open to all ages' },
               { icon:'🎽', label:'Race Kit',    val:'Bib + SDG wristband' },
               { icon:'🏅', label:'Finisher',    val:'Medal for all finishers' },
@@ -330,8 +333,8 @@ export default function Run({ onBack }) {
       {/* ── CTA FOOTER ────────────────────────────────────── */}
       <section className={s.ctaSection}>
         <div className={s.ctaInner}>
-          <h2>Ready to Run for the Goals?</h2>
-          <p>Join hundreds of Sri Lankan youth running for a better world on July 4th.</p>
+          <h2>Ready to Run Miles for Lessons?</h2>
+          <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
           <div className={s.ctaBtns}>
             <button onClick={goToRegister} className={s.ctaPrimary}>Register Now — It's Free</button>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
