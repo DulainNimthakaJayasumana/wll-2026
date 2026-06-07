@@ -10,14 +10,22 @@ import CoreCommittee from './components/CoreCommittee';
 import Footer       from './components/Footer';
 import Chatbot      from './components/Chatbot/Chatbot';
 import Register     from './pages/Register';
+import Run          from './pages/Run';
 
 /* Hash-based page router — no extra packages needed */
 function getPage() {
-  return window.location.hash === '#register' ? 'register' : 'home';
+  const h = window.location.hash;
+  if (h === '#register') return 'register';
+  if (h === '#run')      return 'run';
+  return 'home';
 }
 
 export function goToRegister() {
   window.location.hash = 'register';
+}
+
+export function goToRun() {
+  window.location.hash = 'run';
 }
 
 export function goHome() {
@@ -36,9 +44,8 @@ export default function App() {
   /* Scroll reveal only applies to the main site */
   useScrollReveal();
 
-  if (page === 'register') {
-    return <Register onBack={goHome} />;
-  }
+  if (page === 'register') return <Register onBack={goHome} />;
+  if (page === 'run')      return <Run onBack={goHome} />;
 
   return (
     <>

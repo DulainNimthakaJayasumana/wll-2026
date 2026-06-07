@@ -1,6 +1,8 @@
 .footer { background:var(--cream); padding:72px 0 32px; }
 .top { display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; align-items:flex-start; }
-.brand img { height:60px; margin-bottom:18px; }
+.logos { display:flex; align-items:center; gap:20px; margin-bottom:18px; }
+.wllLogo  { height:60px; }
+.aiesecLogo { height:44px; object-fit:contain; }
 .brand p { max-width:300px; color:var(--ink-soft); font-size:.95rem; line-height:1.7; }
 .cols { display:flex; gap:60px; flex-wrap:wrap; }
 .col h5 { font-weight:700; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:16px; }

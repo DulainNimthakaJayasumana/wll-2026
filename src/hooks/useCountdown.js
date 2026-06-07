@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-export function useCountdown(target = new Date('2026-09-25T09:00:00')) {
+export function useCountdown(
+  target = new Date('2026-07-28T09:00:00')
+) {
   const calc = () => {
     const diff = Math.max(0, target - new Date());
     return {

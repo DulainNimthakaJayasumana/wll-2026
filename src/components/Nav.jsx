@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { goToRegister } from '../App';
+import { goToRegister, goToRun } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
@@ -21,10 +21,8 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const handleRegister = () => {
-    setOpen(false);
-    goToRegister();
-  };
+  const handleRegister = () => { setOpen(false); goToRegister(); };
+  const handleRun      = () => { setOpen(false); goToRun(); };
 
   return (
     <nav className={`${s.nav} ${scrolled ? s.scrolled : ''}`}>
@@ -35,6 +33,7 @@ export default function Nav() {
         {LINKS.map(l => (
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
+        <button className={s.ctaRun} onClick={handleRun}>🏃 WLL Run</button>
         <button className={s.cta} onClick={handleRegister}>Register</button>
       </div>
       <button

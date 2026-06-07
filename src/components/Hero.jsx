@@ -128,7 +128,7 @@ export default function Hero() {
               <span className={s.cdLabel}>{c.label}</span>
             </div>
           ))}
-          <span className={s.cdCaption}>Counting down to 25 September 2026</span>
+          <span className={s.cdCaption}>Counting down to 28 July 2026</span>
         </div>
       </div>
       <div className={s.scrollHint}>
