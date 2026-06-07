@@ -242,7 +242,6 @@ export default function Run({ onBack }) {
 
           <div className={s.heroCtas}>
             <button onClick={goToRegister} className={s.ctaPrimary}>Register for the Run</button>
-            <a href="#run-route" className={s.ctaGlass}>View Route ↓</a>
           </div>
         </div>
 
