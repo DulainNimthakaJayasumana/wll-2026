@@ -4,7 +4,7 @@ import s from './Run.module.css';
 
 /* ── Countdown to July 4 2026 09:00 ─────────────────────── */
 function useRunCountdown() {
-  const target = new Date('2026-07-04T09:00:00');
+  const target = new Date('2026-07-11T16:30:00');
   const calc = () => {
     const diff = Math.max(0, target - new Date());
     return {
@@ -24,67 +24,67 @@ function useRunCountdown() {
 
 const PAD = n => String(n).padStart(2, '0');
 
-/* ── Checkpoints — coordinates from https://maps.app.goo.gl/s4MfGzNUwXJxv3RW9 ── */
+/* ── Checkpoints — Race Course Grounds loop, ~4.8 km ── */
 const CHECKPOINTS = [
   {
     num: 'S',
-    label: 'Start',
-    place: 'Marine Drive, Colombo',
-    street: 'Galle Face · Marine Drive',
-    desc: 'Race begins here at Marine Drive. Collect your bib, warm up and line up at the starting arch!',
+    label: 'Start / Finish',
+    place: 'Race Course Vehicle Park',
+    street: 'Philip Gunawardena Mawatha, Colombo 07',
+    desc: 'Race begins and ends here at Race Course Vehicle Park. Collect your bib, warm up and line up at 4:30 PM!',
     color: '#19486A',
     icon: '🏁',
-    km: '0 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9295339,79.8427048',
-    mapsLabel: 'Start — Marine Drive, Colombo',
+    km: '0 / 4.8 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Race+Course+Vehicle+Park,+Philip+Gunawardena+Mawatha,+Colombo',
+    mapsLabel: 'Race Course Vehicle Park, Colombo',
   },
   {
     num: 1,
     label: 'Checkpoint 1',
-    place: 'Galle Road South',
-    street: 'Kollupitiya, Galle Road',
-    desc: 'First water station. Head south along Galle Road — hydrate and keep your pace!',
+    place: 'Bloomfield Cricket & Athletic Club',
+    street: 'Maitland Place, Colombo 07',
+    desc: 'First water station at Bloomfield Cricket and Athletic Club. Hydrate and keep your stride!',
     color: '#E5243B',
     icon: '💧',
-    km: '~2 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.911725,79.8497629',
-    mapsLabel: 'Checkpoint 1 — Galle Road South',
+    km: '~1 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bloomfield+Cricket+and+Athletic+Club,+Colombo',
+    mapsLabel: 'Bloomfield Cricket Club, Colombo',
   },
   {
     num: 2,
     label: 'Checkpoint 2',
-    place: 'Galle Road Mid',
-    street: 'Galle Road, Colombo 03',
-    desc: 'Midway checkpoint on the return leg. Electrolytes, SDG fact board and a cheer squad waiting!',
+    place: 'SLAF Circle',
+    street: 'SLAF Cir, Colombo 00500',
+    desc: 'Midway energy station at SLAF Circle. Electrolytes and an SDG fact board — you\'re halfway there!',
     color: '#FCC30B',
     icon: '⚡',
-    km: '~4 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9185754,79.8493959',
-    mapsLabel: 'Checkpoint 2 — Galle Road Mid',
+    km: '~1.8 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=SLAF+Circle,+Colombo',
+    mapsLabel: 'SLAF Circle, Colombo',
   },
   {
     num: 3,
     label: 'Checkpoint 3',
-    place: 'Near Galle Face',
-    street: 'Galle Face approach, Colombo 03',
-    desc: 'Final push! You can see the finish from here — sprint to the Galle Face finish line!',
-    color: '#4C9F38',
+    place: 'BMICH',
+    street: 'Bandaranaike Memorial International Conference Hall, Colombo 07',
+    desc: 'Energy boost at BMICH. Turn north towards Horton Place — the finish is close!',
+    color: '#FD6925',
     icon: '🏃',
-    km: '~5.5 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.926469,79.8465784',
-    mapsLabel: 'Checkpoint 3 — Near Galle Face',
+    km: '~2.8 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=BMICH,+Colombo',
+    mapsLabel: 'BMICH, Colombo 07',
   },
   {
-    num: 'F',
-    label: 'Finish Line',
-    place: 'Ministry of Defence, Colombo',
-    street: 'Galle Road, Colombo 03',
-    desc: 'Cross the finish line! Medals, photos and the closing celebration await all finishers.',
-    color: '#DD1367',
-    icon: '🏆',
-    km: '~7 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=6.9296939,79.842734',
-    mapsLabel: 'Finish — Ministry of Defence, Colombo',
+    num: 4,
+    label: 'Checkpoint 4',
+    place: 'Horton Place',
+    street: 'Horton Pl, Colombo 00700',
+    desc: 'Final stretch! Head along Maitland Crescent back to the Race Course finish line. Sprint it out!',
+    color: '#4C9F38',
+    icon: '💪',
+    km: '~3.8 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Horton+Place,+Colombo+7',
+    mapsLabel: 'Horton Place, Colombo 07',
   },
 ];
 
@@ -196,25 +196,25 @@ export default function Run({ onBack }) {
           </h1>
 
           <p className={s.heroSub}>
-            Run for the Global Goals · Kollupitiya → Galle Face, Colombo
+            Run for the Global Goals · Race Course Grounds, Colombo 07
           </p>
 
           <div className={s.heroCols}>
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📅</span>
-              <span className={s.heroStatVal}>July 4, 2026</span>
-              <span className={s.heroStatLabel}>Race Day</span>
+              <span className={s.heroStatVal}>July 11, 2026</span>
+              <span className={s.heroStatLabel}>Race Day · 4:30 PM</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📍</span>
-              <span className={s.heroStatVal}>Galle Face Green</span>
-              <span className={s.heroStatLabel}>Start &amp; Finish Point</span>
+              <span className={s.heroStatVal}>Race Course Grounds</span>
+              <span className={s.heroStatLabel}>Start &amp; Finish · Colombo 07</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>🎯</span>
-              <span className={s.heroStatVal}>7 km Loop</span>
+              <span className={s.heroStatVal}>4.8 km Loop</span>
               <span className={s.heroStatLabel}>4 Checkpoints</span>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function Run({ onBack }) {
                 </div>
               ))}
             </div>
-            <div className={s.cdDate}>Saturday, 4 July 2026 · 09:00 AM</div>
+            <div className={s.cdDate}>Saturday, 11 July 2026 · 4:30 PM</div>
           </div>
 
           <div className={s.heroCtas}>
@@ -256,8 +256,8 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Galle Face Loop — 7 km</h2>
-            <p>Start at Galle Face Green, run south along Galle Road, turn at Kollupitiya (SLIIT), return north on Sri Uttarananda Mawatha &amp; New Baladaksha Mawatha back to Galle Face. <strong>Click any checkpoint to open in Google Maps.</strong></p>
+            <h2>Race Course Loop — 4.8 km</h2>
+            <p>Start and finish at Race Course Vehicle Park. The loop takes you past Bloomfield, SLAF Circle, BMICH and Horton Place through the heart of Colombo 07. <strong>Click any checkpoint to open in Google Maps.</strong></p>
           </div>
 
           <div className={s.mapLayout}>
@@ -333,11 +333,11 @@ export default function Run({ onBack }) {
 
           <div className={s.detailGrid}>
             {[
-              { icon:'🗓️', label:'Date',       val:'Saturday, 4 July 2026' },
-              { icon:'⏰', label:'Start Time',  val:'9:00 AM sharp' },
-              { icon:'📍', label:'Start & Finish', val:'Galle Face Green' },
-              { icon:'🔄', label:'Turnaround',  val:'SLIIT, Kollupitiya' },
-              { icon:'📏', label:'Distance',    val:'7 km loop · 4 checkpoints' },
+              { icon:'🗓️', label:'Date',       val:'Saturday, 11 July 2026' },
+              { icon:'⏰', label:'Start Time',  val:'4:30 PM sharp' },
+              { icon:'📍', label:'Start & Finish', val:'Race Course Grounds' },
+              { icon:'🔄', label:'Route',         val:'Bloomfield · SLAF · BMICH · Horton Pl' },
+              { icon:'📏', label:'Distance',      val:'4.8 km loop · 4 checkpoints' },
               { icon:'👟', label:'Category',    val:'Open to all ages' },
               { icon:'🎽', label:'Race Kit',    val:'Bib + SDG wristband' },
               { icon:'🏅', label:'Finisher',    val:'Medal for all finishers' },
