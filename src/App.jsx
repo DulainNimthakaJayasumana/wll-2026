@@ -9,25 +9,23 @@ import Competitions from './components/Competitions';
 import CoreCommittee from './components/CoreCommittee';
 import Footer       from './components/Footer';
 import Chatbot      from './components/Chatbot/Chatbot';
-import Run             from './pages/Run';
-import RunRegister     from './pages/RunRegister';
-import Volunteer       from './pages/Volunteer';
+import Register     from './pages/Register';
+import Run          from './pages/Run';
 
 /* Hash-based page router — no extra packages needed */
 function getPage() {
   const h = window.location.hash;
-  if (h === '#run')          return 'run';
-  if (h === '#run-register') return 'run-register';
-  if (h === '#volunteer')    return 'volunteer';
+  if (h === '#register') return 'register';
+  if (h === '#run')      return 'run';
   return 'home';
+}
+
+export function goToRegister() {
+  window.location.hash = 'register';
 }
 
 export function goToRun() {
   window.location.hash = 'run';
-}
-
-export function goToVolunteer() {
-  window.location.hash = 'volunteer';
 }
 
 export function goHome() {
@@ -46,9 +44,8 @@ export default function App() {
   /* Scroll reveal only applies to the main site */
   useScrollReveal();
 
-  if (page === 'run')          return <Run onBack={goHome} />;
-  if (page === 'run-register') return <RunRegister onBack={() => { window.location.hash = 'run'; }} />;
-  if (page === 'volunteer')    return <Volunteer onBack={goHome} />;
+  if (page === 'register') return <Register onBack={goHome} />;
+  if (page === 'run')      return <Run onBack={goHome} />;
 
   return (
     <>
