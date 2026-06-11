@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { goHome, goToRegister } from '../App';
+import { goHome } from '../App';
+
+function goToRunRegister() { window.location.hash = 'run-register'; }
 import s from './Run.module.css';
 
 /* ── Countdown to July 4 2026 09:00 ─────────────────────── */
@@ -191,7 +193,7 @@ export default function Run({ onBack }) {
 
           <h1 className={s.heroTitle}>
             <span className={s.titleRun}>Miles</span>
-            <span className={s.titleRun2}>for Lessons</span>
+            <span className={s.titleRun2}>for Lesson</span>
             <span className={s.titleYear}>2026</span>
           </h1>
 
@@ -241,7 +243,7 @@ export default function Run({ onBack }) {
           </div>
 
           <div className={s.heroCtas}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register for the Run</button>
+            <button onClick={goToRunRegister} className={s.ctaPrimary}>Register for the Run</button>
           </div>
         </div>
 
@@ -352,6 +354,82 @@ export default function Run({ onBack }) {
         </div>
       </section>
 
+      {/* ── T-SHIRT BANNER ────────────────────────────────── */}
+      <section className={s.tshirtSection}>
+        <div className={s.tshirtInner}>
+          <div className={s.tshirtIcon}>🎽</div>
+          <div className={s.tshirtText}>
+            <h3>Free T-Shirt for Every Registered Participant!</h3>
+            <p>Every runner who registers for Miles for Lesson 2026 receives an <strong>exclusive event T-shirt</strong> featuring the SDG-inspired design — a wearable reminder of your commitment to the Global Goals. T-shirts are available for collection at race registration on the day.</p>
+            <ul className={s.tshirtPoints}>
+              <li>✅ 100% free — included with registration</li>
+              <li>✅ Exclusive SDG-themed design</li>
+              <li>✅ Collect on race day at Race Course Grounds</li>
+              <li>✅ Limited sizes — register early!</li>
+            </ul>
+            <button onClick={goToRunRegister} className={s.tshirtCta}>Register Now to Claim Yours →</button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────── */}
+      <section className={s.faqSection}>
+        <div className={s.faqInner}>
+          <div className={s.sectionHead}>
+            <span className={s.eyebrow}>❓ FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div className={s.faqGrid}>
+            {[
+              { q:'Who can participate in Miles for Lesson?',
+                a:'Miles for Lesson is open to everyone — students, parents, teachers and community members of all ages and fitness levels. It\'s a fun run, not a race!' },
+              { q:'Is there a registration fee?',
+                a:'No! Registration is completely free. Every registered participant also receives a free exclusive SDG-themed T-shirt.' },
+              { q:'Where does the run start and end?',
+                a:'The run starts and finishes at Race Course Vehicle Park, Philip Gunawardena Mawatha, Colombo 07. The route is a 4.8 km loop through Bloomfield, SLAF Circle, BMICH and Horton Place.' },
+              { q:'What time does the run start?',
+                a:'The run begins at 4:30 PM on Saturday, 11 July 2026. Please arrive by 4:00 PM to collect your bib and T-shirt.' },
+              { q:'How do I get my free T-shirt?',
+                a:'T-shirts are collected at the registration desk on race day at Race Course Grounds. Please bring a copy of your registration confirmation.' },
+              { q:'What should I wear and bring?',
+                a:'Wear comfortable running shoes and sports attire. Bring your registration confirmation, a water bottle and lots of energy! Water stations are available at each checkpoint.' },
+              { q:'Is the route safe?',
+                a:'Yes — the route is marshalled by AIESEC volunteers at every checkpoint and along the course. First aid will be on standby throughout.' },
+              { q:'What is the World\'s Largest Lesson?',
+                a:'The World\'s Largest Lesson is a global initiative that teaches children and youth about the UN Sustainable Development Goals (SDGs). Miles for Lesson is Sri Lanka\'s 2026 run event organised by AIESEC.' },
+            ].map((item, i) => (
+              <FaqItem key={i} q={item.q} a={item.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACT ───────────────────────────────────────── */}
+      <section className={s.contactSection}>
+        <div className={s.contactInner}>
+          <div className={s.sectionHead} style={{ color:'#fff' }}>
+            <span className={s.eyebrow} style={{ color:'rgba(255,255,255,0.6)' }}>📞 Contact Us</span>
+            <h2 style={{ color:'#fff' }}>Get in Touch</h2>
+            <p style={{ color:'rgba(255,255,255,0.6)' }}>Have questions about Miles for Lesson 2026? Reach out to our team.</p>
+          </div>
+          <div className={s.contactGrid}>
+            {[
+              { name:'Pasindu',  role:'CCP — Event Lead',          email:'pasindu@wll2026.lk',   phone:'',  image:'/assets/team/Pasindu.jpeg' },
+              { name:'Tanuri',   role:'CCVP — National Membership', email:'tanuri@wll2026.lk',    phone:'',  image:'/assets/team/Tanuri Dissanayaka.JPG' },
+              { name:'Minindi',  role:'National Membership',        email:'minindi@wll2026.lk',   phone:'',  image:'/assets/team/Minindi_Fonseka - Minindi Fonseka.JPG' },
+            ].map(p => (
+              <ContactCard key={p.name} person={p} />
+            ))}
+          </div>
+          <div className={s.contactSocial}>
+            <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener" className={s.socialBtn}>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @wll.srilanka
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── SDG STRIP ─────────────────────────────────────── */}
       <div className={s.sdgStrip}>
         {['#E5243B','#DDA63A','#4C9F38','#C5192D','#FF3A21','#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367','#FD9D24','#BF8B2E','#3F7E44','#0A97D9','#56C02B','#00689D','#19486A'].map(c => (
@@ -362,19 +440,67 @@ export default function Run({ onBack }) {
       {/* ── CTA FOOTER ────────────────────────────────────── */}
       <section className={s.ctaSection}>
         <div className={s.ctaInner}>
-          <h2>Ready to Run Miles for Lessons?</h2>
-          <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
+          <h2>Ready to Run Miles for Lesson?</h2>
+          <p>Join Sri Lankan youth running for a better world on 11 July 2026 · Race Course Grounds, Colombo 07.</p>
           <div className={s.ctaBtns}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register Now — It's Free</button>
+            <button onClick={goToRunRegister} className={s.ctaPrimary}>Register Now — It's Free</button>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>
             Questions? DM us on Instagram <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener">@wll.srilanka</a>
-            &nbsp;· Call <a href="tel:+94701506924">070 150 6924</a>
           </div>
         </div>
       </section>
 
+    </div>
+  );
+}
+
+/* ── FAQ accordion item ──────────────────────────────────── */
+function FaqItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`${s.faqItem} ${open ? s.faqOpen : ''}`} onClick={() => setOpen(v => !v)}>
+      <div className={s.faqQ}>
+        <span>{q}</span>
+        <svg className={s.faqArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </div>
+      {open && <div className={s.faqA}>{a}</div>}
+    </div>
+  );
+}
+
+/* ── Contact card ────────────────────────────────────────── */
+function ContactCard({ person }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  return (
+    <div className={s.contactCard}>
+      <div className={s.contactAvatar}>
+        {!imgFailed ? (
+          <img src={person.image} alt={person.name} onError={() => setImgFailed(true)} />
+        ) : (
+          <span>{person.name[0]}</span>
+        )}
+      </div>
+      <div className={s.contactName}>{person.name}</div>
+      <div className={s.contactRole}>{person.role}</div>
+      <div className={s.contactDetails}>
+        {person.phone && (
+          <a href={`tel:${person.phone}`} className={s.contactLink}>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            {person.phone}
+          </a>
+        )}
+        {!person.phone && <span className={s.contactPhoneSlot}>📞 Phone coming soon</span>}
+        {person.email && (
+          <a href={`mailto:${person.email}`} className={s.contactLink}>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            {person.email}
+          </a>
+        )}
+      </div>
     </div>
   );
 }

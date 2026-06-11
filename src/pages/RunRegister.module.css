@@ -1,0 +1,201 @@
+/* ═══════════════════════════════════════════════════════════
+   Miles for Lesson — Run Registration Form
+   ═══════════════════════════════════════════════════════════ */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #0a0a1a 0%, #1a1a2e 40%, #0f3460 100%);
+  font-family: 'Lato', sans-serif;
+}
+
+/* Back button */
+.backBtn {
+  position: fixed; top: 20px; left: 20px; z-index: 100;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.8); font-family: inherit;
+  font-weight: 700; font-size: .85rem; cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: background 0.25s, color 0.25s;
+}
+.backBtn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 100px 24px 48px;
+}
+.headerBadge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px; padding: 6px 18px;
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); margin-bottom: 20px;
+}
+.pulseDot {
+  width: 8px; height: 8px; border-radius: 50%; background: #E5243B;
+  animation: pulse 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(229,36,59,.6);
+}
+@keyframes pulse {
+  0%,100%{ box-shadow: 0 0 0 0 rgba(229,36,59,.6); }
+  50%    { box-shadow: 0 0 0 8px rgba(229,36,59,0); }
+}
+.headerIcon { font-size: 3.5rem; margin-bottom: 8px; }
+.header h1 {
+  font-size: clamp(2.2rem,6vw,4rem);
+  font-weight: 900; color: #fff;
+  letter-spacing: -0.03em; line-height: 1.1;
+  margin: 0 0 12px;
+}
+.header h1 span {
+  background: linear-gradient(135deg, #E5243B, #FD6925, #FCC30B);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header p { color: rgba(255,255,255,0.55); font-size: 1rem; margin: 0 0 20px; }
+.freeBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #E5243B, #FD6925);
+  color: #fff; font-weight: 900; font-size: .88rem;
+  padding: 10px 24px; border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(229,36,59,0.4);
+  letter-spacing: 0.02em;
+}
+
+/* Form wrapper */
+.formWrap {
+  max-width: 680px; margin: 0 auto;
+  padding: 0 clamp(20px,5vw,40px) 80px;
+}
+.form { display: flex; flex-direction: column; gap: 20px; }
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media(max-width:600px){ .formGrid { grid-template-columns: 1fr; } }
+
+/* Fields */
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field label {
+  font-size: .82rem; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.field label span { color: #E5243B; }
+.field input,
+.field select,
+.field textarea {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: #fff; font-family: inherit; font-size: .98rem;
+  transition: border-color 0.25s, background 0.25s;
+  outline: none;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(255,255,255,0.25); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #E5243B;
+  background: rgba(255,255,255,0.1);
+}
+.field select { cursor: pointer; }
+.field select option { background: #1a1a2e; color: #fff; }
+.field textarea { resize: vertical; min-height: 90px; }
+.fieldHint {
+  font-size: .75rem; color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
+/* T-shirt reminder box */
+.tshirtReminder {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: rgba(229,36,59,0.1);
+  border: 1px solid rgba(229,36,59,0.25);
+  border-radius: 16px; padding: 20px;
+}
+.tshirtReminder span { font-size: 2rem; flex-shrink: 0; }
+.tshirtReminder strong { display: block; color: #fff; font-size: .95rem; margin-bottom: 4px; }
+.tshirtReminder p { color: rgba(255,255,255,0.55); font-size: .85rem; line-height: 1.6; margin: 0; }
+
+/* Submit */
+.submitBtn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, #E5243B, #FD6925);
+  color: #fff; border: 0; border-radius: 999px;
+  font-family: inherit; font-weight: 900; font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 12px 36px rgba(229,36,59,0.4);
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+}
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(229,36,59,0.5);
+}
+.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.terms {
+  text-align: center; font-size: .78rem;
+  color: rgba(255,255,255,0.3); margin: 0;
+  line-height: 1.6;
+}
+
+/* Success screen */
+.successWrap {
+  max-width: 540px; margin: 0 auto;
+  padding: 120px 24px 80px;
+  text-align: center;
+}
+.successIcon { font-size: 5rem; margin-bottom: 20px; animation: pop 0.6s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+@keyframes pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.successWrap h2 {
+  font-size: clamp(2rem,5vw,3rem); font-weight: 900; color: #fff;
+  letter-spacing: -0.03em; margin: 0 0 16px;
+}
+.successWrap p { color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.7; margin: 0 0 12px; }
+.successWrap strong { color: #fff; }
+.successNote {
+  background: rgba(229,36,59,0.1);
+  border: 1px solid rgba(229,36,59,0.25);
+  border-radius: 16px; padding: 16px 20px;
+  color: rgba(255,255,255,0.75) !important;
+  font-size: .92rem !important;
+  margin: 20px 0 !important;
+}
+.successMeta {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  margin: 24px 0;
+}
+.successMeta span {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px; padding: 8px 18px;
+  color: rgba(255,255,255,0.7); font-size: .85rem; font-weight: 700;
+}
+.backHome {
+  padding: 14px 28px;
+  background: linear-gradient(135deg,#E5243B,#FD6925);
+  color: #fff; border: 0; border-radius: 999px;
+  font-family: inherit; font-weight: 900; font-size: .95rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(229,36,59,0.4);
+  transition: transform 0.25s;
+}
+.backHome:hover { transform: translateY(-2px); }
