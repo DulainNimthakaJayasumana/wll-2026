@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { goToRegister, goToRun, goToVolunteer } from '../App';
+import { goToRun, goToVolunteer } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
   { href: '#home',         label: 'Home' },
-  { href: '#about',        label: 'About' },
   { href: '#sdgs',         label: 'SDGs' },
   { href: '#gallery',      label: 'Gallery' },
   { href: '#competitions', label: 'Competitions' },
@@ -21,7 +20,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const handleRegister  = () => { setOpen(false); goToRegister(); };
   const handleRun       = () => { setOpen(false); goToRun(); };
   const handleVolunteer = () => { setOpen(false); goToVolunteer(); };
 
@@ -35,8 +33,7 @@ export default function Nav() {
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
         <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lesson</button>
-        <button className={s.ctaVolunteer} onClick={handleVolunteer}>Volunteer</button>
-        <button className={s.cta} onClick={handleRegister}>Register</button>
+        <button className={s.cta} onClick={handleVolunteer}>Volunteer</button>
       </div>
       <button
         className={`${s.burger} ${open ? s.open : ''}`}
