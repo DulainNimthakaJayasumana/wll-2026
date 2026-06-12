@@ -49,8 +49,8 @@
 
 /* ── Leadership ──────────────────────────────────────────── */
 .leadership {
-  display: flex; justify-content: center; gap: 40px;
-  flex-wrap: wrap; margin-bottom: 64px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 36px; margin-bottom: 64px;
 }
 
 /* ── Dept grid ───────────────────────────────────────────── */
