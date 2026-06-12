@@ -1,29 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import s from './Volunteer.module.css';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfM5ZWsqod3nyWFJNacBGrPFUH_O-0iK4pwbMUnjgNvjlq5SA/viewform';
 
-/* 17 SDG colours */
-const SDG_COLORS = [
-  '#E5243B','#DDA63A','#4C9F38','#C5192D','#FF3A21',
-  '#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367',
-  '#FD9D24','#BF8B2E','#3F7E44','#0A97D9','#56C02B',
-  '#00689D','#19486A',
-];
-
-const SDG_ICONS = ['🚫','🌾','💊','📚','♀️','💧','⚡','💼','🏗️','📉','🏙️','♻️','🌡️','🌊','🌿','⚖️','🤝'];
-const SDG_NAMES = [
-  'No Poverty','Zero Hunger','Good Health','Quality Education','Gender Equality',
-  'Clean Water','Clean Energy','Decent Work','Industry','Reduced Inequalities',
-  'Sustainable Cities','Responsible Consumption','Climate Action',
-  'Life Below Water','Life on Land','Peace & Justice','Partnerships',
-];
-
 const STEPS = [
-  { num:'01', icon:'📚', title:'Training Workshop', sub:'Learn SDGs, facilitation & session materials' },
-  { num:'02', icon:'🗂️', title:'Session Planning', sub:'Full resources & plans provided by our team' },
-  { num:'03', icon:'🏫', title:'School Assigned', sub:'Matched to a school based on your availability' },
-  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'20 July 2026 — teach, inspire, empower' },
+  { num:'01', icon:'📚', title:'Training Workshop', sub:'Learn the SDGs, facilitation techniques & session materials', color:'#E5243B' },
+  { num:'02', icon:'🗂️', title:'Session Planning', sub:'Full resources & session plans provided by our team', color:'#FD6925' },
+  { num:'03', icon:'🏫', title:'School Assigned', sub:'Matched to a school based on your availability', color:'#FCC30B' },
+  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'20 July 2026 — teach, inspire, empower changemakers', color:'#4C9F38' },
 ];
 
 const EXPECT = [
@@ -45,65 +29,89 @@ const GET = [
 ];
 
 const POLICIES = [
-  { icon:'🎓', label:'Education', value:'Above O/L' },
-  { icon:'🎂', label:'Age', value:'18 – 30 years' },
-  { icon:'❤️', label:'Spirit', value:'Passionate & driven' },
-  { icon:'👥', label:'Interest', value:'Students & communities' },
+  { icon:'🎓', label:'Education', value:'Above O/L', color:'#E5243B' },
+  { icon:'🎂', label:'Age', value:'18 – 30 years', color:'#FD6925' },
+  { icon:'❤️', label:'Spirit', value:'Passionate & driven', color:'#C5192D' },
+  { icon:'👥', label:'Interest', value:'Students & communities', color:'#26BDE2' },
 ];
 
 const CONTACTS = [
-  { name:'Lahirunie Dulsara',  role:'CCVP Human Resources', phone:'+94 76 698 6042', email:'pasindu.serasinghe5@aiesec.net',  initials:'LD', color:'#E5243B' },
-  { name:'Chenuli Ranaweera',  role:'CC Member Human Resources', phone:'+94 71 368 8349', email:'chenuliranaweera@aiesec.net',    initials:'CR', color:'#FD6925' },
-  { name:'Sandaru Yahampath',  role:'CC Member Human Resources', phone:'+94 76 199 2137', email:'sandaruyahampath@aiesec.net',    initials:'SY', color:'#4C9F38' },
+  { name:'Lahirunie Dulsara', role:'CCVP Human Resources · WLL 2026', phone:'+94 76 698 6042', email:'pasindu.serasinghe5@aiesec.net', initials:'LD', color:'#E5243B' },
+  { name:'Chenuli Ranaweera', role:'CC Member Human Resources · WLL 2026', phone:'+94 71 368 8349', email:'chenuliranaweera@aiesec.net', initials:'CR', color:'#FD6925' },
+  { name:'Sandaru Yahampath', role:'CC Member Human Resources · WLL 2026', phone:'+94 76 199 2137', email:'sandaruyahampath@aiesec.net', initials:'SY', color:'#4C9F38' },
 ];
 
-/* Floating SDG orbs canvas */
-function SdgCanvas() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const canvas = ref.current;
-    const ctx = canvas.getContext('2d');
-    let raf;
-    const orbs = Array.from({ length: 14 }, (_, i) => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * 500,
-      r: 18 + Math.random() * 22,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.3,
-      color: SDG_COLORS[i % 17],
-      alpha: 0.12 + Math.random() * 0.1,
-    }));
+/* ── Origami SVG pieces ─────────────────────────────────── */
 
-    const resize = () => {
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      orbs.forEach(o => {
-        o.x += o.vx; o.y += o.vy;
-        if (o.x < -o.r) o.x = canvas.width + o.r;
-        if (o.x > canvas.width + o.r) o.x = -o.r;
-        if (o.y < -o.r) o.y = canvas.height + o.r;
-        if (o.y > canvas.height + o.r) o.y = -o.r;
-        ctx.beginPath();
-        ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
-        ctx.fillStyle = o.color + Math.round(o.alpha * 255).toString(16).padStart(2,'0');
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
-  }, []);
-  return <canvas ref={ref} className={s.heroCanvas}/>;
+/* Large faceted origami dove — inspired by the poster artwork */
+function OrigamiBird({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {/* tail */}
+      <polygon points="40,260 130,215 150,275" fill="#2EBD85"/>
+      <polygon points="40,260 150,275 120,300" fill="#56C6A9"/>
+      {/* body back */}
+      <polygon points="120,300 150,275 250,330 215,365" fill="#0A97D9"/>
+      <polygon points="150,275 130,215 250,330" fill="#1B6FD0"/>
+      {/* belly */}
+      <polygon points="130,215 235,170 250,330" fill="#2B3A9F"/>
+      {/* chest / neck */}
+      <polygon points="235,170 305,95 320,225 250,330" fill="#6C2BD9"/>
+      <polygon points="235,170 195,130 305,95" fill="#A52BB8"/>
+      {/* wing upper (raised) */}
+      <polygon points="305,95 280,18 388,60" fill="#F2542D"/>
+      <polygon points="388,60 280,18 360,8" fill="#FBB03B"/>
+      <polygon points="305,95 388,60 430,130" fill="#ED1C58"/>
+      <polygon points="388,60 470,55 430,130" fill="#F7931E"/>
+      {/* head + beak */}
+      <polygon points="305,95 430,130 320,225" fill="#E5243B"/>
+      <polygon points="430,130 480,150 415,175 320,225" fill="#FD6925"/>
+      <polygon points="480,150 510,162 415,175" fill="#FCC30B"/>
+      {/* lower wing */}
+      <polygon points="250,330 320,225 350,320 290,400" fill="#1BA9E8"/>
+      <polygon points="290,400 350,320 330,420" fill="#0A75C9"/>
+    </svg>
+  );
 }
 
+/* Small flat origami shapes — butterflies / fish / cranes for floating */
+function MiniShape({ kind, color }) {
+  if (kind === 'butterfly') return (
+    <svg viewBox="0 0 40 32" aria-hidden="true">
+      <polygon points="20,16 2,2 10,24" fill={color}/>
+      <polygon points="20,16 38,2 30,24" fill={color} opacity=".75"/>
+      <polygon points="20,16 14,30 26,30" fill={color} opacity=".55"/>
+    </svg>
+  );
+  if (kind === 'fish') return (
+    <svg viewBox="0 0 44 28" aria-hidden="true">
+      <polygon points="4,14 26,2 26,26" fill={color}/>
+      <polygon points="26,14 40,4 40,24" fill={color} opacity=".7"/>
+    </svg>
+  );
+  /* crane */
+  return (
+    <svg viewBox="0 0 44 36" aria-hidden="true">
+      <polygon points="6,30 22,6 26,22" fill={color}/>
+      <polygon points="26,22 22,6 40,14" fill={color} opacity=".7"/>
+      <polygon points="6,30 26,22 32,34" fill={color} opacity=".5"/>
+    </svg>
+  );
+}
+
+const FLOATERS = [
+  { kind:'butterfly', color:'#E5243B', top:'12%', left:'6%',  size:34, dur:'7s',  delay:'0s'   },
+  { kind:'fish',      color:'#FCC30B', top:'24%', left:'88%', size:40, dur:'9s',  delay:'.8s'  },
+  { kind:'crane',     color:'#26BDE2', top:'58%', left:'4%',  size:38, dur:'8s',  delay:'1.4s' },
+  { kind:'butterfly', color:'#DD1367', top:'70%', left:'92%', size:30, dur:'6.5s',delay:'.4s'  },
+  { kind:'fish',      color:'#4C9F38', top:'42%', left:'94%', size:32, dur:'7.5s',delay:'2s'   },
+  { kind:'crane',     color:'#FD6925', top:'80%', left:'10%', size:34, dur:'8.5s',delay:'1s'   },
+  { kind:'butterfly', color:'#0A97D9', top:'8%',  left:'78%', size:28, dur:'7s',  delay:'1.8s' },
+  { kind:'fish',      color:'#A21942', top:'88%', left:'80%', size:30, dur:'9s',  delay:'.2s'  },
+];
+
 export default function Volunteer({ onBack }) {
-  /* Scroll reveal */
+  /* scroll reveal */
   useEffect(() => {
     const els = document.querySelectorAll('[data-reveal]');
     const io = new IntersectionObserver(entries => {
@@ -124,159 +132,179 @@ export default function Volunteer({ onBack }) {
         Home
       </button>
 
-      {/* ── HERO ────────────────────────────────────────── */}
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section className={s.hero}>
-        <SdgCanvas/>
+        {/* floating mini origami */}
+        {FLOATERS.map((f, i) => (
+          <span key={i} className={s.floater} style={{ top:f.top, left:f.left, width:f.size, animationDuration:f.dur, animationDelay:f.delay }}>
+            <MiniShape kind={f.kind} color={f.color}/>
+          </span>
+        ))}
 
-        <div className={s.heroInner}>
-          <div className={s.heroBadge}>
-            <span className={s.dot}/>
-            AIESEC in Sri Lanka · WLL 2026
-          </div>
-
-          <h1 className={s.heroTitle}>
-            Be the reason<br/>
-            <em>a child learns</em><br/>
-            about the world.
-          </h1>
-
-          <p className={s.heroSub}>
-            Volunteer for Sri Lanka's World's Largest Lesson.<br/>
-            <strong>One school · One session · Endless impact.</strong>
-          </p>
-
-          <div className={s.heroPills}>
-            <span style={{borderColor:'#E5243B',color:'#E5243B'}}>📅 20 July 2026</span>
-            <span style={{borderColor:'#4C9F38',color:'#4C9F38'}}>🏫 Schools Island-wide</span>
-            <span style={{borderColor:'#FD6925',color:'#FD6925'}}>👤 Ages 18–30</span>
-            <span style={{borderColor:'#26BDE2',color:'#26BDE2'}}>🆓 Free to join</span>
-          </div>
-
-          <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.heroBtn}>
-            Register as a Volunteer →
-          </a>
-        </div>
-
-        {/* SDG wheel strip */}
-        <div className={s.sdgStrip}>
-          {SDG_COLORS.map((col, i) => (
-            <div key={i} className={s.sdgTile} style={{ background: col }} title={`SDG ${i+1}: ${SDG_NAMES[i]}`}>
-              <span className={s.sdgIcon}>{SDG_ICONS[i]}</span>
-              <span className={s.sdgNum}>{i + 1}</span>
+        <div className={s.heroGrid}>
+          <div className={s.heroText}>
+            <div className={s.heroBadge}>
+              <span className={s.dot}/>
+              AIESEC in Sri Lanka · WLL 2026
             </div>
-          ))}
+
+            <h1 className={s.heroTitle}>
+              Unfold<br/>
+              <em>your impact.</em>
+            </h1>
+
+            <p className={s.heroSub}>
+              Volunteer for Sri Lanka's <strong>World's Largest Lesson</strong> — like a thousand
+              paper cranes, every volunteer carries a lesson to a classroom.<br/>
+              <strong>One school · One session · Endless impact.</strong>
+            </p>
+
+            <div className={s.heroPills}>
+              <span style={{'--pc':'#E5243B'}}>📅 20 July 2026</span>
+              <span style={{'--pc':'#4C9F38'}}>🏫 Island-wide</span>
+              <span style={{'--pc':'#FD6925'}}>👤 Ages 18–30</span>
+              <span style={{'--pc':'#26BDE2'}}>🆓 Free to join</span>
+            </div>
+
+            <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.heroBtn}>
+              Register as a Volunteer →
+            </a>
+          </div>
+
+          <div className={s.heroArt}>
+            <OrigamiBird className={s.bird}/>
+          </div>
         </div>
+
+        {/* folded paper edge */}
+        <div className={s.foldEdge}/>
       </section>
 
-      {/* ── STATS ──────────────────────────────────────── */}
+      {/* ── STATS ────────────────────────────────────────── */}
       <section className={s.stats} data-reveal>
         <div className={s.container}>
           <div className={s.statsGrid}>
             {[
-              { num:'1',   label:'Lesson per volunteer', color:'#E5243B' },
-              { num:'1',   label:'School assigned to you', color:'#4C9F38' },
-              { num:'17',  label:'SDGs you will teach', color:'#FD6925' },
-              { num:'∞',   label:'Impact on young minds', color:'#26BDE2' },
-            ].map((s2, i) => (
-              <div key={i} className={s.statCard}>
-                <div className={s.statNum} style={{ color: s2.color }}>{s2.num}</div>
-                <div className={s.statLabel}>{s2.label}</div>
+              { num:'1',  label:'Lesson per volunteer',   color:'#E5243B' },
+              { num:'1',  label:'School assigned to you', color:'#FD6925' },
+              { num:'17', label:'SDGs you will teach',    color:'#4C9F38' },
+              { num:'∞',  label:'Impact on young minds',  color:'#0A97D9' },
+            ].map((st, i) => (
+              <div key={i} className={s.statCard} style={{'--c': st.color}}>
+                <span className={s.statFold}/>
+                <div className={s.statNum}>{st.num}</div>
+                <div className={s.statLabel}>{st.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── WHAT HAPPENS AFTER ─────────────────────────── */}
+      {/* ── ABOUT ────────────────────────────────────────── */}
+      <section className={s.about}>
+        <div className={s.container}>
+          <div className={s.aboutGrid}>
+            <div data-reveal>
+              <p className={s.eyebrow}>VOLUNTEERS AT WLL</p>
+              <h2 className={s.sectionTitle}>Every fold counts</h2>
+              <p className={s.aboutText}>
+                As a volunteer for the <strong>World's Largest Lesson</strong>, you play an important role
+                in delivering this nationwide initiative after 5 years — educating and inspiring school
+                students about the Sustainable Development Goals through engaging, interactive sessions.
+              </p>
+              <div className={s.highlightBox}>
+                Each volunteer contributes to <strong>one lesson in one school.</strong>
+              </div>
+            </div>
+            <div className={s.aboutArt} data-reveal>
+              <MiniShape kind="crane" color="#E5243B"/>
+              <MiniShape kind="butterfly" color="#FCC30B"/>
+              <MiniShape kind="fish" color="#26BDE2"/>
+              <MiniShape kind="butterfly" color="#4C9F38"/>
+              <MiniShape kind="crane" color="#FD6925"/>
+              <MiniShape kind="fish" color="#DD1367"/>
+              <MiniShape kind="butterfly" color="#0A97D9"/>
+              <MiniShape kind="crane" color="#A21942"/>
+              <MiniShape kind="fish" color="#56C02B"/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4 STEPS ──────────────────────────────────────── */}
       <section className={s.stepsSection}>
         <div className={s.container}>
           <p className={s.eyebrow} data-reveal>YOUR JOURNEY</p>
           <h2 className={s.sectionTitle} data-reveal>What happens after you register</h2>
-
-          <div className={s.stepsTrack}>
+          <div className={s.stepsGrid}>
             {STEPS.map((step, i) => (
-              <div key={i} className={s.stepWrap} data-reveal style={{ '--delay': `${i * 0.12}s` }}>
-                <div className={s.stepCard} style={{ '--accent': SDG_COLORS[i * 4] }}>
-                  <div className={s.stepTop}>
-                    <span className={s.stepNumLabel}>{step.num}</span>
-                    <span className={s.stepEmoji}>{step.icon}</span>
-                  </div>
-                  <strong className={s.stepTitle}>{step.title}</strong>
-                  <p className={s.stepSub}>{step.sub}</p>
+              <div key={i} className={s.stepCard} data-reveal style={{ '--c': step.color, '--delay': `${i * .1}s` }}>
+                <span className={s.stepFold}/>
+                <div className={s.stepHead}>
+                  <span className={s.stepNum}>{step.num}</span>
+                  <span className={s.stepIcon}>{step.icon}</span>
                 </div>
-                {i < STEPS.length - 1 && (
-                  <div className={s.stepArrow}>→</div>
-                )}
+                <strong className={s.stepTitle}>{step.title}</strong>
+                <p className={s.stepSub}>{step.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── EXPECT / GET ───────────────────────────────── */}
+      {/* ── EXPECT / GET ─────────────────────────────────── */}
       <section className={s.xgSection}>
         <div className={s.container}>
           <div className={s.xgGrid}>
-
             <div className={s.xgPanel} data-reveal>
-              <div className={s.xgHeader} style={{ background:'#E5243B' }}>
+              <div className={s.xgHeader} style={{'--c':'#E5243B'}}>
                 <span>📋</span> What we expect
               </div>
               <div className={s.xgBody}>
                 {EXPECT.map((item, i) => (
                   <div key={i} className={s.xgRow}>
-                    <span className={s.xgIcon}>{item.icon}</span>
-                    <span>{item.text}</span>
+                    <span>{item.icon}</span><p>{item.text}</p>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className={s.xgPanel} data-reveal style={{ '--delay':'.1s' }}>
-              <div className={s.xgHeader} style={{ background:'#4C9F38' }}>
+            <div className={s.xgPanel} data-reveal style={{'--delay':'.12s'}}>
+              <div className={s.xgHeader} style={{'--c':'#4C9F38'}}>
                 <span>🌟</span> What you get
               </div>
               <div className={s.xgBody}>
                 {GET.map((item, i) => (
                   <div key={i} className={s.xgRow}>
-                    <span className={s.xgIcon}>{item.icon}</span>
-                    <span>{item.text}</span>
+                    <span>{item.icon}</span><p>{item.text}</p>
                   </div>
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ── SDG WHEEL ──────────────────────────────────── */}
-      <section className={s.sdgSection}>
+      {/* ── WORKSHOPS ────────────────────────────────────── */}
+      <section className={s.workshopSection}>
         <div className={s.container}>
-          <p className={s.eyebrow} data-reveal>THE GLOBAL GOALS</p>
-          <h2 className={s.sectionTitle} data-reveal>You'll teach all 17 SDGs</h2>
-          <div className={s.sdgGrid} data-reveal>
-            {SDG_COLORS.map((col, i) => (
-              <div key={i} className={s.sdgCard} style={{ '--c': col }}>
-                <div className={s.sdgCardInner}>
-                  <span className={s.sdgCardIcon}>{SDG_ICONS[i]}</span>
-                  <span className={s.sdgCardNum}>SDG {i + 1}</span>
-                  <span className={s.sdgCardName}>{SDG_NAMES[i]}</span>
-                </div>
-              </div>
-            ))}
+          <div className={s.workshopBox} data-reveal>
+            <span className={s.workshopIcon}>🛠️</span>
+            <div>
+              <h3>Event Preparation Workshops</h3>
+              <p>All selected volunteers receive the necessary training and guidance prior to the event to confidently carry out their roles.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── ELIGIBILITY ────────────────────────────────── */}
+      {/* ── ELIGIBILITY ──────────────────────────────────── */}
       <section className={s.eligSection}>
         <div className={s.container}>
           <p className={s.eyebrow} data-reveal>WHO CAN JOIN</p>
           <h2 className={s.sectionTitle} data-reveal>We welcome individuals who…</h2>
-          <div className={s.policyRow} data-reveal>
+          <div className={s.policyGrid}>
             {POLICIES.map((p, i) => (
-              <div key={i} className={s.policyCard} style={{ '--accent': SDG_COLORS[i * 4] }}>
+              <div key={i} className={s.policyCard} data-reveal style={{'--c': p.color, '--delay': `${i * .08}s`}}>
                 <span className={s.policyIcon}>{p.icon}</span>
                 <div className={s.policyLabel}>{p.label}</div>
                 <div className={s.policyValue}>{p.value}</div>
@@ -289,14 +317,14 @@ export default function Volunteer({ onBack }) {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────── */}
+      {/* ── CTA ──────────────────────────────────────────── */}
       <section className={s.ctaSection} data-reveal>
         <div className={s.ctaBox}>
-          {/* coloured SDG side dots */}
-          {SDG_COLORS.slice(0,8).map((c, i) => (
-            <span key={i} className={s.ctaDot} style={{ background: c, '--i': i }}/>
-          ))}
-          <h2>Ready to make an impact?</h2>
+          <span className={`${s.ctaShape} ${s.ctaShape1}`}><MiniShape kind="butterfly" color="#FCC30B"/></span>
+          <span className={`${s.ctaShape} ${s.ctaShape2}`}><MiniShape kind="crane" color="#26BDE2"/></span>
+          <span className={`${s.ctaShape} ${s.ctaShape3}`}><MiniShape kind="fish" color="#FD6925"/></span>
+          <span className={`${s.ctaShape} ${s.ctaShape4}`}><MiniShape kind="butterfly" color="#56C02B"/></span>
+          <h2>Ready to unfold your impact?</h2>
           <p>Join volunteers across Sri Lanka on <strong>20 July 2026</strong>.</p>
           <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaBtn}>
             Register Now — It's Free
@@ -305,28 +333,25 @@ export default function Volunteer({ onBack }) {
         </div>
       </section>
 
-      {/* ── CONTACT ────────────────────────────────────── */}
+      {/* ── CONTACT ──────────────────────────────────────── */}
       <section className={s.contactSection}>
         <div className={s.container}>
           <p className={s.eyebrow} data-reveal>REACH US</p>
           <h2 className={s.sectionTitle} data-reveal>Have questions? Talk to us.</h2>
           <div className={s.contactGrid}>
             {CONTACTS.map((c, i) => (
-              <div key={i} className={s.contactCard} data-reveal style={{ '--delay': `${i * 0.1}s` }}>
-                <div className={s.contactTop} style={{ background: c.color }}>
-                  <div className={s.avatarCircle}>{c.initials}</div>
+              <div key={i} className={s.contactCard} data-reveal style={{'--c': c.color, '--delay': `${i * .1}s`}}>
+                <span className={s.contactFold}/>
+                <div className={s.contactTop}>
+                  <div className={s.avatar}>{c.initials}</div>
                   <div>
                     <div className={s.contactName}>{c.name}</div>
                     <div className={s.contactRole}>{c.role}</div>
                   </div>
                 </div>
-                <div className={s.contactBody}>
-                  <a href={`tel:${c.phone.replace(/\s/g,'')}`} className={s.contactLine}>
-                    <span>📞</span> {c.phone}
-                  </a>
-                  <a href={`mailto:${c.email}`} className={s.contactLine}>
-                    <span>✉️</span> {c.email}
-                  </a>
+                <div className={s.contactLinks}>
+                  <a href={`tel:${c.phone.replace(/\s/g,'')}`} className={s.contactLink}>📞 {c.phone}</a>
+                  <a href={`mailto:${c.email}`} className={s.contactLink}>✉️ {c.email}</a>
                 </div>
               </div>
             ))}
