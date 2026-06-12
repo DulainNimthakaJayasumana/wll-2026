@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import s from './Volunteer.module.css';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfM5ZWsqod3nyWFJNacBGrPFUH_O-0iK4pwbMUnjgNvjlq5SA/viewform';
@@ -110,6 +110,20 @@ const FLOATERS = [
   { kind:'fish',      color:'#A21942', top:'88%', left:'80%', size:30, dur:'9s',  delay:'.2s'  },
 ];
 
+/* Hero artwork — real bird image, SVG fallback until the file exists */
+function HeroBird() {
+  const [imgOk, setImgOk] = useState(true);
+  if (!imgOk) return <OrigamiBird className={s.bird}/>;
+  return (
+    <img
+      src="/assets/origami-bird.png"
+      alt="Origami bird"
+      className={s.bird}
+      onError={() => setImgOk(false)}
+    />
+  );
+}
+
 export default function Volunteer({ onBack }) {
   /* scroll reveal */
   useEffect(() => {
@@ -172,7 +186,7 @@ export default function Volunteer({ onBack }) {
           </div>
 
           <div className={s.heroArt}>
-            <OrigamiBird className={s.bird}/>
+            <HeroBird/>
           </div>
         </div>
 
