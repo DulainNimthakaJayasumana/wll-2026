@@ -19,6 +19,8 @@ const SDG_COLORS = [
   '#00689D','#19486A',
 ];
 
+
+
 export default function Hero() {
   const cd      = useCountdown();
   const heroRef = useRef(null);
@@ -103,6 +105,12 @@ export default function Hero() {
     <header className={s.hero} id="home" ref={heroRef}>
       <div className={s.bgWheel}><WheelSVG size={820} rotation={0} activeIdx={-1} /></div>
       <canvas ref={canvasRef} className={s.canvas} />
+
+      {/* Origami birds — launch banner style */}
+      <img src="/assets/origami-bird.png" alt="" aria-hidden="true" className={s.birdLeft} />
+      <img src="/assets/origami-bird.png" alt="" aria-hidden="true" className={s.birdRight} />
+
+
       <div className={`shell ${s.inner}`}>
         <div className={s.badge}>
           <span className={s.dot}>SL</span>
@@ -117,9 +125,8 @@ export default function Hero() {
           Empowering Sri Lankan youth to understand and act on the United Nations Sustainable Development Goals — one classroom, one creative idea at a time.
         </p>
         <div className={s.ctas}>
-          <button onClick={goToRegister} className={`${s.btn} ${s.primary}`}>Register Now</button>
-          <a href="#about" className={`${s.btn} ${s.glass}`}>Learn More</a>
-          <a href="#sdgs"  className={`${s.btn} ${s.glass}`}>Explore SDGs</a>
+          <button onClick={goToRegister} className={`${s.btn} ${s.primary}`}>Volunteer with us</button>
+          <a href="#run" className={`${s.btn} ${s.glass}`}>Register for the Run</a>
         </div>
         <div className={s.countdown}>
           {CD_CELLS.map(c => (

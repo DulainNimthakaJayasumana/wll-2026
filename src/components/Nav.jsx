@@ -4,9 +4,7 @@ import s from './Nav.module.css';
 
 const LINKS = [
   { href: '#home',         label: 'Home' },
-  { href: '#sdgs',         label: 'SDGs' },
   { href: '#gallery',      label: 'Gallery' },
-  { href: '#competitions', label: 'Competitions' },
   { href: '#contact',      label: 'Team' },
 ];
 
@@ -33,7 +31,7 @@ export default function Nav() {
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
         <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lesson</button>
-        <button className={s.cta} onClick={handleVolunteer}>Volunteer</button>
+        <button className={s.cta} onClick={handleVolunteer}>Volunteer with us</button>
       </div>
       <button
         className={`${s.burger} ${open ? s.open : ''}`}

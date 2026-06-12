@@ -13,6 +13,44 @@
 .canvas { position:absolute; inset:0; pointer-events:none; z-index:1; }
 .inner { position:relative; z-index:2; max-width:820px; }
 
+/* ── Origami birds (launch banner style) ─────────────────── */
+.birdLeft, .birdRight {
+  position:absolute; z-index:1; pointer-events:none;
+  height:auto; filter:drop-shadow(0 18px 28px rgba(40,40,90,.16));
+}
+.birdLeft {
+  left:clamp(-60px,-6vw,-30px); top:2%;
+  width:clamp(180px,24vw,400px);
+  opacity:.5;
+  animation:birdFloatL 8s ease-in-out infinite;
+}
+.birdRight {
+  right:clamp(-50px,-5vw,-20px); top:6%;
+  width:clamp(200px,28vw,460px);
+  transform:scaleX(-1);
+  animation:birdFloatR 7s ease-in-out infinite;
+}
+@keyframes birdFloatL {
+  0%,100% { transform:translateY(0) rotate(-2deg); }
+  50%     { transform:translateY(-18px) rotate(1deg); }
+}
+@keyframes birdFloatR {
+  0%,100% { transform:scaleX(-1) translateY(0) rotate(2deg); }
+  50%     { transform:scaleX(-1) translateY(-22px) rotate(-1.5deg); }
+}
+
+
+/* responsive: calm things down on small screens */
+@media (max-width:900px) {
+  .birdLeft  { opacity:.3; width:clamp(140px,26vw,240px); }
+  .birdRight { opacity:.85; width:clamp(150px,30vw,260px); top:auto; bottom:24%; }
+
+}
+@media (max-width:560px) {
+  .birdLeft { display:none; }
+  .birdRight { opacity:.45; bottom:30%; }
+}
+
 .badge {
   display:inline-flex; align-items:center; gap:10px;
   background:rgba(255,255,255,.9); border:1px solid var(--line);
