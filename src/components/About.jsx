@@ -24,17 +24,9 @@ export default function About() {
               <span className={s.eyebrow}>The Initiative</span>
               <h2>What is the<br/>World's Largest Lesson?</h2>
             </div>
-            <p className="reveal d1">The <strong>World’s Largest Lesson</strong> is a global education initiative by Project
-Everyone that promotes the Sustainable Development Goals (SDGs)
-through creative and engaging learning experiences for children and
-young people. Working alongside partners such as UNICEF and
-UNESCO, WWL has reached millions of students across more than
-160 countries since 2015.</p>
-            <p className="reveal d2">After a 5-year hiatus, this inspiring initiative is being organized once
-again to empower the next generation to create a better and more
-sustainable future for all.
-</p>
-            <p className="reveal d3">AIESEC in Sri Lanka is back. <strong>Islandwide</strong>, reaching 10+ districts across 40+ schools for 30,000+ Students Island Wide.</p>
+            <p className="reveal d1">The World's Largest Lesson introduces the Sustainable Development Goals to children everywhere, uniting them in action. Created with UNICEF, it has reached <strong>millions of students across 130+ countries</strong> since 2015.</p>
+            <p className="reveal d2">In Sri Lanka, AIESEC brings the Global Goals into classrooms from Jaffna to Galle. Students don't just learn about the world's biggest challenges — they discover the part <em>they</em> can play in solving them.</p>
+            <p className="reveal d3">WLL 2026 is our biggest year yet. After a 6-year gap, AIESEC in Sri Lanka is back — <strong>islandwide</strong>, reaching 15 districts across 55–60 schools with 500–600 volunteers.</p>
             <div className="reveal d4" style={{marginTop:32}}>
               <a href="#sdgs" className={s.btn}>Meet the 17 Goals →</a>
             </div>
