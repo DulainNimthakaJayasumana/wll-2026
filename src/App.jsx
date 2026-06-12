@@ -30,6 +30,10 @@ export function goToRun() {
   window.location.hash = 'run';
 }
 
+export function goToVolunteer() {
+  window.location.hash = 'volunteer';
+}
+
 export function goHome() {
   window.location.hash = '';
 }
