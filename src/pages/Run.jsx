@@ -34,7 +34,7 @@ const CHECKPOINTS = [
     desc: 'Race begins and ends here at Race Course Vehicle Park. Collect your bib, warm up and line up at 4:30 PM!',
     color: '#19486A',
     icon: '🏁',
-    km: '0 / 4.8 km',
+    km: '0 / 5 km',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Race+Course+Vehicle+Park,+Philip+Gunawardena+Mawatha,+Colombo',
     mapsLabel: 'Race Course Vehicle Park, Colombo',
   },
@@ -229,7 +229,7 @@ export default function Run({ onBack }) {
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>🎯</span>
-              <span className={s.heroStatVal}>4.8 km Loop</span>
+              <span className={s.heroStatVal}>5 km Loop</span>
               <span className={s.heroStatLabel}>4 Checkpoints</span>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Race Course Loop — 4.8 km</h2>
+            <h2>Race Course Loop — 5 km</h2>
             <p>Start and finish at Race Course Vehicle Park. The loop takes you past Bloomfield, SLAF Circle, BMICH and Horton Place through the heart of Colombo 07. <strong>Click any checkpoint to open in Google Maps.</strong></p>
           </div>
 
