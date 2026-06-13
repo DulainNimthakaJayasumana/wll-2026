@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export function useScrollReveal() {
+export function useScrollReveal(revealKey) {
   useEffect(() => {
     const run = () => {
       const io = new IntersectionObserver(
@@ -30,5 +30,5 @@ export function useScrollReveal() {
     const t   = setTimeout(() => { io1.disconnect(); run(); }, 600);
 
     return () => { io1.disconnect(); clearTimeout(t); };
-  }, []);
+  }, [revealKey]);
 }

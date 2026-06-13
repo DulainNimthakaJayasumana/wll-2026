@@ -34,6 +34,7 @@ export function goToRegister() {
 }
 
 export function goHome() {
+  window.scrollTo(0, 0);
   window.location.hash = '';
 }
 
@@ -47,7 +48,7 @@ export default function App() {
   }, []);
 
   /* Scroll reveal only applies to the main site */
-  useScrollReveal();
+  useScrollReveal(page);
 
   if (page === 'run')      return <Run onBack={goHome} />;
   if (page === 'volunteer') return <Volunteer onBack={goHome} />;
