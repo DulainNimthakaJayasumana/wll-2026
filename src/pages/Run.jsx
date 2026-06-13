@@ -94,6 +94,21 @@ const SDG_COLORS = [
   '#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367',
 ];
 
+function FAQItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`${s.faqItem} ${open ? s.faqOpen : ''}`}>
+      <button className={s.faqQ} onClick={() => setOpen(v => !v)}>
+        <span>{q}</span>
+        <svg className={s.faqChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      {open && <div className={s.faqA}>{a}</div>}
+    </div>
+  );
+}
+
 export default function Run({ onBack }) {
   const cd = useRunCountdown();
   const canvasRef = useRef(null);
@@ -352,6 +367,121 @@ export default function Run({ onBack }) {
         </div>
       </section>
 
+      {/* ── FREE MERCH BANNER ────────────────────────────── */}
+      <section className={s.merchBanner}>
+        <div className={s.merchInner}>
+          <div className={s.merchEmoji}>🎁</div>
+          <div className={s.merchText}>
+            <h2>Free Merch for Every Runner</h2>
+            <p>Every registered participant gets a <strong>race bib</strong>, an <strong>exclusive WLL 2026 t-shirt</strong>, and an <strong>SDG wristband</strong> — completely free. Limited stock, first come first served!</p>
+          </div>
+          <div className={s.merchItems}>
+            {[
+              { icon:'👕', label:'WLL T-Shirt' },
+              { icon:'🪪', label:'Race Bib' },
+              { icon:'📿', label:'SDG Wristband' },
+              { icon:'🏅', label:'Finisher Medal' },
+            ].map(m => (
+              <div key={m.label} className={s.merchItem}>
+                <span className={s.merchItemIcon}>{m.icon}</span>
+                <span className={s.merchItemLabel}>{m.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────── */}
+      <section className={s.faqSection} id="run-faq">
+        <div className={s.faqInner}>
+          <div className={s.sectionHead}>
+            <span className={s.eyebrow}>❓ FAQ</span>
+            <h2>Common Questions</h2>
+          </div>
+          <div className={s.faqList}>
+            {[
+              {
+                q: 'What is Miles for Lessons?',
+                a: 'Miles for Lessons is a purpose-driven CSR fundraising run organized under the World’s Largest Lesson (WLL) initiative. It brings together individuals passionate about fitness, community impact, and creating positive change, while raising funds to support the Island Wide World’s Largest Lesson 2026 Sri Lanka initiative (Check the website for more info).',
+              },
+              {
+                q: 'How do I register?',
+                a: 'Click the Register button on the website and complete the Google Form. Please upload the registration fee payment slip as part of the form. You may register individually or as a group using the links provided on the website. Registration fee: Rs. 1,800 per individual🎽 Includes a complimentary event T-shirt',
+              },
+              {
+                q: 'Will I receive a T-shirt?',
+                a: 'Yes! Every registered participant will receive a free official event T-shirt.',
+              },
+              {
+                q: 'Who can participate?',
+                a: 'The run is open to everyone — all ages and fitness levels are welcome. Whether you choose to walk, jog, or sprint the 4.8 km loop, you’re encouraged to join.',
+              },
+              {
+                q: 'Where does the race start?',
+                a: '📍 Race Course Car Park',
+              },
+              {
+                q: 'When will I receive my T-shirt?',
+                a: 'T-shirts will be distributed prior to the run. The organizing committee will share detailed instructions closer to the event date.',
+              },
+              {
+                q: 'How can my company partner or sponsor the event?',
+                a: `We'd love to collaborate! Please reach out to us via:\n\n📧 pasindu.serasinghe5@aiesec.net\n📧 poohbalarajavarun@aiesec.net\n\n📞 +94 77 786 7058\n\nWhether you're here to promote your event, join as a corporate team, or help out with resources and logistics.`,
+              },
+            ].map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACT ───────────────────────────────────────── */}
+      <section className={s.contactSection} id="run-contact">
+        <div className={s.contactInner}>
+          <div className={s.sectionHead}>
+            <span className={s.eyebrow}>📞 Contact Us</span>
+            <h2>Get in Touch</h2>
+            <p>Have a question not covered above? Reach out to the Miles for Lessons organising team directly.</p>
+          </div>
+          <div className={s.contactGrid}>
+            <a href="tel:+94701506924" className={s.contactCard}>
+              <span className={s.contactIcon}>📱</span>
+              <span className={s.contactLabel}>Call / WhatsApp</span>
+              <span className={s.contactVal}>070 150 6924</span>
+            </a>
+            <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener noreferrer" className={s.contactCard}>
+              <span className={s.contactIcon}>📸</span>
+              <span className={s.contactLabel}>Instagram</span>
+              <span className={s.contactVal}>@wll.srilanka</span>
+            </a>
+            <a href="mailto:wll.srilanka@aiesec.net" className={s.contactCard}>
+              <span className={s.contactIcon}>✉️</span>
+              <span className={s.contactLabel}>Email</span>
+              <span className={s.contactVal}>wll.srilanka@aiesec.net</span>
+            </a>
+          </div>
+
+          <div className={s.sectionHead} style={{ marginTop: '56px' }}>
+            <p>For run day queries, reach out to our organising team directly:</p>
+          </div>
+          <div className={s.contactGrid}>
+            {[
+              { name: 'Pasindu', role: 'CCVP HR', phone: '+94766986042', phoneDisplay: '+94 76 698 6042', email: 'pasindu.serasinghe5@aiesec.net' },
+              { name: 'Thanuri', role: 'CC Member HR', phone: '+94713688349', phoneDisplay: '+94 71 368 8349', email: 'chenuliranaweera@aiesec.net' },
+              { name: 'Sandaru Yahampath', role: 'CC Member HR', phone: '+94761992137', phoneDisplay: '+94 76 199 2137', email: 'sandaruyahampath@aiesec.net' },
+            ].map(p => (
+              <div key={p.name} className={s.personContactCard}>
+                <div className={s.personAvatar}>{p.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>
+                <div className={s.personName}>{p.name}</div>
+                <div className={s.personRole}>{p.role}</div>
+                <div className={s.personLinks}>
+                  <a href={`tel:${p.phone}`} className={s.personLink}>📱 {p.phoneDisplay}</a>
+                  <a href={`mailto:${p.email}`} className={s.personLink}>✉️ {p.email}</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SDG STRIP ─────────────────────────────────────── */}
       <div className={s.sdgStrip}>
         {['#E5243B','#DDA63A','#4C9F38','#C5192D','#FF3A21','#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367','#FD9D24','#BF8B2E','#3F7E44','#0A97D9','#56C02B','#00689D','#19486A'].map(c => (
@@ -365,7 +495,7 @@ export default function Run({ onBack }) {
           <h2>Ready to Run Miles for Lessons?</h2>
           <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
           <div className={s.ctaBtns}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register Now — It's Free</button>
+            <button onClick={goToRegister} className={s.ctaPrimary}>Register Now</button>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>
