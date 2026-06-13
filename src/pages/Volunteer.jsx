@@ -4,10 +4,10 @@ import s from './Volunteer.module.css';
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfM5ZWsqod3nyWFJNacBGrPFUH_O-0iK4pwbMUnjgNvjlq5SA/viewform';
 
 const STEPS = [
-  { num:'01', icon:'📚', title:'Training Workshop', sub:'Learn the SDGs, facilitation techniques & session materials', color:'#E5243B' },
-  { num:'02', icon:'🗂️', title:'Session Planning', sub:'Full resources & session plans provided by our team', color:'#FD6925' },
-  { num:'03', icon:'🏫', title:'School Assigned', sub:'Matched to a school based on your availability', color:'#FCC30B' },
-  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'20 July 2026 — teach, inspire, empower changemakers', color:'#4C9F38' },
+  { num:'01', icon:'📚', title:'Training Workshop', sub:'You will participate in a training workshop designed to familiarize you with the World’s Largest Lesson, the SDGs, facilitation techniques, and the session materials.', color:'#E5243B' },
+  { num:'02', icon:'🗂️', title:'Session Planning', sub:'Our team will guide you through the session plans and provide all the resources you need to confidently conduct a lesson.', color:'#FD6925' },
+  { num:'03', icon:'🏫', title:'School Assigned', sub:'Based on your preferences and availability, you will be assigned to a school where you will represent the initiative.', color:'#FCC30B' },
+  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'On 20th July 2026, you will deliver a World’s Largest Lesson session to students, helping them understand global challenges and empowering them to become changemakers.', color:'#4C9F38' },
 ];
 
 const EXPECT = [
@@ -210,6 +210,38 @@ export default function Volunteer({ onBack }) {
                 <div className={s.statLabel}>{st.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── EVENT SCOPE ──────────────────────────────────── */}
+      <section className={s.scopeSection} data-reveal>
+        <div className={s.container}>
+          <p className={s.eyebrow}>EVENT SCOPE</p>
+          <h2 className={s.sectionTitle}>Reaching every corner of Sri Lanka</h2>
+          <div className={s.scopeLayout}>
+            {/* Stats */}
+            <div className={s.scopeStats}>
+              {[
+                { num:'10+', label:'Districts',            color:'#FD6925' },
+                { num:'40+', label:'Schools',              color:'#DD1367' },
+                { num:'30,000+', label:'Students Island Wide', color:'#4C9F38' },
+              ].map((st, i) => (
+                <div key={i} className={s.scopeStatCard} style={{'--c': st.color}}>
+                  <div className={s.scopeNum}>{st.num}</div>
+                  <div className={s.scopeLabel}>{st.label}</div>
+                </div>
+              ))}
+            </div>
+            {/* District list */}
+            <div className={s.districtBox}>
+              <div className={s.districtTitle}>Districts</div>
+              <div className={s.districtGrid}>
+                {['Colombo','Gampaha','Kalutara','Kurunegala','Galle','Matara','Ratnapura','Kandy','Matale','Kegalle','Jaffna'].map(d => (
+                  <div key={d} className={s.districtChip}>{d}</div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

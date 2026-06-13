@@ -2,17 +2,16 @@ import s from './About.module.css';
 
 const STATS = [
   { n:17,  suf:'',  label:'Global Goals',         sub:'One blueprint for 2030',        accent:'#E5243B', icon:'🎯' },
-  { n:130, suf:'+', label:'Countries Reached',     sub:'A truly global movement',       accent:'#26BDE2', icon:'🌍' },
-  { n:15,  suf:'',  label:'Districts in Sri Lanka', sub:'Islandwide reach in 2026',     accent:'#4C9F38', icon:'📍' },
-  { n:600, suf:'+', label:'Student Volunteers',    sub:'Across 55–60 schools',          accent:'#FCC30B', icon:'🏫' },
+  { n:160, suf:'', label:'Countries Reached',     sub:'A truly global movement',       accent:'#26BDE2', icon:'🌍' },
+  { n:10,  suf:'+',  label:'Districts in Sri Lanka', sub:'Islandwide reach in 2026',     accent:'#4C9F38', icon:'📍' },
+  { n:600, suf:'+', label:'Student Volunteers',    sub:'Across 40+ schools',          accent:'#FCC30B', icon:'🏫' },
 ];
 
 const TL = [
   { year:'2015', title:'The Goals are born', body:'193 nations adopt the 17 SDGs. The World\'s Largest Lesson launches alongside them, reaching classrooms on every continent.' },
   { year:'2020', title:'Sri Lanka takes action', body:'AIESEC in Sri Lanka delivers WLL across 49 schools — 268 sessions, 590 volunteers, students aged 9–16.' },
   { year:'2025', title:'The comeback begins', body:'After a 6-year gap, AIESEC in Sri Lanka plans the most ambitious edition yet — fully islandwide.' },
-  { year:'2026', title:'Islandwide WLL 2026', body:'15 districts. 55–60 schools. 500–600 volunteers. Ages 11–15. Every student invited to learn, create and act.' },
-];
+  ];
 
 export default function About() {
   return (
@@ -24,9 +23,17 @@ export default function About() {
               <span className={s.eyebrow}>The Initiative</span>
               <h2>What is the<br/>World's Largest Lesson?</h2>
             </div>
-            <p className="reveal d1">The World's Largest Lesson introduces the Sustainable Development Goals to children everywhere, uniting them in action. Created with UNICEF, it has reached <strong>millions of students across 130+ countries</strong> since 2015.</p>
-            <p className="reveal d2">In Sri Lanka, AIESEC brings the Global Goals into classrooms from Jaffna to Galle. Students don't just learn about the world's biggest challenges — they discover the part <em>they</em> can play in solving them.</p>
-            <p className="reveal d3">WLL 2026 is our biggest year yet. After a 6-year gap, AIESEC in Sri Lanka is back — <strong>islandwide</strong>, reaching 15 districts across 55–60 schools with 500–600 volunteers.</p>
+            <p className="reveal d1">The <strong>World’s Largest Lesson</strong> is a global education initiative by Project
+Everyone that promotes the Sustainable Development Goals (SDGs)
+through creative and engaging learning experiences for children and
+young people. Working alongside partners such as UNICEF and
+UNESCO, WWL has reached millions of students across more than
+160 countries since 2015.</p>
+            <p className="reveal d2">After a 5-year hiatus, this inspiring initiative is being organized once
+again to empower the next generation to create a better and more
+sustainable future for all.
+</p>
+            <p className="reveal d3">AIESEC in Sri Lanka is back. <strong>Islandwide</strong>, reaching 10+ districts across 40+ schools for 30,000+ Students Island Wide.</p>
             <div className="reveal d4" style={{marginTop:32}}>
               <a href="#sdgs" className={s.btn}>Meet the 17 Goals →</a>
             </div>
