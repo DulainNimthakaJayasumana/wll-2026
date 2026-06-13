@@ -433,3 +433,66 @@
   transition: color .35s, background .35s, transform .35s cubic-bezier(.25,.1,.25,1);
 }
 .contactLink:hover { color: #1d1d1f; background: #f5f5f7; transform: translateX(4px); }
+
+/* ── Event Scope ─────────────────────────────────────────── */
+.scopeSection {
+  padding: clamp(60px,10vh,120px) 0;
+  background: #fff;
+}
+.scopeLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 48px;
+}
+@media (max-width: 720px) {
+  .scopeLayout { grid-template-columns: 1fr; }
+}
+.scopeStats {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.scopeStatCard {
+  display: flex; align-items: center; gap: 20px;
+  padding: 28px 28px;
+  background: #fbfbfd;
+  border: 1.5px solid rgba(0,0,0,.06);
+  border-radius: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.04);
+  border-left: 5px solid var(--c);
+  transition: transform .4s cubic-bezier(.25,.1,.25,1), box-shadow .4s;
+}
+.scopeStatCard:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.09); }
+.scopeNum {
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 900; color: var(--c);
+  letter-spacing: -0.03em; line-height: 1;
+}
+.scopeLabel {
+  font-size: 1rem; font-weight: 700; color: #1d1d1f;
+}
+.districtBox {
+  background: #fbfbfd;
+  border: 1.5px solid rgba(0,0,0,.06);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), 0 10px 30px rgba(0,0,0,.04);
+}
+.districtTitle {
+  font-size: .72rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #a1a1a6; margin-bottom: 20px;
+}
+.districtGrid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.districtChip {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1.5px solid rgba(0,0,0,.08);
+  border-radius: 999px;
+  font-size: .88rem; font-weight: 700; color: #1d1d1f;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  transition: border-color .25s, color .25s, transform .3s cubic-bezier(.25,.1,.25,1);
+}
+.districtChip:hover { border-color: #FD6925; color: #FD6925; transform: translateY(-2px); }
