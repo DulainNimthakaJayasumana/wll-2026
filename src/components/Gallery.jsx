@@ -16,7 +16,7 @@ export default function Gallery() {
     <section className={s.gallery} id="gallery">
       <div className="shell">
         <div className={`reveal ${s.head}`}>
-          <span className={s.eyebrow}>On the Ground</span>
+          <span className={s.eyebrow}>Glimpes from 2020</span>
           <h2>Islandwide in action</h2>
           <p>Real moments from World's Largest Lesson sessions across Sri Lanka.</p>
         </div>
