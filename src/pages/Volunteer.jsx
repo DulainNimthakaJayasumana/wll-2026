@@ -170,7 +170,7 @@ export default function Volunteer({ onBack }) {
             <p className={s.heroSub}>
               Volunteer for Sri Lanka's <strong>World's Largest Lesson</strong> — like a thousand
               paper cranes, every volunteer carries a lesson to a classroom.<br/>
-              <strong>One school · One session · Endless impact.</strong>
+              <strong>Facilitate one session . Create endless impact </strong>
             </p>
 
             <div className={s.heroPills}>
@@ -256,7 +256,7 @@ export default function Volunteer({ onBack }) {
               <p className={s.aboutText}>
                 As a volunteer for the <strong>World's Largest Lesson</strong>, you play an important role
                 in delivering this nationwide initiative after 5 years — educating and inspiring school
-                students about the Sustainable Development Goals through engaging, interactive sessions.
+                students about the Sustainable Development Goals through engaging and interactive sessions.
               </p>
               <div className={s.highlightBox}>
                 Each volunteer contributes to <strong>one lesson in one school.</strong>
@@ -371,7 +371,7 @@ export default function Volunteer({ onBack }) {
           <span className={`${s.ctaShape} ${s.ctaShape3}`}><MiniShape kind="fish" color="#FD6925"/></span>
           <span className={`${s.ctaShape} ${s.ctaShape4}`}><MiniShape kind="butterfly" color="#56C02B"/></span>
           <h2>Ready to unfold your impact?</h2>
-          <p>Join volunteers across Sri Lanka on <strong>20 July 2026</strong>.</p>
+          <p>Join volunteers across Sri Lanka on <strong>20th of July 2026</strong>.</p>
           <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaBtn}>
             Register Now — It's Free
           </a>
