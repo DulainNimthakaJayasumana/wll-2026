@@ -352,10 +352,10 @@ export default function Run({ onBack }) {
               { icon:'⏰', label:'Start Time',  val:'4:30 PM sharp' },
               { icon:'📍', label:'Start & Finish', val:'Race Course Grounds' },
               { icon:'🔄', label:'Route',         val:'Bloomfield · SLAF · BMICH · Horton Pl' },
-              { icon:'📏', label:'Distance',      val:'4.8 km loop · 4 checkpoints' },
+              { icon:'📏', label:'Distance',      val:'5 km loop · 4 checkpoints' },
               { icon:'👟', label:'Category',    val:'Open to all ages' },
-              { icon:'🎽', label:'Race Kit',    val:'Bib + SDG wristband' },
-              { icon:'🏅', label:'Finisher',    val:'Medal for all finishers' },
+              { icon:'🎽', label:'Race Kit',    val:'Bib' },
+              { icon:'🏅', label:'Finisher',    val:'Certificates for all finishers' },
             ].map(d => (
               <div key={d.label} className={s.detailCard}>
                 <span className={s.detailIcon}>{d.icon}</span>
@@ -373,14 +373,13 @@ export default function Run({ onBack }) {
           <div className={s.merchEmoji}>🎁</div>
           <div className={s.merchText}>
             <h2>Free Merch for Every Runner</h2>
-            <p>Every registered participant gets a <strong>race bib</strong>, an <strong>exclusive WLL 2026 t-shirt</strong>, and an <strong>SDG wristband</strong> — completely free. Limited stock, first come first served!</p>
+            <p>Every registered participant gets a <strong>race bib</strong>, an <strong>exclusive WLL 2026 t-shirt</strong>- completely free. Limited stock, first come first served!</p>
           </div>
           <div className={s.merchItems}>
             {[
               { icon:'👕', label:'WLL T-Shirt' },
               { icon:'🪪', label:'Race Bib' },
-              { icon:'📿', label:'SDG Wristband' },
-              { icon:'🏅', label:'Finisher Medal' },
+              { icon:'🏅', label:'Finisher Certificate' },
             ].map(m => (
               <div key={m.label} className={s.merchItem}>
                 <span className={s.merchItemIcon}>{m.icon}</span>
@@ -445,17 +444,17 @@ export default function Run({ onBack }) {
             <a href="tel:+94701506924" className={s.contactCard}>
               <span className={s.contactIcon}>📱</span>
               <span className={s.contactLabel}>Call / WhatsApp</span>
-              <span className={s.contactVal}>070 150 6924</span>
+              <span className={s.contactVal}></span>
             </a>
             <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener noreferrer" className={s.contactCard}>
               <span className={s.contactIcon}>📸</span>
               <span className={s.contactLabel}>Instagram</span>
               <span className={s.contactVal}>@wll.srilanka</span>
             </a>
-            <a href="mailto:wll.srilanka@aiesec.net" className={s.contactCard}>
+            <a href="mailto:wll26coreteam@aiesec.net" className={s.contactCard}>
               <span className={s.contactIcon}>✉️</span>
               <span className={s.contactLabel}>Email</span>
-              <span className={s.contactVal}>wll.srilanka@aiesec.net</span>
+              <span className={s.contactVal}>wll26coreteam@aiesec.net</span>
             </a>
           </div>
 
@@ -464,9 +463,9 @@ export default function Run({ onBack }) {
           </div>
           <div className={s.contactGrid}>
             {[
-              { name: 'Pasindu', role: 'CCVP HR', phone: '+94766986042', phoneDisplay: '+94 76 698 6042', email: 'pasindu.serasinghe5@aiesec.net' },
-              { name: 'Thanuri', role: 'CC Member HR', phone: '+94713688349', phoneDisplay: '+94 71 368 8349', email: 'chenuliranaweera@aiesec.net' },
-              { name: 'Sandaru Yahampath', role: 'CC Member HR', phone: '+94761992137', phoneDisplay: '+94 76 199 2137', email: 'sandaruyahampath@aiesec.net' },
+              { name: 'Pasindu Serasinghe', role: 'Core Committee President', phone: '+94766365700', phoneDisplay: '+94 76 636 5700', email: 'pasindu.serasinghe5@aiesec.net' },
+              { name: 'Tanuri Dissanayaka ', role: 'Core Committee Vice President Network Management', phone: '+94 77 620 2028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net' },
+              { name: 'xyz', role: 'Core Committee Member Network Management', phone: '+94761992137', phoneDisplay: '+94 76 199 2137', email: 'sandaruyahampath@aiesec.net' },
             ].map(p => (
               <div key={p.name} className={s.personContactCard}>
                 <div className={s.personAvatar}>{p.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>
