@@ -153,22 +153,54 @@ function localReply(q, lastTopic) {
     };
   }
 
-  return {
-    text: 'I can help with SDGs, Miles for Lessons, volunteering, competition details, dates, and contacts. Ask me one of those and I will give you a quick direct answer. 🙂',
-    topic: lastTopic || 'wll',
-  };
+  // Unknown — let AI handle it
+  return null;
 }
 
-/* ── AI fetch (your backend on /api/chat) ──────────────────── */
+const SYSTEM = `You are WLL Helper, the official chatbot for Islandwide World's Largest Lesson (WLL) 2026 in Sri Lanka.
+
+TRUSTED FACTS (use these when relevant):
+- WLL 2026 is organized by AIESEC in Sri Lanka.
+- Current scope: 10+ districts, 40+ schools, 30,000+ students islandwide.
+- Miles for Lessons run: Saturday, 11 July 2026, 4:30 PM, Race Course Grounds (Colombo 07), about 5 km.
+- Volunteer day: 20 July 2026, ages 18-30, registration is free.
+- Art competition: ages 11-15, free entry, deadline 31 August 2026.
+- Contact: 070 150 6924, Instagram @wll.srilanka, email wll26coreteam@aiesec.net.
+- SDGs: answer accurately for all 17 UN Sustainable Development Goals.
+
+RESPONSE STYLE:
+- Be warm and friendly.
+- Default to short, direct answers (1-3 short sentences).
+- If user asks for more details, provide a longer structured answer.
+- Use simple language suitable for teens and young adults.
+
+SAFETY AND ACCURACY RULES:
+- Stay on WLL 2026, SDGs, competition, volunteering, run, and contact topics.
+- If user asks unrelated topics, politely redirect to SDG/WLL topics.
+- If information is uncertain, say so clearly and suggest official contact.
+- Do not invent links, numbers, people, or dates.`;
+
+/* ── AI fetch — calls Groq API directly from the browser ───── */
 async function fetchAI(messages) {
-  const res = await fetch('/api/chat', {
+  const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+  if (!apiKey) throw new Error('No API key');
+
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'llama3-70b-8192',
+      messages: [{ role: 'system', content: SYSTEM }, ...messages],
+      max_tokens: 420,
+      temperature: 0.35,
+    }),
   });
   if (!res.ok) throw new Error('API error');
   const data = await res.json();
-  return data.reply;
+  return data.choices[0].message.content;
 }
 
 /* ── Quick suggestion chips ────────────────────────────────── */
