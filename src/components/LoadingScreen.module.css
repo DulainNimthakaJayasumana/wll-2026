@@ -4,23 +4,20 @@
   background: #fbfbfd;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  transition: opacity .55s cubic-bezier(.25,.1,.25,1), transform .55s cubic-bezier(.25,.1,.25,1);
+  transition: opacity .7s cubic-bezier(.25,.1,.25,1);
+  overflow: hidden;
 }
-.leaving {
-  opacity: 0;
-  transform: scale(1.03);
-  pointer-events: none;
-}
+.leaving { opacity: 0; pointer-events: none; }
 
 /* ── SDG colour strips ───────────────────────────────────── */
 .strips {
   position: absolute; top: 0; left: 0; right: 0;
-  display: flex; height: 5px;
+  display: flex; height: 6px;
 }
 .stripsBottom { top: auto; bottom: 0; }
 .strip {
   flex: 1; height: 100%;
-  animation: stripPop .5s var(--ease-spring, cubic-bezier(.34,1.56,.64,1)) both;
+  animation: stripPop .5s cubic-bezier(.34,1.56,.64,1) both;
 }
 @keyframes stripPop {
   from { transform: scaleY(0); }
@@ -29,48 +26,72 @@
 
 /* ── Center content ──────────────────────────────────────── */
 .center {
-  display: flex; flex-direction: column; align-items: center; gap: 18px;
-  animation: fadeUp .6s .1s cubic-bezier(.25,.1,.25,1) both;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px; width: 100%;
+  animation: fadeUp .55s .05s cubic-bezier(.25,.1,.25,1) both;
 }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: none; }
 }
 
+/* ── Bird ────────────────────────────────────────────────── */
+.birdWrap {
+  display: flex; justify-content: center;
+  animation: birdFloat 3s ease-in-out infinite;
+  transition: transform .9s cubic-bezier(.6,0,.2,1), opacity .9s ease;
+}
+.birdFly {
+  transform: translateX(60vw) translateY(-25vh) scale(0.6) !important;
+  opacity: 0 !important;
+  animation: none !important;
+  transition: transform .9s cubic-bezier(.4,0,.2,1), opacity .7s ease !important;
+}
+@keyframes birdFloat {
+  0%,100% { transform: translateY(0px) rotate(-2deg); }
+  50%      { transform: translateY(-16px) rotate(2deg); }
+}
+.bird {
+  width: clamp(130px, 20vw, 220px);
+  height: auto;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,.15));
+}
+
+/* ── Logo ────────────────────────────────────────────────── */
 .logo {
-  height: clamp(56px, 10vw, 88px);
-  width: auto;
-  object-fit: contain;
+  height: clamp(48px, 9vw, 80px);
+  width: auto; object-fit: contain;
 }
 
 .tagline {
-  font-size: .8rem; font-weight: 700;
+  font-size: .78rem; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
-  color: #a1a1a6;
+  color: #a1a1a6; margin: 0;
 }
 
 /* ── Progress bar ────────────────────────────────────────── */
 .barWrap {
-  width: clamp(200px, 40vw, 340px);
+  width: clamp(200px, 38vw, 320px);
   height: 4px;
-  background: rgba(0,0,0,.08);
+  background: rgba(0,0,0,.07);
   border-radius: 999px;
   overflow: hidden;
 }
 .bar {
   height: 100%;
-  background: linear-gradient(90deg, #E5243B, #FD6925, #FCC30B, #4C9F38, #26BDE2);
+  background: linear-gradient(90deg,#E5243B,#FD6925,#FCC30B,#4C9F38,#26BDE2,#19486A);
   background-size: 300% 100%;
   border-radius: 999px;
-  transition: width .25s cubic-bezier(.25,.1,.25,1);
-  animation: barShimmer 2s linear infinite;
+  transition: width .2s cubic-bezier(.25,.1,.25,1);
+  animation: shimmer 1.8s linear infinite;
 }
-@keyframes barShimmer {
+@keyframes shimmer {
   0%   { background-position: 100% 0; }
   100% { background-position: 0% 0; }
 }
 
 .pct {
-  font-size: .75rem; font-weight: 800;
+  font-size: .74rem; font-weight: 800;
   color: #a1a1a6; letter-spacing: .06em;
 }

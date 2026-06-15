@@ -8,75 +8,85 @@ const SDG_COLORS = [
   '#00689D','#19486A',
 ];
 
+/* All images/GIFs to preload */
+const PAD = n => String(n).padStart(2, '0');
+const PRELOAD_LIST = [
+  '/assets/wll-logo.png',
+  '/assets/origami-bird.png',
+  '/assets/aiesec-logo.png',
+  '/assets/run-map.jpeg',
+  ...Array.from({ length: 17 }, (_, i) => `/assets/sdg-icons/sdg-${PAD(i + 1)}.png`),
+  ...Array.from({ length: 17 }, (_, i) => `/assets/sdg-icons/${i + 1}_SDG_MakeEveryDayCount_Gifs_GDU.gif`),
+  'WhatsApp Image 2026-06-15 at 20.32.11.jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (1).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (2).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (3).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (4).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (5).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (6).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (7).jpeg',
+  'WhatsApp Image 2026-06-15 at 20.32.11 (8).jpeg',
+].map(p => p.startsWith('/') ? p : `/assets/photos/${p}`);
+
 export default function LoadingScreen({ onDone }) {
   const [progress, setProgress] = useState(0);
   const [leaving,  setLeaving]  = useState(false);
 
   useEffect(() => {
-    /* Simulate smooth progress, complete when page is ready */
-    let p = 0;
-    const tick = setInterval(() => {
-      p += Math.random() * 14 + 4;
-      if (p >= 100) {
-        p = 100;
-        clearInterval(tick);
-        setProgress(100);
-        setTimeout(() => {
-          setLeaving(true);
-          setTimeout(onDone, 600);
-        }, 350);
-      } else {
-        setProgress(Math.min(p, 95));
-      }
-    }, 120);
+    let loaded = 0;
+    const total = PRELOAD_LIST.length;
 
-    /* Also finish early if window already loaded */
-    if (document.readyState === 'complete') {
-      clearInterval(tick);
+    const finish = () => {
       setProgress(100);
-      setTimeout(() => { setLeaving(true); setTimeout(onDone, 600); }, 400);
-    } else {
-      window.addEventListener('load', () => {
-        clearInterval(tick);
-        setProgress(100);
-        setTimeout(() => { setLeaving(true); setTimeout(onDone, 600); }, 400);
-      }, { once: true });
-    }
-    return () => clearInterval(tick);
+      setTimeout(() => {
+        setLeaving(true);
+        setTimeout(onDone, 900);
+      }, 400);
+    };
+
+    const onOne = () => {
+      loaded++;
+      setProgress(Math.round((loaded / total) * 100));
+      if (loaded >= total) finish();
+    };
+
+    PRELOAD_LIST.forEach(src => {
+      const img = new Image();
+      img.onload  = onOne;
+      img.onerror = onOne; // count errors too so we don't stall
+      img.src     = src;
+    });
   }, []);
 
   return (
     <div className={`${s.screen} ${leaving ? s.leaving : ''}`}>
 
-      {/* SDG colour bar strips at top */}
+      {/* SDG strips — top */}
       <div className={s.strips}>
         {SDG_COLORS.map((c, i) => (
-          <div key={i} className={s.strip} style={{ background: c, animationDelay: `${i * 40}ms` }} />
+          <div key={i} className={s.strip} style={{ background: c, animationDelay: `${i * 35}ms` }} />
         ))}
       </div>
 
       <div className={s.center}>
-        {/* Logo */}
-        <img
-          src="/assets/wll-logo.png"
-          alt="World's Largest Lesson"
-          className={s.logo}
-        />
+        {/* Origami bird — flies right on leave */}
+        <div className={`${s.birdWrap} ${leaving ? s.birdFly : ''}`}>
+          <img src="/assets/origami-bird.png" alt="" className={s.bird} />
+        </div>
 
-        {/* Tagline */}
-        <p className={s.tagline}>Islandwide · Sri Lanka 2026</p>
-
-        {/* Progress bar */}
+        {/* Progress bar directly under bird */}
         <div className={s.barWrap}>
           <div className={s.bar} style={{ width: `${progress}%` }} />
         </div>
-        <div className={s.pct}>{Math.round(progress)}%</div>
+        <div className={s.pct}>{progress}%</div>
+
+        <p className={s.tagline}>Islandwide · Sri Lanka 2026</p>
       </div>
 
-      {/* SDG colour bar strips at bottom */}
+      {/* SDG strips — bottom */}
       <div className={`${s.strips} ${s.stripsBottom}`}>
         {SDG_COLORS.map((c, i) => (
-          <div key={i} className={s.strip} style={{ background: c, animationDelay: `${i * 40}ms` }} />
+          <div key={i} className={s.strip} style={{ background: c, animationDelay: `${i * 35}ms` }} />
         ))}
       </div>
     </div>
