@@ -1,0 +1,76 @@
+/* ── Loading screen ──────────────────────────────────────── */
+.screen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #fbfbfd;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: opacity .55s cubic-bezier(.25,.1,.25,1), transform .55s cubic-bezier(.25,.1,.25,1);
+}
+.leaving {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* ── SDG colour strips ───────────────────────────────────── */
+.strips {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; height: 5px;
+}
+.stripsBottom { top: auto; bottom: 0; }
+.strip {
+  flex: 1; height: 100%;
+  animation: stripPop .5s var(--ease-spring, cubic-bezier(.34,1.56,.64,1)) both;
+}
+@keyframes stripPop {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* ── Center content ──────────────────────────────────────── */
+.center {
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  animation: fadeUp .6s .1s cubic-bezier(.25,.1,.25,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.logo {
+  height: clamp(56px, 10vw, 88px);
+  width: auto;
+  object-fit: contain;
+}
+
+.tagline {
+  font-size: .8rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #a1a1a6;
+}
+
+/* ── Progress bar ────────────────────────────────────────── */
+.barWrap {
+  width: clamp(200px, 40vw, 340px);
+  height: 4px;
+  background: rgba(0,0,0,.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar {
+  height: 100%;
+  background: linear-gradient(90deg, #E5243B, #FD6925, #FCC30B, #4C9F38, #26BDE2);
+  background-size: 300% 100%;
+  border-radius: 999px;
+  transition: width .25s cubic-bezier(.25,.1,.25,1);
+  animation: barShimmer 2s linear infinite;
+}
+@keyframes barShimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+.pct {
+  font-size: .75rem; font-weight: 800;
+  color: #a1a1a6; letter-spacing: .06em;
+}
