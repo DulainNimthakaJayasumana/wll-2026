@@ -2,49 +2,161 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { SDGS } from '../../data/sdgs';
 import s from './Chatbot.module.css';
 
-/* ── Knowledge base for fallback responses ─────────────────── */
-const KB = {
-  greet: ['hi','hello','hey','ayubowan','vanakkam','hola'],
-  wll:   ['wll','world','largest','lesson','what is'],
-  sdg:   ['sdg','goal','sustainable','development'],
-  comp:  ['competition','art','draw','submit','entry','entries'],
-  date:  ['date','when','time','schedule'],
-  who:   ['aiesec','who','organis','organiz'],
-  dist:  ['district','where','school','location'],
-  age:   ['age','grade','year','student','child'],
-  contact:['contact','phone','instagram','reach','call','whatsapp'],
-  volunteer:['volunteer','join','participate','help'],
+/* ── Event facts used by local replies (aligned with current pages) ───────── */
+const EVENT = {
+  scope: 'WLL 2026 in Sri Lanka targets 10+ districts, 40+ schools, and 30,000+ students islandwide.',
+  run: {
+    name: 'Miles for Lessons',
+    date: 'Saturday, 11 July 2026',
+    time: '4:30 PM',
+    place: 'Race Course Grounds, Colombo 07',
+    distance: 'about 5 km',
+    fee: 'Rs. 1,800 per person',
+    perks: 'race bib + official WLL t-shirt',
+  },
+  volunteer: {
+    date: '20 July 2026',
+    age: '18-30 years',
+    fee: 'free',
+  },
+  competition: {
+    age: '11-15 years',
+    deadline: '31 August 2026',
+    fee: 'free',
+  },
+  contact: {
+    phone: '070 150 6924',
+    instagram: '@wll.srilanka',
+    email: 'wll26coreteam@aiesec.net',
+  },
 };
 
-function localReply(q) {
-  const ql = q.toLowerCase();
-  const has = keys => keys.some(k => ql.includes(k));
+const KB = {
+  greet: ['hi', 'hello', 'hey', 'ayubowan', 'vanakkam'],
+  thanks: ['thanks', 'thank you', 'thx', 'appreciate'],
+  smallTalk: ['how are you', 'who are you', 'your name'],
+  wll: ['wll', 'world largest lesson', 'what is wll'],
+  sdg: ['sdg', 'goal', 'sustainable development'],
+  run: ['run', 'miles for lesson', 'miles for lessons', 'race'],
+  comp: ['competition', 'art', 'draw', 'submit', 'entry'],
+  volunteer: ['volunteer', 'join', 'participate', 'help'],
+  contact: ['contact', 'phone', 'instagram', 'reach', 'call', 'whatsapp', 'email'],
+  scope: ['district', 'districts', 'school', 'schools', 'students', 'islandwide', 'coverage', 'covered', 'reach'],
+};
 
-  if (has(KB.greet)) return "Hi there! 👋 Welcome to World's Largest Lesson 2026! I'm the WLL chatbot. You can ask me about the SDGs, the event, the art competition, or anything about AIESEC WLL 2026! 🌍";
-  if (has(KB.comp))  return "🎨 The WLL 2026 Art Competition is open to all students aged 11–15! Draw any one of the 17 SDGs using pencil, paint or digital art. Submit your entry to our Google Drive folder by 31 August 2026. Winners are announced at WLL 2026! Ask me about specific SDGs for inspiration 🌟";
-  if (has(KB.dist))  return "📍 WLL 2026 will reach 15 districts across Sri Lanka — from Jaffna in the north to Matara in the south! We're targeting 55–60 schools with 500–600 volunteers.";
-  if (has(KB.age))   return "🎓 WLL 2026 is designed for students aged 11–15 years (school-level). The art competition is open to this age group. University students can also volunteer!";
-  if (has(KB.volunteer)) return "🙌 Awesome! To volunteer for WLL 2026, reach out to AIESEC in Sri Lanka via Instagram @wll.srilanka or call 070 150 6924. University students especially welcome!";
-  if (has(KB.contact))   return "📞 You can reach the WLL team at:\n• Call/WhatsApp: 070 150 6924\n• Instagram: @wll.srilanka\n• Coordinator: Dulain Jayasumana";
-  if (has(KB.who))   return "🏢 WLL 2026 in Sri Lanka is organised by AIESEC — the world's largest youth-run organisation. AIESEC has been a key global partner of the World's Largest Lesson for years!";
-  if (has(KB.date))  return "📅 WLL 2026 is planned for September 2026! The art competition deadline is 31 August 2026. Follow @wll.srilanka on Instagram for exact lesson dates.";
-  if (has(KB.wll))   return "🌍 The World's Largest Lesson is a global education initiative that teaches the 17 UN Sustainable Development Goals to children everywhere. In Sri Lanka, AIESEC runs it islandwide — reaching 15 districts, 55–60 schools and 500–600 student volunteers in 2026!";
+const SDG_ALIASES = {
+  poverty: 1,
+  hunger: 2,
+  health: 3,
+  education: 4,
+  gender: 5,
+  water: 6,
+  energy: 7,
+  work: 8,
+  innovation: 9,
+  inequality: 10,
+  cities: 11,
+  consumption: 12,
+  climate: 13,
+  ocean: 14,
+  land: 15,
+  peace: 16,
+  partnership: 17,
+};
 
-  // SDG lookup by number
-  const numMatch = ql.match(/\b(\d{1,2})\b/);
-  if (numMatch && has(KB.sdg)) {
-    const n = parseInt(numMatch[1]);
-    const g = SDGS.find(g => g.n === n);
-    if (g) return `🎯 SDG ${g.n}: ${g.t}\n\n${g.d}\n\nKey facts: ${g.facts.join(' · ')}`;
+const DETAIL_HINTS = ['more', 'detail', 'explain', 'elaborate', 'why', 'how', 'tell me more'];
+
+const escapeRe = (v) => v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const hasAny = (txt, keys) => keys.some(k => {
+  const key = k.toLowerCase();
+  if (key.includes(' ')) return txt.includes(key);
+  const re = new RegExp(`(^|\\b)${escapeRe(key)}(\\b|$)`, 'i');
+  return re.test(txt);
+});
+
+function findSDG(ql) {
+  const direct = ql.match(/(?:sdg|goal)\s*(\d{1,2})/i) || ql.match(/\b(\d{1,2})\b/);
+  if (direct) {
+    const n = Number(direct[1]);
+    const g = SDGS.find(x => x.n === n);
+    if (g) return g;
   }
 
-  // SDG by name
-  const matchedSDG = SDGS.find(g => ql.includes(g.t.toLowerCase()) || g.t.toLowerCase().split(' ').some(w=>w.length>4&&ql.includes(w)));
-  if (matchedSDG) return `🎯 SDG ${matchedSDG.n}: ${matchedSDG.t}\n\n${matchedSDG.d}\n\nFacts: ${matchedSDG.facts.join(' · ')}`;
+  for (const [alias, n] of Object.entries(SDG_ALIASES)) {
+    if (ql.includes(alias)) return SDGS.find(x => x.n === n) || null;
+  }
 
-  if (has(KB.sdg))   return `🌱 There are 17 Sustainable Development Goals (SDGs)! You can scroll through them all on this website. Ask me about a specific one by number (e.g. "Tell me about SDG 4") or by name like "climate action" or "zero hunger" 😊`;
+  return SDGS.find(g => ql.includes(g.t.toLowerCase())) || null;
+}
 
-  return null; // Fall through to AI
+function topicReply(topic, detailed = false) {
+  switch (topic) {
+    case 'wll':
+      return detailed
+        ? `World's Largest Lesson is a global education movement that teaches the 17 SDGs to young people.\nIn Sri Lanka, WLL 2026 is organized by AIESEC and focused on school impact through youth-led sessions.\n${EVENT.scope} 🌍`
+        : `WLL 2026 is AIESEC Sri Lanka's SDG education initiative for schools. ${EVENT.scope} 🌍`;
+    case 'run':
+      return detailed
+        ? `${EVENT.run.name} is a purpose-driven fundraising run under WLL 2026.\nDate & time: ${EVENT.run.date}, ${EVENT.run.time}.\nLocation: ${EVENT.run.place}. Distance: ${EVENT.run.distance}.\nRegistration: ${EVENT.run.fee}, and participants receive ${EVENT.run.perks}. 🏃`
+        : `${EVENT.run.name} is on ${EVENT.run.date} at ${EVENT.run.time}, ${EVENT.run.place} (${EVENT.run.distance}). Fee: ${EVENT.run.fee}. 🏃`;
+    case 'volunteer':
+      return detailed
+        ? `Volunteer registration is open and ${EVENT.volunteer.fee}.\nVolunteer day is ${EVENT.volunteer.date}.\nEligibility: ${EVENT.volunteer.age}.\nEach volunteer supports one lesson in one assigned school. 🙌`
+        : `Volunteering is ${EVENT.volunteer.fee}, for ages ${EVENT.volunteer.age}, with sessions on ${EVENT.volunteer.date}. 🙌`;
+    case 'competition':
+      return detailed
+        ? `WLL Art Competition is open for ages ${EVENT.competition.age}.\nEntry is ${EVENT.competition.fee}.\nSubmit your SDG-themed artwork by ${EVENT.competition.deadline}.\nJudging is based on creativity, SDG connection, and visual impact. 🎨`
+        : `The art competition is free for ages ${EVENT.competition.age}, and the deadline is ${EVENT.competition.deadline}. 🎨`;
+    case 'contact':
+      return detailed
+        ? `You can reach the team via:\n• Call/WhatsApp: ${EVENT.contact.phone}\n• Instagram: ${EVENT.contact.instagram}\n• Email: ${EVENT.contact.email} 📞`
+        : `Contact: ${EVENT.contact.phone} or ${EVENT.contact.instagram}. 📞`;
+    case 'scope':
+      return `${EVENT.scope} 📍`;
+    default:
+      return null;
+  }
+}
+
+function localReply(q, lastTopic) {
+  const ql = q.toLowerCase().trim();
+  const wantsDetail = hasAny(ql, DETAIL_HINTS) || ql.length > 85;
+  const asksMoreOnly = hasAny(ql, ['more', 'details', 'explain', 'elaborate']) && ql.split(' ').length <= 6;
+
+  if (asksMoreOnly && lastTopic) {
+    const more = topicReply(lastTopic, true);
+    if (more) return { text: more, topic: lastTopic };
+  }
+
+  if (hasAny(ql, KB.greet)) return { text: "Hi! I'm WLL Helper. Ask me about SDGs, Miles for Lessons, volunteering, or the art competition. 😊", topic: 'wll' };
+  if (hasAny(ql, KB.thanks)) return { text: 'Always happy to help. If you want, ask me for more details on any SDG or event item. 🤝', topic: lastTopic || 'wll' };
+  if (hasAny(ql, KB.smallTalk)) return { text: "I'm doing great, thanks. I'm here to give quick, clear answers about SDGs and WLL 2026. 🙂", topic: 'wll' };
+
+  const sdg = findSDG(ql);
+  if (sdg) {
+    const text = wantsDetail
+      ? `SDG ${sdg.n} - ${sdg.t}:\n${sdg.d}\nKey points: ${sdg.facts.join(' · ')} 🌱`
+      : `SDG ${sdg.n} is ${sdg.t}. ${sdg.facts[0]}. Ask "more about SDG ${sdg.n}" if you want a deeper explanation. 🌱`;
+    return { text, topic: `sdg-${sdg.n}` };
+  }
+
+  if (hasAny(ql, KB.run)) return { text: topicReply('run', wantsDetail), topic: 'run' };
+  if (hasAny(ql, KB.volunteer)) return { text: topicReply('volunteer', wantsDetail), topic: 'volunteer' };
+  if (hasAny(ql, KB.comp)) return { text: topicReply('competition', wantsDetail), topic: 'competition' };
+  if (hasAny(ql, KB.contact)) return { text: topicReply('contact', wantsDetail), topic: 'contact' };
+  if (hasAny(ql, KB.scope)) return { text: topicReply('scope', wantsDetail), topic: 'scope' };
+  if (hasAny(ql, KB.wll)) return { text: topicReply('wll', wantsDetail), topic: 'wll' };
+  if (hasAny(ql, KB.sdg)) {
+    return {
+      text: 'There are 17 SDGs. Ask me like: "SDG 4", "climate action", or "which SDG fits ocean pollution?" 🌱',
+      topic: 'sdg',
+    };
+  }
+
+  return {
+    text: 'I can help with SDGs, Miles for Lessons, volunteering, competition details, dates, and contacts. Ask me one of those and I will give you a quick direct answer. 🙂',
+    topic: lastTopic || 'wll',
+  };
 }
 
 /* ── AI fetch (your backend on /api/chat) ──────────────────── */
@@ -75,6 +187,7 @@ export default function Chatbot() {
   const [input, setInput]     = useState('');
   const [loading, setLoading] = useState(false);
   const [dots, setDots]       = useState(0);
+  const [lastTopic, setLastTopic] = useState('wll');
   const bottomRef = useRef(null);
   const inputRef  = useRef(null);
 
@@ -94,10 +207,11 @@ export default function Chatbot() {
     setLoading(true);
 
     // Try local knowledge base first
-    const local = localReply(q);
+    const local = localReply(q, lastTopic);
     if (local) {
       await new Promise(r=>setTimeout(r, 600));
-      setMsgs(m => [...m, { role:'bot', text:local }]);
+      setMsgs(m => [...m, { role:'bot', text:local.text }]);
+      if (local.topic) setLastTopic(local.topic);
       setLoading(false);
       return;
     }
@@ -108,6 +222,7 @@ export default function Chatbot() {
       history.push({ role:'user', content:q });
       const reply = await fetchAI(history);
       setMsgs(m => [...m, { role:'bot', text:reply }]);
+      if (hasAny(q.toLowerCase(), KB.sdg)) setLastTopic('sdg');
     } catch {
       setMsgs(m => [...m, { role:'bot', text:"Sorry, I couldn't connect to the AI right now. But I can still answer questions about WLL 2026 and the SDGs! Try asking me about a specific SDG 😊", error:true }]);
     } finally {

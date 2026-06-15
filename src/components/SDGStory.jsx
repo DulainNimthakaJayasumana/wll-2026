@@ -56,6 +56,21 @@ export default function SDGStory() {
     };
   }, []);
 
+  const [useGif, setUseGif] = useState(true);
+
+  /* GIF plays fully (6 s) → PNG shows 3 s → repeat */
+  useEffect(() => {
+    let cancelled = false;
+    const loop = (showGif) => {
+      setUseGif(showGif);
+      const delay = showGif ? 6000 : 3000;
+      const t = setTimeout(() => { if (!cancelled) loop(!showGif); }, delay);
+      return t;
+    };
+    const t = loop(true);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, [idx]);
+
   const g   = SDGS[idx];
   const pad = n => String(n).padStart(2, '0');
 
@@ -108,7 +123,10 @@ export default function SDGStory() {
             <div className={s.iconRing}>
               <div className={s.iconCircle}>
                 <img
-                  src={`/assets/sdg-icons/sdg-${pad(g.n)}.png`}
+                  key={`${idx}-${useGif}`}
+                  src={useGif
+                    ? `/assets/sdg-icons/${g.n}_SDG_MakeEveryDayCount_Gifs_GDU.gif`
+                    : `/assets/sdg-icons/sdg-${pad(g.n)}.png`}
                   alt={`SDG ${g.n}: ${g.t}`}
                   className={s.icon}
                 />
