@@ -8,7 +8,6 @@ import Gallery      from './components/Gallery';
 import Competitions from './components/Competitions';
 import CoreCommittee from './components/CoreCommittee';
 import Footer       from './components/Footer';
-import Chatbot      from './components/Chatbot/Chatbot';
 import Run          from './pages/Run';
 import Volunteer    from './pages/Volunteer';
 
@@ -65,7 +64,6 @@ export default function App() {
         <CoreCommittee />
       </main>
       <Footer />
-      <Chatbot />
     </>
   );
 }

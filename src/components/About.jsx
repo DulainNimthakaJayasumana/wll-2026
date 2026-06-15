@@ -10,7 +10,7 @@ const STATS = [
 const TL = [
   { year:'2015', title:'The Goals are born', body:'193 nations adopt the 17 SDGs. The World\'s Largest Lesson launches alongside them, reaching classrooms on every continent.' },
   { year:'2020', title:'Sri Lanka takes action', body:'AIESEC in Sri Lanka delivers WLL across 49 schools — 268 sessions, 590 volunteers, students aged 9–16.' },
-  { year:'2025', title:'The comeback begins', body:'After a 6-year gap, AIESEC in Sri Lanka plans the most ambitious edition yet — fully islandwide.' },
+  { year:'2026', title:'The comeback begins', body:'After a 6-year gap, AIESEC in Sri Lanka plans the most ambitious edition yet — fully islandwide.' },
   ];
 
 export default function About() {

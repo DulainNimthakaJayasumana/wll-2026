@@ -440,12 +440,7 @@ export default function Run({ onBack }) {
             <h2>Get in Touch</h2>
             <p>Have a question not covered above? Reach out to the Miles for Lessons organising team directly.</p>
           </div>
-          <div className={s.contactGrid}>
-            <a href="tel:+94701506924" className={s.contactCard}>
-              <span className={s.contactIcon}>📱</span>
-              <span className={s.contactLabel}>Call / WhatsApp</span>
-              <span className={s.contactVal}></span>
-            </a>
+          <div className={s.contactGridTwo}>
             <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener noreferrer" className={s.contactCard}>
               <span className={s.contactIcon}>📸</span>
               <span className={s.contactLabel}>Instagram</span>
@@ -461,11 +456,10 @@ export default function Run({ onBack }) {
           <div className={s.sectionHead} style={{ marginTop: '56px' }}>
             <p>For run day queries, reach out to our organising team directly:</p>
           </div>
-          <div className={s.contactGrid}>
+          <div className={s.contactGridTwo}>
             {[
               { name: 'Pasindu Serasinghe', role: 'Core Committee President', phone: '+94766365700', phoneDisplay: '+94 76 636 5700', email: 'pasindu.serasinghe5@aiesec.net' },
-              { name: 'Tanuri Dissanayaka ', role: 'Core Committee Vice President Network Management', phone: '+94 77 620 2028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net' },
-              { name: 'xyz', role: 'Core Committee Member Network Management', phone: '+94761992137', phoneDisplay: '+94 76 199 2137', email: 'sandaruyahampath@aiesec.net' },
+              { name: 'Tanuri Dissanayaka', role: 'Core Committee Vice President Network Management', phone: '+94776202028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net' },
             ].map(p => (
               <div key={p.name} className={s.personContactCard}>
                 <div className={s.personAvatar}>{p.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>
