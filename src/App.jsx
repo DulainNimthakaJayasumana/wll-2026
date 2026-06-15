@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import LoadingScreen from './components/LoadingScreen';
 import Nav          from './components/Nav';
 import Hero         from './components/Hero';
 import About        from './components/About';
@@ -38,6 +39,7 @@ export function goHome() {
 }
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function App() {
 
   return (
     <>
+      {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
       <Nav />
       <main>
         <Hero />
