@@ -43,7 +43,10 @@ export default function App() {
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const onHash = () => setPage(getPage());
+    const onHash = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setPage(getPage());
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
