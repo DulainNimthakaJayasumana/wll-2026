@@ -1,7 +1,9 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: clamp(80px, 14vh, 140px) 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
   background: #0a0e1a;
 }
 
