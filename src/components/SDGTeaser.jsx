@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { goToSDGs } from '../App';
 import s from './SDGTeaser.module.css';
 
@@ -7,10 +8,82 @@ function goToSDG(index) {
 }
 
 export default function SDGTeaser() {
+  const sectionRef = useRef(null);
+  const lockedRef  = useRef(false);
+  const cooldownRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const scrollToNext = () => {
+      const next = el.nextElementSibling;
+      if (next) next.scrollIntoView({ behavior: 'smooth' });
+    };
+    const scrollToPrev = () => {
+      const prev = el.previousElementSibling;
+      if (prev) prev.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const onWheel = (e) => {
+      if (!lockedRef.current) return;
+      e.preventDefault();
+      if (cooldownRef.current) return;
+      cooldownRef.current = true;
+      setTimeout(() => { cooldownRef.current = false; }, 900);
+      if (e.deltaY > 0) scrollToNext();
+      else scrollToPrev();
+    };
+
+    // Touch support
+    let touchStartY = 0;
+    const onTouchStart = (e) => { touchStartY = e.touches[0].clientY; };
+    const onTouchEnd = (e) => {
+      if (!lockedRef.current) return;
+      const dy = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) < 30) return;
+      if (cooldownRef.current) return;
+      cooldownRef.current = true;
+      setTimeout(() => { cooldownRef.current = false; }, 900);
+      if (dy > 0) scrollToNext();
+      else scrollToPrev();
+    };
+
+    const snappedRef = { current: false };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const ratio = entry.intersectionRatio;
+        if (ratio >= 0.5 && !snappedRef.current) {
+          snappedRef.current = true;
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (ratio >= 0.92) {
+          lockedRef.current = true;
+        } else {
+          lockedRef.current = false;
+          if (ratio < 0.1) snappedRef.current = false;
+        }
+      },
+      { threshold: [0.1, 0.5, 0.92] }
+    );
+
+    observer.observe(el);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchend', onTouchEnd);
+    };
+  }, []);
+
   return (
-    <section className={s.section} id="sdgs-teaser">
+    <section ref={sectionRef} className={s.section} id="sdgs-teaser">
       <div className={s.videoBg}>
-        {/* Replace src with your video file once you add it to public/assets/ */}
         <video
           className={s.video}
           autoPlay
