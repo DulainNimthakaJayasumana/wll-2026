@@ -90,7 +90,7 @@ export default function SDGTeaser() {
           muted
           loop
           playsInline
-          poster="/assets/sdg-icons/sdg-01.png"
+          poster="/assets/sdg-icons/sdg-01.webp"
         >
           <source src="/assets/sdgs.mp4" type="video/mp4" />
         </video>
@@ -111,7 +111,7 @@ export default function SDGTeaser() {
           {Array.from({ length: 17 }, (_, i) => i + 1).map(n => (
             <img
               key={n}
-              src={`/assets/sdg-icons/sdg-${String(n).padStart(2, '0')}.png`}
+              src={`/assets/sdg-icons/sdg-${String(n).padStart(2, '0')}.webp`}
               alt={`SDG ${n}`}
               className={s.sdgThumb}
               onClick={() => goToSDG(n - 1)}
