@@ -10,23 +10,14 @@ const SDG_COLORS = [
 
 /* All images/GIFs to preload */
 const PAD = n => String(n).padStart(2, '0');
+/* Only preload above-the-fold critical assets — everything else loads lazily */
 const PRELOAD_LIST = [
   '/assets/wll-logo.png',
   '/assets/origami-bird.png',
   '/assets/aiesec-logo.png',
-  '/assets/run-map.jpeg',
+  '/assets/photos/class-poster-smile.webp',
   ...Array.from({ length: 17 }, (_, i) => `/assets/sdg-icons/sdg-${PAD(i + 1)}.webp`),
-  ...Array.from({ length: 17 }, (_, i) => `/assets/sdg-icons/${i + 1}_SDG_MakeEveryDayCount_Gifs_GDU.gif`),
-  'WhatsApp Image 2026-06-15 at 20.32.11.webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (1).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (2).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (3).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (4).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (5).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (6).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (7).webp',
-  'WhatsApp Image 2026-06-15 at 20.32.11 (8).webp',
-].map(p => p.startsWith('/') ? p : `/assets/photos/${p}`);
+];
 
 export default function LoadingScreen({ onDone }) {
   const [progress, setProgress] = useState(0);
