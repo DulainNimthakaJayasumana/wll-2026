@@ -67,6 +67,23 @@ export default function App() {
 
   useScrollReveal(page);
 
+  /* Background prefetch: SDG GIFs + route chunks after main content loads */
+  useEffect(() => {
+    if (!loaded) return;
+    const PAD = n => String(n).padStart(2, '0');
+    // Prefetch SDG GIFs silently in the background
+    Array.from({ length: 17 }, (_, i) => {
+      const img = new Image();
+      img.src = `/assets/sdg-icons/${i + 1}_SDG_MakeEveryDayCount_Gifs_GDU.gif`;
+    });
+    // Prefetch route chunks so navigation is instant
+    import('./pages/SDGs');
+    import('./pages/Run');
+    import('./pages/Volunteer');
+    import('./components/Gallery');
+    import('./components/CoreCommittee');
+  }, [loaded]);
+
   if (page === 'run')       return <Suspense fallback={null}><Run onBack={goHome} /></Suspense>;
   if (page === 'volunteer') return <Suspense fallback={null}><Volunteer onBack={goHome} /></Suspense>;
   if (page === 'sdgs')      return <Suspense fallback={null}><SDGs onBack={goHome} /></Suspense>;
