@@ -200,15 +200,7 @@ export default function Run({ onBack }) {
             <span>AIESEC in Sri Lanka · WLL 2026</span>
           </div>
 
-          <div className={s.runIcon}>
-            <span>🏃</span>
-          </div>
-
-          <h1 className={s.heroTitle}>
-            <span className={s.titleRun}>Miles</span>
-            <span className={s.titleRun2}>for Lessons</span>
-            <span className={s.titleYear}>2026</span>
-          </h1>
+          <img src="/assets/nestomalt-logo.webp" alt="Nestomalt Miles for Lessons 2026" className={s.heroLogo} />
 
           <p className={s.heroSub}>
             Run for the Global Goals · Race Course Grounds, Colombo 07
@@ -443,8 +435,13 @@ export default function Run({ onBack }) {
           <div className={s.contactGridTwo}>
             <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener noreferrer" className={s.contactCard}>
               <span className={s.contactIcon}>📸</span>
-              <span className={s.contactLabel}>Instagram</span>
+              <span className={s.contactLabel}>Instagram — WLL Sri Lanka</span>
               <span className={s.contactVal}>@wll.srilanka</span>
+            </a>
+            <a href="https://www.instagram.com/nestomalt.lk/" target="_blank" rel="noopener noreferrer" className={`${s.contactCard} ${s.contactCardPartner}`}>
+              <span className={s.contactIcon}>📸</span>
+              <span className={s.contactLabel}>Instagram — Title Partner</span>
+              <span className={s.contactVal}>@nestomalt.lk</span>
             </a>
             <a href="mailto:wll26coreteam@aiesec.net" className={s.contactCard}>
               <span className={s.contactIcon}>✉️</span>

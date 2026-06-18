@@ -77,6 +77,24 @@
   margin: 0 auto;
 }
 
+/* ── Hero logo (Nestomalt Miles for Lessons) ─────────────── */
+.heroLogo {
+  display: block;
+  max-width: min(520px, 90vw);
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+  margin: 0 auto 16px;
+}
+
+/* ── Partner contact card accent ─────────────────────────── */
+.contactCardPartner {
+  border-color: #F89B29 !important;
+  background: linear-gradient(135deg, rgba(248,155,41,0.08), rgba(248,155,41,0.03)) !important;
+}
+.contactCardPartner:hover { border-color: #F89B29 !important; }
+
 .eventBadge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(255,255,255,0.08);
@@ -101,44 +119,6 @@
   50%       { box-shadow: 0 0 0 8px rgba(229,36,59,0); }
 }
 
-.runIcon {
-  font-size: 4rem; margin-bottom: 8px;
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%       { transform: translateY(-12px) rotate(5deg); }
-}
-
-.heroTitle {
-  margin: 0 0 12px;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-}
-.titleRun {
-  display: block;
-  font-size: clamp(4rem, 14vw, 10rem);
-  font-weight: 900;
-  background: linear-gradient(135deg, #E5243B, #FD6925, #FCC30B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.titleRun2 {
-  display: block;
-  font-size: clamp(3rem, 10vw, 7rem);
-  font-weight: 900;
-  color: #fff;
-}
-.titleYear {
-  display: block;
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 300;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
 
 .heroSub {
   font-size: clamp(1rem, 2vw, 1.25rem);
@@ -623,9 +603,12 @@
 }
 .contactGridTwo {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 420px));
+  grid-template-columns: repeat(3, minmax(0, 360px));
   gap: 20px;
   justify-content: center;
+}
+@media (max-width: 700px) {
+  .contactGridTwo { grid-template-columns: 1fr; }
 }
 .contactCard {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
