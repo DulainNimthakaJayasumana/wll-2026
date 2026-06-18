@@ -1,0 +1,99 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(80px, 14vh, 140px) 0;
+  background: #0a0e1a;
+}
+
+/* ── Video background ─────────────────────────────────── */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10,14,26,0.55) 0%,
+    rgba(10,14,26,0.75) 100%
+  );
+}
+
+/* ── Content ──────────────────────────────────────────── */
+.inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: .75rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--orange);
+}
+.eyebrow::before {
+  content: ""; width: 22px; height: 2.5px;
+  border-radius: 2px; background: var(--orange);
+}
+
+.heading {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 900; line-height: 1.05;
+  color: #fff; letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.sub {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 52ch; margin: 0;
+  line-height: 1.65;
+}
+
+/* ── SDG icon strip ───────────────────────────────────── */
+.sdgStrip {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 10px;
+  max-width: 860px;
+}
+
+.sdgThumb {
+  width: clamp(42px, 6vw, 64px);
+  aspect-ratio: 1;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.3s var(--ease-spring), opacity 0.25s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.sdgThumb:hover {
+  transform: translateY(-4px) scale(1.08);
+  opacity: 1;
+}
+
+/* ── CTA button ───────────────────────────────────────── */
+.cta {
+  display: inline-flex; align-items: center;
+  padding: 16px 34px;
+  background: linear-gradient(135deg, #E5243B, #FD6925);
+  color: #fff; border-radius: 999px; border: 0;
+  font-family: inherit; font-weight: 700; font-size: 1rem;
+  box-shadow: 0 8px 28px rgba(229,36,59,.45);
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s;
+}
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(229,36,59,.55);
+}
+
+@media (max-width: 600px) {
+  .sdgThumb { width: 42px; border-radius: 8px; }
+}

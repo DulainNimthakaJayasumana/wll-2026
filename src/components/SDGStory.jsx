@@ -71,6 +71,17 @@ export default function SDGStory() {
     return () => { cancelled = true; clearTimeout(t); };
   }, [idx]);
 
+
+  useEffect(() => {
+    const delay = 9000; 
+    const t = setTimeout(() => {
+      const next = idx + 1;
+      if (next < SDGS.length) jumpTo(next);
+    }, delay);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idx]);
+
   const g   = SDGS[idx];
   const pad = n => String(n).padStart(2, '0');
 
