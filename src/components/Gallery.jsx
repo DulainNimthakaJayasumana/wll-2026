@@ -3,20 +3,20 @@ import s from './Gallery.module.css';
 
 /* Curated collage — visually balanced, works on all screen sizes */
 const PHOTOS = [
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (8).jpeg', span:'tall' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (1).jpeg', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (2).jpeg', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (3).jpeg', span:'wide' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (4).jpeg', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (5).jpeg', span:'tall' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (6).jpeg', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (7).jpeg', span:'wide' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11.jpeg',     span:'normal' },
-  { src:'teach-green-poster.png',  span:'normal' },
-  { src:'full-classroom.png',      span:'wide'   },
-  { src:'wll-tshirt.png',          span:'normal' },
-  { src:'aerial-group.png',        span:'wide'   },
-  { src:'blackboard-teach.png',    span:'normal' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (8).webp', span:'tall' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (1).webp', span:'normal' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (2).webp', span:'normal' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (3).webp', span:'wide' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (4).webp', span:'normal' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (5).webp', span:'tall' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (6).webp', span:'normal' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (7).webp', span:'wide' },
+  { src:'WhatsApp Image 2026-06-15 at 20.32.11.webp',     span:'normal' },
+  { src:'teach-green-poster.webp',  span:'normal' },
+  { src:'full-classroom.webp',      span:'wide'   },
+  { src:'wll-tshirt.webp',          span:'normal' },
+  { src:'aerial-group.webp',        span:'wide'   },
+  { src:'blackboard-teach.webp',    span:'normal' },
 ];
 
 export default function Gallery() {

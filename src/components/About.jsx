@@ -40,7 +40,7 @@ sustainable future for all.
           </div>
           <div className={`reveal d2 ${s.media}`}>
             <div className={s.mediaInner}>
-              <img src="/assets/photos/class-poster-smile.png" alt="WLL lesson in Sri Lanka" />
+              <img src="/assets/photos/class-poster-smile.webp" alt="WLL lesson in Sri Lanka" />
             </div>
             <span className={s.mediaTag}>A WLL lesson in progress · Sri Lanka</span>
             <div className={s.mediaBadge}><span className={s.badgeNum}>2026</span><span className={s.badgeLbl}>Islandwide</span></div>
