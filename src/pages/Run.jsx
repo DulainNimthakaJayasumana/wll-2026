@@ -200,7 +200,7 @@ export default function Run({ onBack }) {
             <span>AIESEC in Sri Lanka · WLL 2026</span>
           </div>
 
-          <img src="/assets/nestomalt-logo.webp" alt="Nestomalt Miles for Lessons 2026" className={s.heroLogo} />
+          <img src="/assets/miles4lessons_logo.webp" alt="Nestomalt Miles for Lessons 2026" className={s.heroLogo} />
 
           <p className={s.heroSub}>
             Run for the Global Goals · Race Course Grounds, Colombo 07
