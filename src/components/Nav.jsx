@@ -3,10 +3,20 @@ import { goToRun, goToVolunteer, goToSDGs } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
-  { href: '#home',         label: 'Home' },
-  { href: '#gallery',      label: 'Gallery' },
-  { href: '#contact',      label: 'Team' },
+  { id: 'home',    label: 'Home' },
+  { id: 'gallery', label: 'Gallery' },
+  { id: 'contact', label: 'Team' },
 ];
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  // Signal SDGTeaser to skip its snap while we nav-scroll
+  window.__navScrolling = true;
+  clearTimeout(window.__navScrollTimer);
+  window.__navScrollTimer = setTimeout(() => { window.__navScrolling = false; }, 1200);
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,18 +28,21 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
+  const handleLink = (id) => { setOpen(false); scrollTo(id); };
   const handleRun       = () => { setOpen(false); goToRun(); };
   const handleVolunteer = () => { setOpen(false); goToVolunteer(); };
   const handleSDGs      = () => { setOpen(false); goToSDGs(); };
 
   return (
     <nav className={`${s.nav} ${scrolled ? s.scrolled : ''}`}>
-      <a href="#home" className={s.brand}>
+      <a href="#home" className={s.brand} onClick={(e) => { e.preventDefault(); handleLink('home'); }}>
         <img src="/assets/wll-logo.png" alt="World's Largest Lesson" />
       </a>
       <div className={`${s.links} ${open ? s.open : ''}`}>
         {LINKS.map(l => (
-          <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+          <a key={l.id} href={`#${l.id}`} onClick={(e) => { e.preventDefault(); handleLink(l.id); }}>
+            {l.label}
+          </a>
         ))}
         <button className={s.sdgsLink} onClick={handleSDGs}>SDGs</button>
         <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lesson</button>

@@ -54,7 +54,7 @@ export default function SDGTeaser() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const ratio = entry.intersectionRatio;
-        if (ratio >= 0.5 && !snappedRef.current) {
+        if (ratio >= 0.5 && !snappedRef.current && !window.__navScrolling) {
           snappedRef.current = true;
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
