@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { goToRun, goToVolunteer, goToSDGs } from '../App';
+import { goToRun, goToVolunteer, goToSDGs, goHome } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
@@ -8,14 +8,23 @@ const LINKS = [
   { id: 'contact', label: 'Team' },
 ];
 
-function scrollTo(id) {
+function scrollToSection(id) {
   const el = document.getElementById(id);
-  if (!el) return;
-  // Signal SDGTeaser to skip its snap while we nav-scroll
-  window.__navScrolling = true;
-  clearTimeout(window.__navScrollTimer);
-  window.__navScrollTimer = setTimeout(() => { window.__navScrolling = false; }, 1200);
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (el) {
+    // Element exists on this page — scroll directly
+    window.__navScrolling = true;
+    clearTimeout(window.__navScrollTimer);
+    window.__navScrollTimer = setTimeout(() => { window.__navScrolling = false; }, 1200);
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    // Element not on this page (e.g. on SDGs page) — go home then scroll
+    if (id === 'home') {
+      goHome();
+    } else {
+      sessionStorage.setItem('scroll-to', id);
+      goHome();
+    }
+  }
 }
 
 export default function Nav() {
@@ -28,10 +37,18 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const handleLink = (id) => { setOpen(false); scrollTo(id); };
+
+  const handleLink = (id) => { setOpen(false); scrollToSection(id); };
   const handleRun       = () => { setOpen(false); goToRun(); };
   const handleVolunteer = () => { setOpen(false); goToVolunteer(); };
-  const handleSDGs      = () => { setOpen(false); goToSDGs(); };
+  const handleSDGs      = () => {
+    setOpen(false);
+    if (window.location.hash === '#sdgs') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      goToSDGs();
+    }
+  };
 
   return (
     <nav className={`${s.nav} ${scrolled ? s.scrolled : ''}`}>

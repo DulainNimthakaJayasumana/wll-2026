@@ -93,6 +93,17 @@ export default function SDGStory() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
+  /* Listen for external prev/next navigation from SDGs page arrows */
+  useEffect(() => {
+    const onNav = (e) => {
+      if (e.detail === 'prev') jumpTo(Math.max(0, idx - 1));
+      if (e.detail === 'next') jumpTo(Math.min(SDGS.length - 1, idx + 1));
+    };
+    window.addEventListener('sdg-nav', onNav);
+    return () => window.removeEventListener('sdg-nav', onNav);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idx]);
+
   const g   = SDGS[idx];
   const pad = n => String(n).padStart(2, '0');
 
@@ -108,7 +119,10 @@ export default function SDGStory() {
 
       {/* ── Intro ─────────────────────────────────────────── */}
       <div className={s.intro}>
-        <div className={`shell reveal ${s.introInner}`}>
+        <div className={`shell ${s.introInner}`}>
+          <div className={s.colorBar}>
+            {SDGS.map(sg => <span key={sg.n} style={{ background: sg.c }} />)}
+          </div>
           <span className={s.eyebrow}>The Blueprint</span>
           <h2>17 Goals.<br/>One shared future.</h2>
           <p>Scroll through every Sustainable Development Goal — one cinematic moment at a time.</p>

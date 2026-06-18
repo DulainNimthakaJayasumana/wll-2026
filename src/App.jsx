@@ -67,6 +67,24 @@ export default function App() {
 
   useScrollReveal(page);
 
+  /* After navigating home from another page, scroll to stored section target */
+  useEffect(() => {
+    if (page !== 'home') return;
+    const target = sessionStorage.getItem('scroll-to');
+    if (!target) return;
+    sessionStorage.removeItem('scroll-to');
+    let attempts = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(target);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (attempts++ < 30) {
+        setTimeout(tryScroll, 100);
+      }
+    };
+    setTimeout(tryScroll, 200);
+  }, [page]);
+
   /* Background prefetch: SDG GIFs + route chunks after main content loads */
   useEffect(() => {
     if (!loaded) return;
