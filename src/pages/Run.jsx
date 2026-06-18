@@ -272,18 +272,19 @@ export default function Run({ onBack }) {
             <div className={s.mapContainer}>
               <div className={s.mapBadge}>Route Map</div>
 
-              {/* Static route map image — save to public/assets/run-map.jpeg */}
-              <img
-                src="/assets/run-map.jpeg"
-                alt="Miles for Lessons 2026 route map"
-                className={s.mapImg}
-                draggable="false"
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d10896.72794670756!2d79.86550290325994!3d6.904248024443626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e2!4m5!1s0x3ae25964ae7a513d%3A0x5e0f98de7dcf5267!2sRace%20Course%20Vehicle%20Park%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9043912!2d79.8628459!4m5!1s0x3ae2597b5a9638af%3A0x5ed02e982d98d6a8!2sBloomfield%20Cricket%20and%20Athletic%20Club%2C%20WV37%2BG34%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9037761!2d79.8626743!4m5!1s0x3ae25bd8892a5471%3A0xabdfd0223f51f893!2sSLAF%20Cir%2C%20Colombo%2000500!3m2!1d6.8974614!2d79.8600702!4m5!1s0x3ae2597f9d09a467%3A0xee0b9455e960eba5!2sBMICH%20(Bandaranaike%20Memorial%20International%20Conference%20Hall)%2C%20Bauddhaloka%20Mawatha%2C%20Colombo%2000700!3m2!1d6.901672!2d79.872709!4m5!1s0x3ae25977068a2f31%3A0x9f86e85d3d77711c!2sHorton%20Pl%2C%20Colombo%2000700!3m2!1d6.9114857!2d79.8700506!4m5!1s0x3ae2597063254717%3A0xff5be35ad76245cb!2sMaitland%20Cres%2C%20Colombo%2000700!3m2!1d6.9097085!2d79.8662576!4m5!1s0x3ae25964ae7a513d%3A0x5e0f98de7dcf5267!2sRace%20Course%20Vehicle%20Park%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9043912!2d79.8628459!5e0!3m2!1sen!2slk!4v1781775338169!5m2!1sen!2slk"
+                className={s.mapIframe}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Miles for Lessons 2026 route map"
               />
 
               {/* Full route button */}
               <a
                 className={s.fullRouteBtn}
-                href="https://maps.app.goo.gl/s4MfGzNUwXJxv3RW9"
+                href="https://maps.app.goo.gl/8mBQus9e3dKUdSjv7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
