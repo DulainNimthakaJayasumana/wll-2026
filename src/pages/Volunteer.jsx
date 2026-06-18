@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import s from './Volunteer.module.css';
+import Footer from '../components/Footer';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfM5ZWsqod3nyWFJNacBGrPFUH_O-0iK4pwbMUnjgNvjlq5SA/viewform';
 
@@ -136,6 +137,7 @@ export default function Volunteer({ onBack }) {
   }, []);
 
   return (
+    <>
     <div className={s.page}>
 
       {/* Back */}
@@ -406,5 +408,7 @@ export default function Volunteer({ onBack }) {
       </section>
 
     </div>
+    <Footer />
+    </>
   );
 }
