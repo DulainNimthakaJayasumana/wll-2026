@@ -16,11 +16,23 @@ export default function SDGTeaser() {
     const el = sectionRef.current;
     if (!el) return;
 
+    // After deliberate scroll-away, block re-snap for 2s so animation doesn't fight user
+    const exitingRef = { current: false };
+    let exitTimer = null;
+
+    const markExiting = () => {
+      exitingRef.current = true;
+      clearTimeout(exitTimer);
+      exitTimer = setTimeout(() => { exitingRef.current = false; }, 2000);
+    };
+
     const scrollToNext = () => {
+      markExiting();
       const next = el.nextElementSibling;
       if (next) next.scrollIntoView({ behavior: 'smooth' });
     };
     const scrollToPrev = () => {
+      markExiting();
       const prev = el.previousElementSibling;
       if (prev) prev.scrollIntoView({ behavior: 'smooth' });
     };
@@ -54,9 +66,12 @@ export default function SDGTeaser() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const ratio = entry.intersectionRatio;
-        if (ratio >= 0.5 && !snappedRef.current && !window.__navScrolling) {
+        if (ratio >= 0.3 && !snappedRef.current && !window.__navScrolling && !exitingRef.current) {
           snappedRef.current = true;
+          // Freeze scroll momentum, snap to section, then release
+          document.documentElement.style.overflow = 'hidden';
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => { document.documentElement.style.overflow = ''; }, 900);
         }
         if (ratio >= 0.92) {
           lockedRef.current = true;
@@ -65,7 +80,7 @@ export default function SDGTeaser() {
           if (ratio < 0.1) snappedRef.current = false;
         }
       },
-      { threshold: [0.1, 0.5, 0.92] }
+      { threshold: [0.1, 0.3, 0.5, 0.92] }
     );
 
     observer.observe(el);
@@ -75,6 +90,7 @@ export default function SDGTeaser() {
 
     return () => {
       observer.disconnect();
+      clearTimeout(exitTimer);
       window.removeEventListener('wheel', onWheel);
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchend', onTouchEnd);
