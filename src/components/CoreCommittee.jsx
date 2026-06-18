@@ -64,19 +64,19 @@ const TEAM = [
     dept: 'NM – SE', color: '#E5243B',
     members: [
       { name:'Tanuri',    role:'CCVP',   linkedin:'#', image:'Tanuri Dissanayaka.webp',    initials:'T',  color:'#E5243B' },
-      { name:'Minindi',   role:'Member', linkedin:'#', image:'Minindi_Fonseka - Minindi Fonseka.webp',   initials:'Mi', color:'#C5192D' },
-      { name:'Sandupama', role:'Member', linkedin:'#', image:'Sandupama Bandara - Sandupama Bandara.webp', initials:'Sa', color:'#E5243B' },
+      { name:'Minindi',   role:'Member', linkedin:'https://www.linkedin.com/in/minindi-fonseka-5b080123b', image:'Minindi_Fonseka - Minindi Fonseka.webp',   initials:'Mi', color:'#C5192D' },
+      { name:'Sandupama', role:'Member', linkedin:'https://www.linkedin.com/in/sandupama-bandara-72483a300', image:'Sandupama Bandara - Sandupama Bandara.webp', initials:'Sa', color:'#E5243B' },
     ],
   },
   /* ── NM – LOG ───────────────────────────────────────────── */
   {
     dept: 'NM – LOG', color: '#19486A',
     members: [
-      { name:'Gamindu',     role:'CCVP',   linkedin:'#', image:'Gamidu_Welikanna.webp',     initials:'G',  color:'#19486A' },
-      { name:'Pakeetharan', role:'Member', linkedin:'#', image:'Balamurali Pakeetharan - Balamurali Pakeetharan.webp', initials:'Pk', color:'#00689D' },
-      { name:'Yehan',       role:'Member', linkedin:'#', image:'Yehan De Silva - Yehan De Silva.webp',       initials:'Y',  color:'#0A97D9' },
-      { name:'Buddhima',    role:'Member', linkedin:'#', image:'D - Buddhima Pathiraja.Buddhima Pathiraja_.webp',    initials:'Bu', color:'#19486A' },
-      { name:'Jamindu',     role:'Member', linkedin:'#', image:'WhatsApp Image 2026-04-04 at 14.37.41 - Janindu Arandara.webp',     initials:'J',  color:'#00689D' },
+      { name:'Gamindu',     role:'CCVP',   linkedin:'https://www.linkedin.com/in/gamidu-welikanna-61ba4924b/', image:'Gamidu_Welikanna.webp',     initials:'G',  color:'#19486A' },
+      { name:'Pakeetharan', role:'Member', linkedin:'https://www.linkedin.com/in/balamurali-pakeetharan-385580287', image:'Balamurali Pakeetharan - Balamurali Pakeetharan.webp', initials:'Pk', color:'#00689D' },
+      { name:'Yehan',       role:'Member', linkedin:'https://www.linkedin.com/in/yehan-de-silva-96aa97359/', image:'Yehan De Silva - Yehan De Silva.webp',       initials:'Y',  color:'#0A97D9' },
+      { name:'Buddhima',    role:'Member', linkedin:'https://www.linkedin.com/in/buddhima-pathiraja-73b98021a', image:'D - Buddhima Pathiraja.Buddhima Pathiraja_.webp',    initials:'Bu', color:'#19486A' },
+      { name:'Jamindu',     role:'Member', linkedin:'https://www.linkedin.com/in/janindu-arandara-826511358', image:'WhatsApp Image 2026-04-04 at 14.37.41 - Janindu Arandara.webp',     initials:'J',  color:'#00689D' },
     ],
   },
   /* ── Marketing ──────────────────────────────────────────── */
@@ -85,7 +85,7 @@ const TEAM = [
     members: [
       { name:'Binali',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/binali-gajamange-572949231', image:'Binali_Gajamange_SLIIT.webp',    initials:'Bi', color:'#FCC30B' },
       { name:'Ashfaaq',   role:'Member', linkedin:'https://www.linkedin.com/in/ashfaaq-ashrak', image:'Ashfaaq Ashrak - Ashfaaq Ashrak.webp',   initials:'A',  color:'#DDA63A' },
-      { name:'Chrishane', role:'Member', linkedin:'https://www.linkedin.com/in/chrishane-dimuthu', image:'Chrishane_Dimuthu - Dimuthu Chrishane.webp', initials:'C',  color:'#FCC30B' },
+      { name:'Chrishane', role:'Member', linkedin:'https://www.linkedin.com/in/chrishane-dimuthu/', image:'Chrishane_Dimuthu - Dimuthu Chrishane.webp', initials:'C',  color:'#FCC30B' },
       { name:'Dulain',    role:'Member', linkedin:'https://www.linkedin.com/in/dulain-jayasumana', image:'USJ_Dulain _Jayasumana - Dulain Jayasumana.webp',    initials:'Du', color:'#BF8B2E' },
       { name:'Isira',     role:'Member', linkedin:'https://www.linkedin.com/in/isira-fernando-353325283', image:'Isira fernando - Fernando Isira.webp',     initials:'Is', color:'#DDA63A' },
     ],
@@ -96,7 +96,7 @@ const TEAM = [
     members: [
       { name:'Flemin',      role:'CCVP',   linkedin:'#', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
       { name:'Christle',    role:'Member', linkedin:'#', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
-      { name:'Sachinthani', role:'Member', linkedin:'#', image:'Sachinthani Ketakumbura (2) - Ketakumbura Sachinthani.webp', initials:'Sa', color:'#FD6925' },
+      { name:'Sachinthani', role:'Member', linkedin:'https://www.linkedin.com/in/sachinthani-ketakumbura-', image:'Sachinthani Ketakumbura (2) - Ketakumbura Sachinthani.webp', initials:'Sa', color:'#FD6925' },
       { name:'Kalindu',     role:'Member', linkedin:'#', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
     ],
   },
@@ -105,8 +105,8 @@ const TEAM = [
     dept: 'RnD', color: '#DD1367',
     members: [
       { name:'Jayathri', role:'CCVP',   linkedin:'#', image:'Jayathri Wijewardana.webp', initials:'Ja', color:'#DD1367' },
-      { name:'Isthikar', role:'Member', linkedin:'#', image:'Fathima_Isthikar - Isthikar Fathima.webp', initials:'It', color:'#A21942' },
-      { name:'Matheen',  role:'Member', linkedin:'#', image:'Kandy_Matheen_Mohammed - Matheen Mohammed.webp',  initials:'Ma', color:'#DD1367' },
+      { name:'Isthikar', role:'Member', linkedin:'https://www.linkedin.com/in/fathimaisthikar', image:'Fathima_Isthikar - Isthikar Fathima.webp', initials:'It', color:'#A21942' },
+      { name:'Matheen',  role:'Member', linkedin:'https://www.linkedin.com/in/matheen-amm', image:'Kandy_Matheen_Mohammed - Matheen Mohammed.webp',  initials:'Ma', color:'#DD1367' },
     ],
   },
   /* ── HR ─────────────────────────────────────────────────── */
@@ -124,9 +124,9 @@ const TEAM = [
     members: [
       { name:'Varun',    role:'CCVP',    linkedin:'#', image:'Varun_Bhargav.webp',    initials:'V',  color:'#A21942' },
       { name:'Rashmika', role:'Member',  linkedin:'#', image:'Rashmika Guruge - Guruge Rashmika.webp', initials:'R',  color:'#DD1367' },
-      { name:'Kavishva', role:'Member',  linkedin:'#', image:'Kavishva - Kavishva Nandasena.webp', initials:'Ka', color:'#A21942' },
-      { name:'Thisuli',  role:'Member',  linkedin:'#', image:'Thisuli Amanethmi.webp',  initials:'Th', color:'#C5192D' },
-      { name:'Binithi',  role:'Member',  linkedin:'#', image:'Binithi.webp',  initials:'Bi', color:'#DD1367' },
+      { name:'Kavishva', role:'Member',  linkedin:'https://www.linkedin.com/in/kavishva-nandasena-7469943a9', image:'Kavishva - Kavishva Nandasena.webp', initials:'Ka', color:'#A21942' },
+      { name:'Thisuli',  role:'Member',  linkedin:'https://www.linkedin.com/in/thisuli-amanethmi-029761246', image:'Thisuli Amanethmi.webp',  initials:'Th', color:'#C5192D' },
+      { name:'Binithi',  role:'Member',  linkedin:'https://www.linkedin.com/in/binithi-ranaweera-3b1898355/', image:'Binithi.webp',  initials:'Bi', color:'#DD1367' },
     ],
   },
 ];
