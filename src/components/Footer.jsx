@@ -1,5 +1,33 @@
 import { SDGS } from '../data/sdgs';
+import { goToSDGs, goHome } from '../App';
 import s from './Footer.module.css';
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    window.__navScrolling = true;
+    clearTimeout(window.__navScrollTimer);
+    window.__navScrollTimer = setTimeout(() => { window.__navScrolling = false; }, 1200);
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    // On another page — go home then scroll
+    if (id === 'home') {
+      goHome();
+    } else {
+      sessionStorage.setItem('scroll-to', id);
+      goHome();
+    }
+  }
+}
+
+const EXPLORE = [
+  { id: 'home',         label: 'Home' },
+  { id: 'about',        label: 'About' },
+  { id: 'sdgs-teaser',  label: 'The 17 SDGs', action: () => goToSDGs() },
+  { id: 'gallery',      label: 'Gallery' },
+  { id: 'competitions', label: 'Competition' },
+  { id: 'contact',      label: 'Team' },
+];
 
 export default function Footer() {
   return (
@@ -16,10 +44,15 @@ export default function Footer() {
           <div className={s.cols}>
             <div className={s.col}>
               <h5>Explore</h5>
-              {['#home:Home','#about:About','#sdgs:The 17 SDGs','#gallery:Gallery','#competitions:Competition','#contact:Team'].map(l=>{
-                const [href,label]=l.split(':');
-                return <a key={href} href={href}>{label}</a>;
-              })}
+              {EXPLORE.map(l => (
+                <a
+                  key={l.id}
+                  href="#"
+                  onClick={e => { e.preventDefault(); l.action ? l.action() : scrollToSection(l.id); }}
+                >
+                  {l.label}
+                </a>
+              ))}
             </div>
             <div className={s.col}>
               <h5>Connect</h5>
@@ -30,7 +63,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={s.sdgBar}>
-          {SDGS.map(g=><span key={g.n} style={{background:g.c}} title={`SDG ${g.n}: ${g.t}`}/>)}
+          {SDGS.map(g => <span key={g.n} style={{ background: g.c }} title={`SDG ${g.n}: ${g.t}`} />)}
         </div>
         <div className={s.bottom}>
           <span>© 2026 World's Largest Lesson · Sri Lanka · AIESEC</span>
