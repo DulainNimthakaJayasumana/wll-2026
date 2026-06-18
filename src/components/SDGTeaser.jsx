@@ -1,6 +1,11 @@
 import { goToSDGs } from '../App';
 import s from './SDGTeaser.module.css';
 
+function goToSDG(index) {
+  sessionStorage.setItem('sdg-start', index);
+  goToSDGs();
+}
+
 export default function SDGTeaser() {
   return (
     <section className={s.section} id="sdgs-teaser">
@@ -36,7 +41,7 @@ export default function SDGTeaser() {
               src={`/assets/sdg-icons/sdg-${String(n).padStart(2, '0')}.png`}
               alt={`SDG ${n}`}
               className={s.sdgThumb}
-              onClick={goToSDGs}
+              onClick={() => goToSDG(n - 1)}
             />
           ))}
         </div>

@@ -29,6 +29,17 @@ export default function SDGStory() {
     return () => window.removeEventListener('resize', set);
   }, []);
 
+  /* Jump to SDG selected from home page teaser */
+  useEffect(() => {
+    const stored = sessionStorage.getItem('sdg-start');
+    if (stored !== null) {
+      sessionStorage.removeItem('sdg-start');
+      const i = parseInt(stored, 10);
+      if (i > 0) setTimeout(() => jumpTo(i), 120);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   /* Scroll → idx */
   useEffect(() => {
     const onScroll = () => {
@@ -73,7 +84,7 @@ export default function SDGStory() {
 
 
   useEffect(() => {
-    const delay = 9000; 
+    const delay = 12000;
     const t = setTimeout(() => {
       const next = idx + 1;
       if (next < SDGS.length) jumpTo(next);
