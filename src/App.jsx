@@ -49,13 +49,19 @@ export default function App() {
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
+    const PAGE_HASHES = new Set(['#run', '#volunteer', '#sdgs', '', '#']);
     const onHash = () => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      setPage(getPage());
+      const h = window.location.hash;
+      const newPage = getPage();
+      // Only scroll to top when switching between pages, not in-page anchors
+      if (PAGE_HASHES.has(h) || newPage !== page) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+      setPage(newPage);
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, []);
+  }, [page]);
 
   /* Scroll reveal only applies to the main site */
   useScrollReveal(page);
