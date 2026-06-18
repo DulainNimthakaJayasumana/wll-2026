@@ -22,6 +22,16 @@
 }
 .links a:hover { background:rgba(248,155,41,.12); color:var(--orange-deep); }
 
+.sdgsLink {
+  margin-left: 4px; padding: 10px 16px;
+  background: transparent;
+  color: var(--ink); border-radius: 999px;
+  border: 1.5px solid rgba(0,0,0,.18);
+  font-family: inherit; font-weight: 700; font-size: .88rem; cursor: pointer;
+  transition: border-color .25s, background .25s;
+}
+.sdgsLink:hover { border-color: var(--orange); color: var(--orange-deep); background: rgba(248,155,41,.08); }
+
 .ctaRun {
   margin-left:8px; padding:10px 18px;
   background: linear-gradient(135deg, #E5243B, #FD6925);
@@ -67,6 +77,6 @@
   }
   .links.open { transform:translateX(0); }
   .links a { width:100%; font-size:1.15rem; padding:14px 16px; }
-  .ctaRun, .ctaVolunteer, .cta { width:100%; justify-content:center; margin-left:0; text-align:center; }
+  .sdgsLink, .ctaRun, .ctaVolunteer, .cta { width:100%; justify-content:center; margin-left:0; text-align:center; }
   .burger { display:flex; z-index:501; }
 }

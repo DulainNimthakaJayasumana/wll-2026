@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { goToRun, goToVolunteer } from '../App';
+import { goToRun, goToVolunteer, goToSDGs } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
@@ -20,6 +20,7 @@ export default function Nav() {
 
   const handleRun       = () => { setOpen(false); goToRun(); };
   const handleVolunteer = () => { setOpen(false); goToVolunteer(); };
+  const handleSDGs      = () => { setOpen(false); goToSDGs(); };
 
   return (
     <nav className={`${s.nav} ${scrolled ? s.scrolled : ''}`}>
@@ -30,6 +31,7 @@ export default function Nav() {
         {LINKS.map(l => (
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
+        <button className={s.sdgsLink} onClick={handleSDGs}>SDGs</button>
         <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lesson</button>
         <button className={s.cta} onClick={handleVolunteer}>Volunteer with us</button>
       </div>
