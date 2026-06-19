@@ -45,7 +45,7 @@ const TEAM = [
     dept: 'Leadership', color: '#19486A',
     members: [
       { name:'Pasindu',   role:'CCP',        linkedin:'https://www.linkedin.com/in/pasindu-serasinghe-0090a2216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', image:'Pasindu.webp',   initials:'P',  color:'#F89B29' },
-      { name:'Dineth',    role:'FIN · CCVP', linkedin:'#', image:'Dineth Samarawickrama.webp',    initials:'D',  color:'#4C9F38' },
+      { name:'Dineth',    role:'FIN · CCVP', linkedin:'https://www.linkedin.com/in/dineth-samarawickrama-356285290', image:'Dineth Samarawickrama.webp',    initials:'D',  color:'#4C9F38' },
     ],
   },
   /* ── NM – Schools ───────────────────────────────────────── */
@@ -63,7 +63,7 @@ const TEAM = [
   {
     dept: 'NM – SE', color: '#E5243B',
     members: [
-      { name:'Tanuri',    role:'CCVP',   linkedin:'#', image:'Tanuri Dissanayaka.webp',    initials:'T',  color:'#E5243B' },
+      { name:'Tanuri',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/tanuri-dissanayaka-356285290', image:'Tanuri Dissanayaka.webp',    initials:'T',  color:'#E5243B' },
       { name:'Minindi',   role:'Member', linkedin:'https://www.linkedin.com/in/minindi-fonseka-5b080123b', image:'Minindi_Fonseka - Minindi Fonseka.webp',   initials:'Mi', color:'#C5192D' },
       { name:'Sandupama', role:'Member', linkedin:'https://www.linkedin.com/in/sandupama-bandara-72483a300', image:'Sandupama Bandara - Sandupama Bandara.webp', initials:'Sa', color:'#E5243B' },
     ],
@@ -94,8 +94,8 @@ const TEAM = [
   {
     dept: 'PR', color: '#FD6925',
     members: [
-      { name:'Flemin',      role:'CCVP',   linkedin:'#', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
-      { name:'Christle',    role:'Member', linkedin:'#', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
+      { name:'Flemin',      role:'CCVP',   linkedin:'https://www.linkedin.com/in/flemin-fernando-356285290', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
+      { name:'Christle',    role:'Member', linkedin:'https://www.linkedin.com/in/christle-salgado-356285290', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
       { name:'Sachinthani', role:'Member', linkedin:'https://www.linkedin.com/in/sachinthani-ketakumbura-', image:'Sachinthani Ketakumbura (2) - Ketakumbura Sachinthani.webp', initials:'Sa', color:'#FD6925' },
       { name:'Kalindu',     role:'Member', linkedin:'https://www.linkedin.com/in/kalindu-de-silva-372808348', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
     ],
@@ -113,9 +113,9 @@ const TEAM = [
   {
     dept: 'HR', color: '#26BDE2',
     members: [
-      { name:'Lahirunie', role:'CCVP',   linkedin:'#', image:'Lahirunie Dulsara.webp', initials:'L',  color:'#26BDE2' },
-      { name:'Chenuli',   role:'Member', linkedin:'#', image:'Chenuli Ranaweera - Chenuli Ranaweera.webp',   initials:'Ch', color:'#0A97D9' },
-      { name:'Sandaru',   role:'Member', linkedin:'#', image:'SANDARU PIC - Sandaru Yahampath.webp',   initials:'Sa', color:'#26BDE2' },
+      { name:'Lahirunie', role:'CCVP',   linkedin:'https://www.linkedin.com/in/lahirunie-dulsara-88a6592a9', image:'Lahirunie Dulsara.webp', initials:'L',  color:'#26BDE2' },
+      { name:'Chenuli',   role:'Member', linkedin:'https://www.linkedin.com/in/chenuli-ranaweera-356285290', image:'Chenuli Ranaweera - Chenuli Ranaweera.webp',   initials:'Ch', color:'#0A97D9' },
+      { name:'Sandaru',   role:'Member', linkedin:'https://www.linkedin.com/in/sandaru-yahampath-202ab4296', image:'SANDARU PIC - Sandaru Yahampath.webp',   initials:'Sa', color:'#26BDE2' },
     ],
   },
   /* ── Partnership Development ────────────────────────────── */
