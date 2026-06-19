@@ -44,7 +44,7 @@ const TEAM = [
   {
     dept: 'Leadership', color: '#19486A',
     members: [
-      { name:'Pasindu',   role:'CCP',        linkedin:'#', image:'Pasindu.webp',   initials:'P',  color:'#F89B29' },
+      { name:'Pasindu',   role:'CCP',        linkedin:'https://www.linkedin.com/in/pasindu-serasinghe-0090a2216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', image:'Pasindu.webp',   initials:'P',  color:'#F89B29' },
       { name:'Dineth',    role:'FIN · CCVP', linkedin:'#', image:'Dineth Samarawickrama.webp',    initials:'D',  color:'#4C9F38' },
     ],
   },
@@ -52,11 +52,11 @@ const TEAM = [
   {
     dept: 'NM – Schools', color: '#3F7E44',
     members: [
-      { name:'Ishini',    role:'CCVP',   linkedin:'#', image:'Ishini.webp',    initials:'I',  color:'#3F7E44' },
-      { name:'Dewni',     role:'Member', linkedin:'#', image:'Dewni Premadasa - Dewni Premadasa.webp',     initials:'D',  color:'#56C02B' },
-      { name:'Chanuli',   role:'Member', linkedin:'#', image:'Chanuli - Chanuli Janusha.webp',   initials:'Ch', color:'#4C9F38' },
-      { name:'Merushika', role:'Member', linkedin:'#', image:'Merushika Alahakoon - Merushika Alahakoon (1).webp', initials:'M',  color:'#56C02B' },
-      { name:'Imanga',    role:'Member', linkedin:'#', image:'Imanga Nethmini - Imanga Nethmini.webp',    initials:'Im', color:'#3F7E44' },
+      { name:'Ishini',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/ishini-higgoda/', image:'Ishini.webp',    initials:'I',  color:'#3F7E44' },
+      { name:'Dewni',     role:'Member', linkedin:'https://www.linkedin.com/in/dewni-premadasa-16a391397', image:'Dewni Premadasa - Dewni Premadasa.webp',     initials:'D',  color:'#56C02B' },
+      { name:'Chanuli',   role:'Member', linkedin:'https://www.linkedin.com/in/chanuli-janusha-randunu-pathirana-0aaa08353', image:'Chanuli - Chanuli Janusha.webp',   initials:'Ch', color:'#4C9F38' },
+      { name:'Merushika', role:'Member', linkedin:'https://www.linkedin.com/in/merushika-alahakoon-6a2085395/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BMd0fGyMMQCaByRBsHjXVoA%3D%3D', image:'Merushika Alahakoon - Merushika Alahakoon (1).webp', initials:'M',  color:'#56C02B' },
+      { name:'Imanga',    role:'Member', linkedin:'https://www.linkedin.com/in/imanga-nethmini-734892333', image:'Imanga Nethmini - Imanga Nethmini.webp',    initials:'Im', color:'#3F7E44' },
     ],
   },
   /* ── NM – SE ────────────────────────────────────────────── */
@@ -97,14 +97,14 @@ const TEAM = [
       { name:'Flemin',      role:'CCVP',   linkedin:'#', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
       { name:'Christle',    role:'Member', linkedin:'#', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
       { name:'Sachinthani', role:'Member', linkedin:'https://www.linkedin.com/in/sachinthani-ketakumbura-', image:'Sachinthani Ketakumbura (2) - Ketakumbura Sachinthani.webp', initials:'Sa', color:'#FD6925' },
-      { name:'Kalindu',     role:'Member', linkedin:'#', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
+      { name:'Kalindu',     role:'Member', linkedin:'https://www.linkedin.com/in/kalindu-de-silva-372808348', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
     ],
   },
   /* ── RnD ────────────────────────────────────────────────── */
   {
     dept: 'RnD', color: '#DD1367',
     members: [
-      { name:'Jayathri', role:'CCVP',   linkedin:'#', image:'Jayathri Wijewardana.webp', initials:'Ja', color:'#DD1367' },
+      { name:'Jayathri', role:'CCVP',   linkedin:'https://www.linkedin.com/in/jayathri-wijewardana', image:'Jayathri Wijewardana.webp', initials:'Ja', color:'#DD1367' },
       { name:'Isthikar', role:'Member', linkedin:'https://www.linkedin.com/in/fathimaisthikar', image:'Fathima_Isthikar - Isthikar Fathima.webp', initials:'It', color:'#A21942' },
       { name:'Matheen',  role:'Member', linkedin:'https://www.linkedin.com/in/matheen-amm', image:'Kandy_Matheen_Mohammed - Matheen Mohammed.webp',  initials:'Ma', color:'#DD1367' },
     ],
@@ -122,8 +122,8 @@ const TEAM = [
   {
     dept: 'Partnership Dev', color: '#A21942',
     members: [
-      { name:'Varun',    role:'CCVP',    linkedin:'#', image:'Varun_Bhargav.webp',    initials:'V',  color:'#A21942' },
-      { name:'Rashmika', role:'Member',  linkedin:'#', image:'Rashmika Guruge - Guruge Rashmika.webp', initials:'R',  color:'#DD1367' },
+      { name:'Varun',    role:'CCVP',    linkedin:'https://www.linkedin.com/in/varun-poobalaraja', image:'Varun_Bhargav.webp',    initials:'V',  color:'#A21942' },
+      { name:'Rashmika', role:'Member',  linkedin:'https://www.linkedin.com/in/rashmika-g-291ab7275', image:'Rashmika Guruge - Guruge Rashmika.webp', initials:'R',  color:'#DD1367' },
       { name:'Kavishva', role:'Member',  linkedin:'https://www.linkedin.com/in/kavishva-nandasena-7469943a9', image:'Kavishva - Kavishva Nandasena.webp', initials:'Ka', color:'#A21942' },
       { name:'Thisuli',  role:'Member',  linkedin:'https://www.linkedin.com/in/thisuli-amanethmi-029761246', image:'Thisuli Amanethmi.webp',  initials:'Th', color:'#C5192D' },
       { name:'Binithi',  role:'Member',  linkedin:'https://www.linkedin.com/in/binithi-ranaweera-3b1898355/', image:'Binithi.webp',  initials:'Bi', color:'#DD1367' },
