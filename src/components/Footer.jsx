@@ -1,5 +1,6 @@
 import { SDGS } from '../data/sdgs';
 import { goToSDGs, goHome } from '../App';
+import dulainPhoto from '../assets/team/USJ_Dulain _Jayasumana - Dulain Jayasumana.webp';
 import s from './Footer.module.css';
 
 function scrollToSection(id) {
@@ -68,8 +69,12 @@ export default function Footer() {
           <span>© 2026 World's Largest Lesson · Sri Lanka · AIESEC</span>
           <span>For the Global Goals · #TeachSDGs · #WLL2026</span>
         </div>
-        <div className={s.credits}>
-          Developed by Dulain Jayasumana &amp; the Marketing Team · World's Largest Lesson 2026
+        <div className={s.creditCard}>
+          <img src={dulainPhoto} alt="Dulain Jayasumana" className={s.creditPhoto} />
+          <div className={s.creditText}>
+            <span className={s.creditName}>Developed by Dulain Jayasumana</span>
+            <span className={s.creditSub}>Marketing Team · World's Largest Lesson 2026</span>
+          </div>
         </div>
       </div>
     </footer>
