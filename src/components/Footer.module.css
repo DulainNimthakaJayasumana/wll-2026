@@ -13,3 +13,18 @@
 .bottom { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; color:var(--ink-muted); font-size:.87rem; font-weight:700; border-top:1px solid var(--line); padding-top:24px; }
 .credits { text-align:center; margin-top:18px; color:var(--ink-muted); font-size:.78rem; font-weight:600; opacity:.7; }
 .creditsNote { font-weight:700; opacity:.85; }
+
+@media (max-width: 700px) {
+  .footer { padding:56px 0 28px; }
+  .top { flex-direction:column; gap:32px; }
+  .brand p { max-width:none; }
+  .cols { width:100%; gap:32px; justify-content:space-between; }
+  .col { flex:1; min-width:120px; }
+  .bottom { flex-direction:column; align-items:flex-start; gap:8px; text-align:left; }
+}
+
+@media (max-width: 420px) {
+  .logos { flex-wrap:wrap; }
+  .wllLogo { height:48px; }
+  .aiesecLogo { height:36px; }
+}

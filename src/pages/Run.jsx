@@ -176,11 +176,15 @@ export default function Run({ onBack }) {
     <div className={s.page}>
 
       {/* ── Back nav ──────────────────────────────────────── */}
-      <button className={s.backBtn} onClick={onBack || goHome}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+      <button className={s.backBtn} onClick={onBack || goHome} aria-label="Back to main site">
+        <svg className={s.backIconDesktop} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
           <path d="M19 12H5M12 5l-7 7 7 7"/>
         </svg>
-        Back to Main Site
+        <svg className={s.backIconMobile} viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 11.5 12 4l9 7.5"/>
+          <path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/>
+        </svg>
+        <span className={s.backLabel}>Back to Main Site</span>
       </button>
 
       {/* ── HERO ──────────────────────────────────────────── */}

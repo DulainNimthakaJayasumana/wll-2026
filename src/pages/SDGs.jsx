@@ -25,8 +25,13 @@ export default function SDGs({ onBack }) {
       <button
         className={`${s.backBtn} ${onLight ? s.backBtnDark : ''}`}
         onClick={onBack || goHome}
+        aria-label="Back to main site"
       >
-        ← Back to Main Site
+        <svg className={s.backIcon} viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 11.5 12 4l9 7.5"/>
+          <path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/>
+        </svg>
+        <span className={s.backLabel}>Back to Main Site</span>
       </button>
 
       <SDGStory />

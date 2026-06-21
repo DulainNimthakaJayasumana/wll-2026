@@ -65,3 +65,19 @@
   color: #fff;
   transform: scale(1.1);
 }
+
+.backIcon { flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .backBtn {
+    top: 16px; left: 14px;
+    width: 42px; height: 42px;
+    padding: 0; gap: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  .backLabel { display: none; }
+  .backIcon { width: 18px; height: 18px; }
+  .scrollNav { bottom: 16px; right: 14px; gap: 6px; }
+  .scrollBtn { width: 36px; height: 36px; }
+}
