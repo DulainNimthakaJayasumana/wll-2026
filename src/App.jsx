@@ -8,7 +8,6 @@ import SDGTeaser    from './components/SDGTeaser';
 
 /* Below-fold components — lazy loaded after initial paint */
 const Gallery      = lazy(() => import('./components/Gallery'));
-const Competitions = lazy(() => import('./components/Competitions'));
 const CoreCommittee = lazy(() => import('./components/CoreCommittee'));
 const Footer       = lazy(() => import('./components/Footer'));
 
@@ -116,7 +115,6 @@ export default function App() {
         <SDGTeaser />
         <Suspense fallback={null}>
           <Gallery />
-          <Competitions />
           <CoreCommittee />
         </Suspense>
       </main>

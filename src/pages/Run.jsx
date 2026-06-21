@@ -248,7 +248,7 @@ export default function Run({ onBack }) {
           </div>
 
           <div className={s.heroCtas}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register for the Run</button>
+            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
           </div>
         </div>
 
@@ -486,7 +486,7 @@ export default function Run({ onBack }) {
           <h2>Ready to Run Miles for Lessons?</h2>
           <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
           <div className={s.ctaBtns}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register Now</button>
+            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>

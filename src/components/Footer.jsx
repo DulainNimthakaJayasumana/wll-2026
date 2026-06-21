@@ -25,7 +25,6 @@ const EXPLORE = [
   { id: 'about',        label: 'About' },
   { id: 'sdgs-teaser',  label: 'The 17 SDGs', action: () => goToSDGs() },
   { id: 'gallery',      label: 'Gallery' },
-  { id: 'competitions', label: 'Competition' },
   { id: 'contact',      label: 'Team' },
 ];
 
