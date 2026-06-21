@@ -60,23 +60,40 @@
 }
 .cta:hover { background:var(--orange-deep); transform:translateY(-2px); }
 
-.burger { display:none; flex-direction:column; gap:5px; padding:8px; border-radius:10px; }
-.burger span { display:block; width:24px; height:2.5px; border-radius:2px; background:var(--ink); transition:.4s var(--ease-spring); }
-.burger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
-.burger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
-.burger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+/* ── Mobile / tablet: drop the page links, show only the 3 action
+   buttons as a single row beneath the logo — no hamburger menu ── */
+.short { display:none; }
 
-@media(max-width:960px){
+@media(max-width:960px) and (orientation: portrait){
+  .nav { padding:12px var(--shell); gap:8px; }
+  .brand img { height:32px; }
+  .scrolled .brand img { height:28px; }
   .links {
-    position:fixed; inset:0 0 0 auto; width:min(300px,80vw);
-    flex-direction:column; align-items:flex-start; justify-content:center;
-    gap:6px; padding:40px 32px;
-    background:rgba(255,255,255,.96); backdrop-filter:blur(24px);
-    box-shadow:-24px 0 64px rgba(0,0,0,.12);
-    transform:translateX(110%); transition:transform .5s var(--ease-out);
+    flex:0 0 auto;
+    flex-wrap:nowrap;
+    gap:6px;
+    margin-left:auto;
   }
-  .links.open { transform:translateX(0); }
-  .links a { width:100%; font-size:1.15rem; padding:14px 16px; }
-  .sdgsLink, .ctaRun, .ctaVolunteer, .cta { width:100%; justify-content:center; margin-left:0; text-align:center; }
-  .burger { display:flex; z-index:501; }
+  .pageLink { display:none; }
+  .full { display:none; }
+  .short { display:inline; }
+  .sdgsLink, .ctaRun, .cta {
+    flex:0 0 auto;
+    margin-left:0;
+    justify-content:center;
+    text-align:center;
+    font-size:.78rem;
+    padding:11px 16px;
+    min-height:40px;
+    min-width:150px;
+    white-space:nowrap;
+  }
+}
+
+@media(max-width:420px) and (orientation: portrait){
+  .nav { padding:10px 14px; gap:6px; }
+  .brand img { height:28px; }
+  .scrolled .brand img { height:25px; }
+  .links { gap:5px; }
+  .sdgsLink, .ctaRun, .cta { font-size:.7rem; padding:10px 12px; min-height:38px; min-width:80px; border-width:1px; }
 }

@@ -129,12 +129,14 @@ export default function Hero() {
           <a href="#run" className={`${s.btn} ${s.runBtn}`}>Register for the Run</a>
         </div>
         <div className={s.countdown}>
-          {CD_CELLS.map(c => (
-            <div key={c.key} className={s.cdCell} style={{'--accent': c.accent}}>
-              <span className={s.cdNum}>{PAD(cd[c.key])}</span>
-              <span className={s.cdLabel}>{c.label}</span>
-            </div>
-          ))}
+          <div className={s.cdRow}>
+            {CD_CELLS.map(c => (
+              <div key={c.key} className={s.cdCell} style={{'--accent': c.accent}}>
+                <span className={s.cdNum}>{PAD(cd[c.key])}</span>
+                <span className={s.cdLabel}>{c.label}</span>
+              </div>
+            ))}
+          </div>
           <span className={s.cdCaption}>Counting down to 30 July 2026</span>
         </div>
       </div>

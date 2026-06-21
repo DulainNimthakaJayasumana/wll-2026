@@ -29,7 +29,6 @@ function scrollToSection(id) {
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [open,     setOpen]     = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 48);
@@ -37,12 +36,10 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-
-  const handleLink = (id) => { setOpen(false); scrollToSection(id); };
-  const handleRun       = () => { setOpen(false); goToRun(); };
-  const handleVolunteer = () => { setOpen(false); goToVolunteer(); };
+  const handleLink = (id) => { scrollToSection(id); };
+  const handleRun       = () => { goToRun(); };
+  const handleVolunteer = () => { goToVolunteer(); };
   const handleSDGs      = () => {
-    setOpen(false);
     if (window.location.hash === '#sdgs') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -55,23 +52,22 @@ export default function Nav() {
       <a href="#home" className={s.brand} onClick={(e) => { e.preventDefault(); handleLink('home'); }}>
         <img src="/assets/wll-logo.png" alt="World's Largest Lesson" />
       </a>
-      <div className={`${s.links} ${open ? s.open : ''}`}>
+      <div className={s.links}>
         {LINKS.map(l => (
-          <a key={l.id} href={`#${l.id}`} onClick={(e) => { e.preventDefault(); handleLink(l.id); }}>
+          <a key={l.id} className={s.pageLink} href={`#${l.id}`} onClick={(e) => { e.preventDefault(); handleLink(l.id); }}>
             {l.label}
           </a>
         ))}
-        <button className={s.sdgsLink} onClick={handleSDGs}>SDGs</button>
-        <button className={s.ctaRun} onClick={handleRun}>🏃 Miles for Lesson</button>
-        <button className={s.cta} onClick={handleVolunteer}>Volunteer with us</button>
+        <button className={s.sdgsLink} onClick={handleSDGs}>
+          <span className={s.full}>SDGs</span><span className={s.short}>SDGs</span>
+        </button>
+        <button className={s.ctaRun} onClick={handleRun}>
+          <span className={s.full}>🏃 Miles for Lesson</span><span className={s.short}>🏃 Run</span>
+        </button>
+        <button className={s.cta} onClick={handleVolunteer}>
+          <span className={s.full}>Volunteer with us</span><span className={s.short}>Volunteer</span>
+        </button>
       </div>
-      <button
-        className={`${s.burger} ${open ? s.open : ''}`}
-        onClick={() => setOpen(v => !v)}
-        aria-label="Menu"
-      >
-        <span/><span/><span/>
-      </button>
     </nav>
   );
 }

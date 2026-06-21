@@ -29,6 +29,19 @@
   box-shadow: 0 8px 28px rgba(0,0,0,0.18);
   background: #fff;
 }
+.backIconMobile { display: none; }
+
+@media (max-width: 900px) {
+  .backBtn {
+    top: 16px; left: 14px;
+    width: 42px; height: 42px;
+    padding: 0; gap: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  .backLabel, .backIconDesktop { display: none; }
+  .backIconMobile { display: block; }
+}
 
 /* ── Hero ────────────────────────────────────────────────── */
 .hero {
