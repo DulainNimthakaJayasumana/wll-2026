@@ -69,7 +69,7 @@ export default function Footer() {
           <span>For the Global Goals · #TeachSDGs · #WLL2026</span>
         </div>
         <div className={s.credits}>
-          *Developed by the Marketing Team · World's Largest Lesson 2026
+          Developed by Dulain Jayasumana &amp; the Marketing Team · World's Largest Lesson 2026
         </div>
       </div>
     </footer>

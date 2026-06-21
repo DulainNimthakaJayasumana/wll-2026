@@ -36,6 +36,8 @@ const POLICIES = [
   { icon:'👥', label:'Interest', value:'Students & communities', color:'#26BDE2' },
 ];
 
+const VOL_PHOTOS = Array.from({ length: 13 }, (_, i) => `/assets/vol/vol-${String(i + 1).padStart(2, '0')}.webp`);
+
 const CONTACTS = [
   { name:'Lahirunie Dulsara', role:'CCVP Human Resources · WLL 2026', phone:'+94 76 698 6042', email:'pasindu.serasinghe5@aiesec.net', initials:'LD', color:'#E5243B' },
   { name:'Chenuli Ranaweera', role:'CC Member Human Resources · WLL 2026', phone:'+94 71 368 8349', email:'chenuliranaweera@aiesec.net', initials:'CR', color:'#FD6925' },
@@ -300,16 +302,12 @@ export default function Volunteer({ onBack }) {
                 Each volunteer contributes to <strong>one lesson in one school.</strong>
               </div>
             </div>
-            <div className={s.aboutArt} data-reveal>
-              <MiniShape kind="crane" color="#E5243B"/>
-              <MiniShape kind="butterfly" color="#FCC30B"/>
-              <MiniShape kind="fish" color="#26BDE2"/>
-              <MiniShape kind="butterfly" color="#4C9F38"/>
-              <MiniShape kind="crane" color="#FD6925"/>
-              <MiniShape kind="fish" color="#DD1367"/>
-              <MiniShape kind="butterfly" color="#0A97D9"/>
-              <MiniShape kind="crane" color="#A21942"/>
-              <MiniShape kind="fish" color="#56C02B"/>
+            <div className={s.aboutPhotos} data-reveal>
+              <img src={VOL_PHOTOS[0]} alt="" className={s.aboutPhoto1} />
+              <img src={VOL_PHOTOS[1]} alt="" className={s.aboutPhoto2} />
+              <img src={VOL_PHOTOS[2]} alt="" className={s.aboutPhoto3} />
+              <span className={s.aboutPhotoShape1}><MiniShape kind="crane" color="#E5243B"/></span>
+              <span className={s.aboutPhotoShape2}><MiniShape kind="butterfly" color="#FCC30B"/></span>
             </div>
           </div>
         </div>
@@ -339,27 +337,31 @@ export default function Volunteer({ onBack }) {
       {/* ── EXPECT / GET ─────────────────────────────────── */}
       <section className={s.xgSection}>
         <div className={s.container}>
+          <p className={s.eyebrow} data-reveal>THE DEAL</p>
+          <h2 className={s.sectionTitle} data-reveal>What we expect, what you get</h2>
           <div className={s.xgGrid}>
             <div className={s.xgPanel} data-reveal>
+              <span className={s.xgFloater1}><MiniShape kind="crane" color="#fff"/></span>
               <div className={s.xgHeader} style={{'--c':'#E5243B'}}>
-                <span>📋</span> What we expect
+                <span className={s.xgHeaderIcon}>📋</span> What we expect
               </div>
               <div className={s.xgBody}>
                 {EXPECT.map((item, i) => (
-                  <div key={i} className={s.xgRow}>
-                    <span>{item.icon}</span><p>{item.text}</p>
+                  <div key={i} className={s.xgRow} style={{'--delay': `${i * .06}s`}}>
+                    <span className={s.xgRowIcon}>{item.icon}</span><p>{item.text}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div className={s.xgPanel} data-reveal style={{'--delay':'.12s'}}>
+              <span className={s.xgFloater2}><MiniShape kind="butterfly" color="#fff"/></span>
               <div className={s.xgHeader} style={{'--c':'#4C9F38'}}>
-                <span>🌟</span> What you get
+                <span className={s.xgHeaderIcon}>🌟</span> What you get
               </div>
               <div className={s.xgBody}>
                 {GET.map((item, i) => (
-                  <div key={i} className={s.xgRow}>
-                    <span>{item.icon}</span><p>{item.text}</p>
+                  <div key={i} className={s.xgRow} style={{'--delay': `${i * .06}s`}}>
+                    <span className={s.xgRowIcon}>{item.icon}</span><p>{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -371,7 +373,8 @@ export default function Volunteer({ onBack }) {
       {/* ── WORKSHOPS ────────────────────────────────────── */}
       <section className={s.workshopSection}>
         <div className={s.container}>
-          <div className={s.workshopBox} data-reveal>
+          <div className={s.workshopBox} data-reveal style={{ backgroundImage: `url(${VOL_PHOTOS[3]})` }}>
+            <div className={s.workshopOverlay} />
             <span className={s.workshopIcon}>🛠️</span>
             <div>
               <h3>Event Preparation Workshops</h3>
