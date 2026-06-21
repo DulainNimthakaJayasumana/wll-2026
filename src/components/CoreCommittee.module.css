@@ -169,6 +169,7 @@
 .lg .personName { font-size: 1rem; }
 .sm .personName { font-size: .88rem; }
 .xs .personName { font-size: .76rem; }
+.personCredit { color: #E5243B; font-weight: 900; margin-left: 2px; }
 
 .personRole {
   font-size: .68rem; font-weight: 700;
