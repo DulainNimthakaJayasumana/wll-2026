@@ -162,6 +162,57 @@ function CountUp({ value, duration = 1400 }) {
   return <span ref={ref}>{useCommas ? shown.toLocaleString() : shown}{suffix}</span>;
 }
 
+/* ── FAQ accordion item ──────────────────────────────────── */
+function FAQItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`${s.faqItem} ${open ? s.faqOpen : ''}`}>
+      <button className={s.faqQ} onClick={() => setOpen(v => !v)}>
+        <span>{q}</span>
+        <svg className={s.faqChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      {open && <div className={s.faqA}>{a}</div>}
+    </div>
+  );
+}
+
+const FAQS = [
+  {
+    q: 'Do I need prior teaching experience to volunteer?',
+    a: 'Not at all! No teaching experience is required. We provide a full training workshop and ready-made session materials so you can confidently facilitate your lesson.',
+  },
+  {
+    q: 'How much time will I need to commit?',
+    a: 'Just one training session plus one classroom visit on lesson day — typically a few hours in total, making it easy to fit around your studies or work.',
+  },
+  {
+    q: 'Can I volunteer as a group with my friends?',
+    a: 'Yes! You can register individually or as a group. Groups are often assigned to the same or nearby schools where possible.',
+  },
+  {
+    q: 'Will I get a certificate?',
+    a: 'Every volunteer who completes their session receives an official certificate of participation from AIESEC in Sri Lanka.',
+  },
+  {
+    q: 'How will I know which school I am assigned to?',
+    a: 'Once registrations close, our team will match you to a school based on your location preference and availability, and share the details directly with you.',
+  },
+  {
+    q: 'Who can I contact if I have more questions?',
+    a: (
+      <>
+        <p>Reach out to our Human Resources team directly:</p>
+        <div className={s.faqContactList}>
+          <a href="mailto:chenuliranaweera@aiesec.net" className={s.faqContactItem}>📧 chenuliranaweera@aiesec.net</a>
+          <a href="tel:+94713688349" className={s.faqContactItem}>📞 +94 71 368 8349</a>
+        </div>
+      </>
+    ),
+  },
+];
+
 export default function Volunteer({ onBack }) {
   /* scroll reveal */
   useEffect(() => {
@@ -405,6 +456,20 @@ export default function Volunteer({ onBack }) {
           <p className={s.groupNote} data-reveal>
             Register <strong>individually or as a group</strong> — both are welcome!
           </p>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────── */}
+      <section className={s.faqSection}>
+        <span className={s.faqFloater1}><MiniShape kind="crane" color="#E5243B"/></span>
+        <span className={s.faqFloater2}><MiniShape kind="butterfly" color="#FCC30B"/></span>
+        <span className={s.faqFloater3}><MiniShape kind="fish" color="#26BDE2"/></span>
+        <div className={s.faqInner}>
+          <p className={s.eyebrow} data-reveal>GOT QUESTIONS?</p>
+          <h2 className={s.sectionTitle} data-reveal>Common Questions</h2>
+          <div className={s.faqList}>
+            {FAQS.map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
+          </div>
         </div>
       </section>
 

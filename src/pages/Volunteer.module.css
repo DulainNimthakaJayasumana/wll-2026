@@ -613,3 +613,77 @@
   transition: border-color .25s, color .25s, transform .3s cubic-bezier(.25,.1,.25,1);
 }
 .districtChip:hover { border-color: #FD6925; color: #FD6925; transform: translateY(-2px); }
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faqSection {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(60px, 10vh, 120px) 0;
+  background: #fbfbfd;
+  overflow: hidden;
+}
+.faqFloater1, .faqFloater2, .faqFloater3 {
+  position: absolute; z-index: -1; pointer-events: none;
+  opacity: .5;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+  animation: floatShape ease-in-out infinite;
+}
+.faqFloater1 { width: 46px; top: 8%;  left: 6%;  animation-duration: 8s; }
+.faqFloater2 { width: 36px; top: 70%; right: 8%; animation-duration: 7s; animation-delay: 1s; }
+.faqFloater3 { width: 40px; top: 20%; right: 14%; animation-duration: 9s; animation-delay: .5s; }
+
+.faqInner {
+  position: relative; z-index: 1;
+  max-width: 780px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+  text-align: center;
+}
+.faqInner .sectionTitle { max-width: 100%; }
+.faqList { text-align: left; }
+.faqList { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+.faqItem {
+  background: #fff;
+  border: 1.5px solid #f0f0f0;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.faqItem:hover, .faqOpen {
+  border-color: #E5243B;
+  box-shadow: 0 8px 28px rgba(229,36,59,0.08);
+}
+.faqQ {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 24px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-weight: 800; font-size: 1rem; color: #1d1d1f;
+  text-align: left;
+}
+.faqChevron {
+  flex-shrink: 0;
+  color: #E5243B;
+  transition: transform 0.3s;
+}
+.faqOpen .faqChevron { transform: rotate(180deg); }
+.faqA {
+  padding: 0 24px 20px;
+  font-size: .95rem; color: #6e6e73; line-height: 1.7;
+}
+.faqA p { margin: 0 0 12px; }
+.faqA p:last-child { margin-bottom: 0; }
+.faqContactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.faqContactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #E5243B;
+  font-weight: 700;
+  text-decoration: none;
+  width: fit-content;
+}
+.faqContactItem:hover { text-decoration: underline; }
