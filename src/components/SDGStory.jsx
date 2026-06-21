@@ -35,7 +35,7 @@ export default function SDGStory() {
     if (stored !== null) {
       sessionStorage.removeItem('sdg-start');
       const i = parseInt(stored, 10);
-      if (i > 0) setTimeout(() => jumpTo(i), 120);
+      if (i >= 0) setTimeout(() => jumpTo(i), 120);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
