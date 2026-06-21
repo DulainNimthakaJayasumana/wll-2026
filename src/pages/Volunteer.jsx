@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import s from './Volunteer.module.css';
 import Footer from '../components/Footer';
 
@@ -125,6 +125,41 @@ function HeroBird() {
   );
 }
 
+/* ── Animated count-up number — plays once when scrolled into view ── */
+function CountUp({ value, duration = 1400 }) {
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(null);
+  const match = String(value).match(/^([\d,]+)(.*)$/);
+  const target = match ? parseInt(match[1].replace(/,/g, ''), 10) : null;
+  const suffix = match ? match[2] : '';
+  const useCommas = match ? match[1].includes(',') : false;
+
+  useEffect(() => {
+    if (target === null) return;
+    const el = ref.current;
+    if (!el) return;
+    let raf;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        setDisplay(Math.round(eased * target));
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, [target, duration]);
+
+  if (target === null) return <span ref={ref}>{value}</span>;
+  const shown = display === null ? 0 : display;
+  return <span ref={ref}>{useCommas ? shown.toLocaleString() : shown}{suffix}</span>;
+}
+
 export default function Volunteer({ onBack }) {
   /* scroll reveal */
   useEffect(() => {
@@ -209,7 +244,7 @@ export default function Volunteer({ onBack }) {
             ].map((st, i) => (
               <div key={i} className={s.statCard} style={{'--c': st.color}}>
                 <span className={s.statFold}/>
-                <div className={s.statNum}>{st.num}</div>
+                <div className={s.statNum}><CountUp value={st.num}/></div>
                 <div className={s.statLabel}>{st.label}</div>
               </div>
             ))}
@@ -231,7 +266,7 @@ export default function Volunteer({ onBack }) {
                 { num:'30,000+', label:'Students Island Wide', color:'#4C9F38' },
               ].map((st, i) => (
                 <div key={i} className={s.scopeStatCard} style={{'--c': st.color}}>
-                  <div className={s.scopeNum}>{st.num}</div>
+                  <div className={s.scopeNum}><CountUp value={st.num}/></div>
                   <div className={s.scopeLabel}>{st.label}</div>
                 </div>
               ))}
