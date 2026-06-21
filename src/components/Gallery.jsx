@@ -1,23 +1,59 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import s from './Gallery.module.css';
 
-/* Curated collage — visually balanced, works on all screen sizes */
-const PHOTOS = [
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (8).webp', span:'tall' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (1).webp', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (2).webp', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (3).webp', span:'wide' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (4).webp', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (5).webp', span:'tall' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (6).webp', span:'normal' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11 (7).webp', span:'wide' },
-  { src:'WhatsApp Image 2026-06-15 at 20.32.11.webp',     span:'normal' },
-  { src:'teach-green-poster.webp',  span:'normal' },
-  { src:'full-classroom.webp',      span:'wide'   },
-  { src:'wll-tshirt.webp',          span:'normal' },
-  { src:'aerial-group.webp',        span:'wide'   },
-  { src:'blackboard-teach.webp',    span:'normal' },
+/* All photos — full image shown, no cropping spans needed */
+const ALL_PHOTOS = [
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (8).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (1).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (2).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (3).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (4).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (5).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (6).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (7).webp',
+  '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11.webp',
+  '/assets/photos/teach-green-poster.webp',
+  '/assets/photos/full-classroom.webp',
+  '/assets/photos/wll-tshirt.webp',
+  '/assets/photos/aerial-group.webp',
+  '/assets/photos/blackboard-teach.webp',
+  '/assets/vol/vol-05.webp',
+  '/assets/vol/vol-06.webp',
+  '/assets/vol/vol-07.webp',
+  '/assets/vol/vol-08.webp',
+  '/assets/vol/vol-09.webp',
+  '/assets/vol/vol-10.webp',
+  '/assets/vol/vol-11.webp',
+  '/assets/vol/vol-12.webp',
+  '/assets/vol/vol-13.webp',
 ];
+
+/* Split into 3 rows for the infinite marquee, alternating scroll direction */
+const ROWS = [
+  { photos: ALL_PHOTOS.filter((_, i) => i % 3 === 0), dir: 'left',  speed: 38 },
+  { photos: ALL_PHOTOS.filter((_, i) => i % 3 === 1), dir: 'right', speed: 44 },
+  { photos: ALL_PHOTOS.filter((_, i) => i % 3 === 2), dir: 'left',  speed: 50 },
+];
+
+function MarqueeRow({ photos, dir, speed, onPick }) {
+  // duplicate the row so the loop is seamless
+  const doubled = [...photos, ...photos];
+  return (
+    <div className={s.marqueeRow}>
+      <div
+        className={`${s.marqueeTrack} ${dir === 'right' ? s.marqueeReverse : ''}`}
+        style={{ '--duration': `${speed}s` }}
+      >
+        {doubled.map((src, i) => (
+          <div key={i} className={s.tile} onClick={() => onPick(src)}>
+            <img src={src} alt="" loading="lazy" draggable={false} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
@@ -31,17 +67,9 @@ export default function Gallery() {
         <p>Real moments from World's Largest Lesson sessions across Sri Lanka.</p>
       </div>
 
-      <div className={`reveal ${s.collage}`}>
-        {PHOTOS.map((p, i) => (
-          <div
-            key={i}
-            className={`${s.tile} ${s[p.span]}`}
-            style={{ '--i': i }}
-            onClick={() => setLightbox(p.src)}
-          >
-            <img src={`/assets/photos/${p.src}`} alt="" loading="lazy" />
-            <div className={s.overlay} />
-          </div>
+      <div className={s.marqueeWrap}>
+        {ROWS.map((row, i) => (
+          <MarqueeRow key={i} {...row} onPick={setLightbox} />
         ))}
       </div>
 
@@ -63,12 +91,28 @@ export default function Gallery() {
         </div>
       </div>
 
-      {lightbox && (
-        <div className={s.lightbox} onClick={() => setLightbox(null)}>
-          <button className={s.lbClose}>✕</button>
-          <img src={`/assets/photos/${lightbox}`} alt="" className={s.lbImg} onClick={e => e.stopPropagation()} />
-        </div>
-      )}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={s.lightbox}
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className={s.lbInner}
+              onClick={e => e.stopPropagation()}
+            >
+              <img src={lightbox} alt="" className={s.lbImg} />
+            </motion.div>
+            <button className={s.lbClose} onClick={() => setLightbox(null)}>✕</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

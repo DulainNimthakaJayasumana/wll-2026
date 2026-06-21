@@ -1,7 +1,7 @@
 /* ── Section ─────────────────────────────────────────────── */
 .section {
   background: var(--cream);
-  padding: clamp(80px,12vh,140px) 0 80px;
+  padding: clamp(40px,6vh,70px) 0 80px;
 }
 
 /* ── Header ──────────────────────────────────────────────── */
