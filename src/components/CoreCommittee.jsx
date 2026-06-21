@@ -44,26 +44,26 @@ const TEAM = [
   {
     dept: 'Leadership', color: '#19486A',
     members: [
-      { name:'Pasindu',   role:'CCP',        linkedin:'#', image:'Pasindu.webp',   initials:'P',  color:'#F89B29' },
-      { name:'Dineth',    role:'FIN · CCVP', linkedin:'#', image:'Dineth Samarawickrama.webp',    initials:'D',  color:'#4C9F38' },
+      { name:'Pasindu',   role:'CCP',        linkedin:'https://www.linkedin.com/in/pasindu-serasinghe-0090a2216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', image:'Pasindu.webp',   initials:'P',  color:'#F89B29' },
+      { name:'Dineth',    role:'FIN · CCVP', linkedin:'https://www.linkedin.com/in/dineth-samarawickrama-356285290', image:'Dineth Samarawickrama.webp',    initials:'D',  color:'#4C9F38' },
     ],
   },
   /* ── NM – Schools ───────────────────────────────────────── */
   {
     dept: 'NM – Schools', color: '#3F7E44',
     members: [
-      { name:'Ishini',    role:'CCVP',   linkedin:'#', image:'Ishini.webp',    initials:'I',  color:'#3F7E44' },
-      { name:'Dewni',     role:'Member', linkedin:'#', image:'Dewni Premadasa - Dewni Premadasa.webp',     initials:'D',  color:'#56C02B' },
-      { name:'Chanuli',   role:'Member', linkedin:'#', image:'Chanuli - Chanuli Janusha.webp',   initials:'Ch', color:'#4C9F38' },
-      { name:'Merushika', role:'Member', linkedin:'#', image:'Merushika Alahakoon - Merushika Alahakoon (1).webp', initials:'M',  color:'#56C02B' },
-      { name:'Imanga',    role:'Member', linkedin:'#', image:'Imanga Nethmini - Imanga Nethmini.webp',    initials:'Im', color:'#3F7E44' },
+      { name:'Ishini',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/ishini-higgoda/', image:'Ishini.webp',    initials:'I',  color:'#3F7E44' },
+      { name:'Dewni',     role:'Member', linkedin:'https://www.linkedin.com/in/dewni-premadasa-16a391397', image:'Dewni Premadasa - Dewni Premadasa.webp',     initials:'D',  color:'#56C02B' },
+      { name:'Chanuli',   role:'Member', linkedin:'https://www.linkedin.com/in/chanuli-janusha-randunu-pathirana-0aaa08353', image:'Chanuli - Chanuli Janusha.webp',   initials:'Ch', color:'#4C9F38' },
+      { name:'Merushika', role:'Member', linkedin:'https://www.linkedin.com/in/merushika-alahakoon-6a2085395/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BMd0fGyMMQCaByRBsHjXVoA%3D%3D', image:'Merushika Alahakoon - Merushika Alahakoon (1).webp', initials:'M',  color:'#56C02B' },
+      { name:'Imanga',    role:'Member', linkedin:'https://www.linkedin.com/in/imanga-nethmini-734892333', image:'Imanga Nethmini - Imanga Nethmini.webp',    initials:'Im', color:'#3F7E44' },
     ],
   },
   /* ── NM – SE ────────────────────────────────────────────── */
   {
     dept: 'NM – SE', color: '#E5243B',
     members: [
-      { name:'Tanuri',    role:'CCVP',   linkedin:'#', image:'Tanuri Dissanayaka.webp',    initials:'T',  color:'#E5243B' },
+      { name:'Tanuri',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/tanuri-dissanayaka-356285290', image:'Tanuri Dissanayaka.webp',    initials:'T',  color:'#E5243B' },
       { name:'Minindi',   role:'Member', linkedin:'https://www.linkedin.com/in/minindi-fonseka-5b080123b', image:'Minindi_Fonseka - Minindi Fonseka.webp',   initials:'Mi', color:'#C5192D' },
       { name:'Sandupama', role:'Member', linkedin:'https://www.linkedin.com/in/sandupama-bandara-72483a300', image:'Sandupama Bandara - Sandupama Bandara.webp', initials:'Sa', color:'#E5243B' },
     ],
@@ -94,17 +94,17 @@ const TEAM = [
   {
     dept: 'PR', color: '#FD6925',
     members: [
-      { name:'Flemin',      role:'CCVP',   linkedin:'#', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
-      { name:'Christle',    role:'Member', linkedin:'#', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
+      { name:'Flemin',      role:'CCVP',   linkedin:'https://www.linkedin.com/in/flemin-fernando-356285290', image:'Flemin_Fernando.webp',      initials:'F',  color:'#FD6925' },
+      { name:'Christle',    role:'Member', linkedin:'https://www.linkedin.com/in/christle-salgado-356285290', image:'6B1CD28D-5572-4691-BBAD-915AB1ACE2AD - Christle Salgado.webp',    initials:'Ch', color:'#FD9D24' },
       { name:'Sachinthani', role:'Member', linkedin:'https://www.linkedin.com/in/sachinthani-ketakumbura-', image:'Sachinthani Ketakumbura (2) - Ketakumbura Sachinthani.webp', initials:'Sa', color:'#FD6925' },
-      { name:'Kalindu',     role:'Member', linkedin:'#', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
+      { name:'Kalindu',     role:'Member', linkedin:'https://www.linkedin.com/in/kalindu-de-silva-372808348', image:'Kalindu_DeSilva - Kalindu De Silva.webp',     initials:'K',  color:'#FD9D24' },
     ],
   },
   /* ── RnD ────────────────────────────────────────────────── */
   {
     dept: 'RnD', color: '#DD1367',
     members: [
-      { name:'Jayathri', role:'CCVP',   linkedin:'#', image:'Jayathri Wijewardana.webp', initials:'Ja', color:'#DD1367' },
+      { name:'Jayathri', role:'CCVP',   linkedin:'https://www.linkedin.com/in/jayathri-wijewardana', image:'Jayathri Wijewardana.webp', initials:'Ja', color:'#DD1367' },
       { name:'Isthikar', role:'Member', linkedin:'https://www.linkedin.com/in/fathimaisthikar', image:'Fathima_Isthikar - Isthikar Fathima.webp', initials:'It', color:'#A21942' },
       { name:'Matheen',  role:'Member', linkedin:'https://www.linkedin.com/in/matheen-amm', image:'Kandy_Matheen_Mohammed - Matheen Mohammed.webp',  initials:'Ma', color:'#DD1367' },
     ],
@@ -113,17 +113,17 @@ const TEAM = [
   {
     dept: 'HR', color: '#26BDE2',
     members: [
-      { name:'Lahirunie', role:'CCVP',   linkedin:'#', image:'Lahirunie Dulsara.webp', initials:'L',  color:'#26BDE2' },
-      { name:'Chenuli',   role:'Member', linkedin:'#', image:'Chenuli Ranaweera - Chenuli Ranaweera.webp',   initials:'Ch', color:'#0A97D9' },
-      { name:'Sandaru',   role:'Member', linkedin:'#', image:'SANDARU PIC - Sandaru Yahampath.webp',   initials:'Sa', color:'#26BDE2' },
+      { name:'Lahirunie', role:'CCVP',   linkedin:'https://www.linkedin.com/in/lahirunie-dulsara-88a6592a9', image:'Lahirunie Dulsara.webp', initials:'L',  color:'#26BDE2' },
+      { name:'Chenuli',   role:'Member', linkedin:'https://www.linkedin.com/in/chenuli-ranaweera-356285290', image:'Chenuli Ranaweera - Chenuli Ranaweera.webp',   initials:'Ch', color:'#0A97D9' },
+      { name:'Sandaru',   role:'Member', linkedin:'https://www.linkedin.com/in/sandaru-yahampath-202ab4296', image:'SANDARU PIC - Sandaru Yahampath.webp',   initials:'Sa', color:'#26BDE2' },
     ],
   },
   /* ── Partnership Development ────────────────────────────── */
   {
     dept: 'Partnership Dev', color: '#A21942',
     members: [
-      { name:'Varun',    role:'CCVP',    linkedin:'#', image:'Varun_Bhargav.webp',    initials:'V',  color:'#A21942' },
-      { name:'Rashmika', role:'Member',  linkedin:'#', image:'Rashmika Guruge - Guruge Rashmika.webp', initials:'R',  color:'#DD1367' },
+      { name:'Varun',    role:'CCVP',    linkedin:'https://www.linkedin.com/in/varun-poobalaraja', image:'Varun_Bhargav.webp',    initials:'V',  color:'#A21942' },
+      { name:'Rashmika', role:'Member',  linkedin:'https://www.linkedin.com/in/rashmika-g-291ab7275', image:'Rashmika Guruge - Guruge Rashmika.webp', initials:'R',  color:'#DD1367' },
       { name:'Kavishva', role:'Member',  linkedin:'https://www.linkedin.com/in/kavishva-nandasena-7469943a9', image:'Kavishva - Kavishva Nandasena.webp', initials:'Ka', color:'#A21942' },
       { name:'Thisuli',  role:'Member',  linkedin:'https://www.linkedin.com/in/thisuli-amanethmi-029761246', image:'Thisuli Amanethmi.webp',  initials:'Th', color:'#C5192D' },
       { name:'Binithi',  role:'Member',  linkedin:'https://www.linkedin.com/in/binithi-ranaweera-3b1898355/', image:'Binithi.webp',  initials:'Bi', color:'#DD1367' },
@@ -242,7 +242,7 @@ export default function CoreCommittee() {
             <svg viewBox="0 0 24 24" fill="#0A66C2" width="18" height="18">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
-            <span>LinkedIn profiles coming soon — click any card to connect with the team</span>
+            <span>Click any card to connect with our team on LinkedIn</span>
           </div>
         </div>
 

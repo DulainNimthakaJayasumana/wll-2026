@@ -248,7 +248,7 @@ export default function Run({ onBack }) {
           </div>
 
           <div className={s.heroCtas}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register for the Run</button>
+            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
           </div>
         </div>
 
@@ -418,7 +418,17 @@ export default function Run({ onBack }) {
               },
               {
                 q: 'How can my company partner or sponsor the event?',
-                a: `We'd love to collaborate! Please reach out to us via:\n\n📧 pasindu.serasinghe5@aiesec.net\n📧 poohbalarajavarun@aiesec.net\n\n📞 +94 77 786 7058\n\nWhether you're here to promote your event, join as a corporate team, or help out with resources and logistics.`,
+                a: (
+                  <>
+                    <p>We'd love to collaborate! Please reach out to us via:</p>
+                    <div className={s.faqContactList}>
+                      <a href="mailto:pasindu.serasinghe5@aiesec.net" className={s.faqContactItem}>📧 pasindu.serasinghe5@aiesec.net</a>
+                      <a href="mailto:poohbalarajavarun@aiesec.net" className={s.faqContactItem}>📧 poohbalarajavarun@aiesec.net</a>
+                      <a href="tel:+94777867058" className={s.faqContactItem}>📞 +94 77 786 7058</a>
+                    </div>
+                    <p>Whether you're here to promote your event, join as a corporate team, or help out with resources and logistics.</p>
+                  </>
+                ),
               },
             ].map((item, i) => <FAQItem key={i} q={item.q} a={item.a} />)}
           </div>
@@ -454,7 +464,7 @@ export default function Run({ onBack }) {
           <div className={s.sectionHead} style={{ marginTop: '56px' }}>
             <p>For run day queries, reach out to our organising team directly:</p>
           </div>
-          <div className={s.contactGridTwo}>
+          <div className={s.contactGridPeople}>
             {[
               { name: 'Pasindu Serasinghe', role: 'Core Committee President', phone: '+94766365700', phoneDisplay: '+94 76 636 5700', email: 'pasindu.serasinghe5@aiesec.net' },
               { name: 'Tanuri Dissanayaka', role: 'Core Committee Vice President Network Management', phone: '+94776202028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net' },
@@ -486,7 +496,7 @@ export default function Run({ onBack }) {
           <h2>Ready to Run Miles for Lessons?</h2>
           <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
           <div className={s.ctaBtns}>
-            <button onClick={goToRegister} className={s.ctaPrimary}>Register Now</button>
+            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>
