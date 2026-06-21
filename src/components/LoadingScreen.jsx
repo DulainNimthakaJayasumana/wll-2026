@@ -25,9 +25,12 @@ export default function LoadingScreen({ onDone }) {
 
   useEffect(() => {
     let loaded = 0;
+    let done = false;
     const total = PRELOAD_LIST.length;
 
     const finish = () => {
+      if (done) return;
+      done = true;
       setProgress(100);
       setTimeout(() => {
         setLeaving(true);
@@ -47,6 +50,11 @@ export default function LoadingScreen({ onDone }) {
       img.onerror = onOne; // count errors too so we don't stall
       img.src     = src;
     });
+
+    // Safety net for slow/flaky connections — never make someone wait
+    // more than 6s on the loading screen, even if some assets are still in flight
+    const timeout = setTimeout(finish, 6000);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

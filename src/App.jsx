@@ -84,21 +84,29 @@ export default function App() {
     setTimeout(tryScroll, 200);
   }, [page]);
 
-  /* Background prefetch: SDG GIFs + route chunks after main content loads */
+  /* Background prefetch: SDG animations + route chunks after main content loads.
+     Skipped on slow/metered connections so we don't compete for bandwidth with
+     content the user actually needs right now. */
   useEffect(() => {
     if (!loaded) return;
-    const PAD = n => String(n).padStart(2, '0');
-    // Prefetch SDG GIFs silently in the background
-    Array.from({ length: 17 }, (_, i) => {
-      const img = new Image();
-      img.src = `/assets/sdg-icons/${i + 1}_SDG_MakeEveryDayCount_Gifs_GDU.gif`;
-    });
-    // Prefetch route chunks so navigation is instant
+
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const isSlow = conn && (conn.saveData || ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+
+    // Route chunks are tiny (a few KB of JS) — always worth prefetching for instant nav
     import('./pages/SDGs');
     import('./pages/Run');
     import('./pages/Volunteer');
     import('./components/Gallery');
     import('./components/CoreCommittee');
+
+    if (isSlow) return; // don't also pull ~9MB of SDG animations on a slow/metered link
+
+    // Prefetch SDG animations silently in the background (only on decent connections)
+    Array.from({ length: 17 }, (_, i) => {
+      const img = new Image();
+      img.src = `/assets/sdg-icons/${i + 1}_SDG_anim.webp`;
+    });
   }, [loaded]);
 
   if (page === 'run')       return <Suspense fallback={null}><Run onBack={goHome} /></Suspense>;
