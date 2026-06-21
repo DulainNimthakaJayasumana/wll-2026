@@ -161,7 +161,7 @@ export default function SDGStory() {
                 <img
                   key={`${idx}-${useGif}`}
                   src={useGif
-                    ? `/assets/sdg-icons/${g.n}_SDG_MakeEveryDayCount_Gifs_GDU.gif`
+                    ? `/assets/sdg-icons/${g.n}_SDG_anim.webp`
                     : `/assets/sdg-icons/sdg-${pad(g.n)}.webp`}
                   alt={`SDG ${g.n}: ${g.t}`}
                   className={s.icon}

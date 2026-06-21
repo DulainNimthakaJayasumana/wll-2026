@@ -31,7 +31,15 @@ const EXPLORE = [
 
 export default function Footer() {
   return (
-    <footer className={s.footer}>
+    <>
+      <div className={s.creditCard}>
+        <img src={dulainPhoto} alt="Dulain Jayasumana" className={s.creditPhoto} />
+        <div className={s.creditText}>
+          <span className={s.creditName}>Developed by Dulain Jayasumana</span>
+          <span className={s.creditSub}>Marketing Team · World's Largest Lesson 2026</span>
+        </div>
+      </div>
+      <footer className={s.footer}>
       <div className="shell">
         <div className={s.top}>
           <div className={s.brand}>
@@ -69,14 +77,8 @@ export default function Footer() {
           <span>© 2026 World's Largest Lesson · Sri Lanka · AIESEC</span>
           <span>For the Global Goals · #TeachSDGs · #WLL2026</span>
         </div>
-        <div className={s.creditCard}>
-          <img src={dulainPhoto} alt="Dulain Jayasumana" className={s.creditPhoto} />
-          <div className={s.creditText}>
-            <span className={s.creditName}>Developed by Dulain Jayasumana</span>
-            <span className={s.creditSub}>Marketing Team · World's Largest Lesson 2026</span>
-          </div>
-        </div>
       </div>
-    </footer>
+      </footer>
+    </>
   );
 }
