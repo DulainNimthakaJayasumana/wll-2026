@@ -11,3 +11,4 @@
 .sdgBar { display:flex; height:6px; border-radius:6px; overflow:hidden; margin:48px 0 28px; }
 .sdgBar span { flex:1; }
 .bottom { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; color:var(--ink-muted); font-size:.87rem; font-weight:700; border-top:1px solid var(--line); padding-top:24px; }
+.credits { text-align:center; margin-top:18px; color:var(--ink-muted); font-size:.78rem; font-weight:600; opacity:.7; }
