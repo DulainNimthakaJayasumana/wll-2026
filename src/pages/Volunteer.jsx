@@ -180,36 +180,36 @@ function FAQItem({ q, a }) {
 
 const FAQS = [
   {
-    q: 'Do I need prior teaching experience to volunteer?',
-    a: 'Not at all! No teaching experience is required. We provide a full training workshop and ready-made session materials so you can confidently facilitate your lesson.',
+    q: '🙌 No experience?',
+    a: ' No problem! ✨ We\'ll provide all the training and resources you need before the event.',
   },
   {
-    q: 'How much time will I need to commit?',
-    a: 'Just one training session plus one classroom visit on lesson day — typically a few hours in total, making it easy to fit around your studies or work.',
+    q: '❓ What\'s happening?',
+    a: 'You\'ll join a team of volunteers to deliver an interactive lesson on the Sustainable Development Goals (SDGs) to school students. This is a nationwide initiative covering 45+ schools across all districts of Sri Lanka — all on the same day, at the same time!',
   },
   {
-    q: 'Can I volunteer as a group with my friends?',
-    a: 'Yes! You can register individually or as a group. Groups are often assigned to the same or nearby schools where possible.',
+    q: '📅 When and where will it happen?',
+    a: '30th July 2026. Your assigned school will be selected based on your preferred location and hometown.',
   },
   {
-    q: 'Will I get a certificate?',
-    a: 'Every volunteer who completes their session receives an official certificate of participation from AIESEC in Sri Lanka.',
+    q: '🎓 Will I receive training?',
+    a: 'Absolutely! You\'ll receive both physical and online training sessions, along with resource materials and videos that you can access anytime.',
   },
   {
-    q: 'How will I know which school I am assigned to?',
-    a: 'Once registrations close, our team will match you to a school based on your location preference and availability, and share the details directly with you.',
+    q: '🏫 How will I be assigned to a school?',
+    a: 'Schools will be allocated based on your location preferences and volunteer requirements in each area.',
   },
   {
-    q: 'Who can I contact if I have more questions?',
-    a: (
-      <>
-        <p>Reach out to our Human Resources team directly:</p>
-        <div className={s.faqContactList}>
-          <a href="mailto:chenuliranaweera@aiesec.net" className={s.faqContactItem}>📧 chenuliranaweera@aiesec.net</a>
-          <a href="tel:+94713688349" className={s.faqContactItem}>📞 +94 71 368 8349</a>
-        </div>
-      </>
-    ),
+    q: '👥 Can I volunteer as a group?',
+    a: 'Yes! You can register individually or as a group with your friends, club members, or colleagues.',
+  },
+  {
+    q: '🎁 Will I receive a volunteer pack?',
+    a: 'Yes! All volunteers will receive a free merchandise pack, and refreshments will be provided during the event.',
+  },
+  {
+    q: '📜 Will I get a certificate?',
+    a: 'Of course! Every volunteer will receive an official certificate of participation.',
   },
 ];
 
