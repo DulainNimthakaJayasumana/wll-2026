@@ -594,6 +594,24 @@
   padding: 0 24px 20px;
   font-size: .95rem; color: #64748b; line-height: 1.7;
 }
+.faqA p { margin: 0 0 12px; }
+.faqA p:last-child { margin-bottom: 0; }
+.faqContactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.faqContactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #19486A;
+  font-weight: 700;
+  text-decoration: none;
+  width: fit-content;
+}
+.faqContactItem:hover { text-decoration: underline; }
 
 /* ── Contact ─────────────────────────────────────────────── */
 .contactSection {
@@ -617,6 +635,18 @@
 }
 @media (max-width: 700px) {
   .contactGridTwo { grid-template-columns: 1fr; }
+}
+.contactGridPeople {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.contactGridPeople > * {
+  flex: 0 1 360px;
+}
+@media (max-width: 700px) {
+  .contactGridPeople { flex-direction: column; align-items: stretch; }
 }
 .contactCard {
   display: flex; flex-direction: column; align-items: center; gap: 10px;

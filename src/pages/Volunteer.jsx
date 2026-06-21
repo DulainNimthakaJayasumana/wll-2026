@@ -180,6 +180,7 @@ export default function Volunteer({ onBack }) {
               <span style={{'--pc':'#4C9F38'}}>🏫 Island-wide</span>
               <span style={{'--pc':'#FD6925'}}>👤 Ages 18–30</span>
               <span style={{'--pc':'#26BDE2'}}>🆓 Free to join</span>
+              <span style={{'--pc':'#DD1367'}}>👕 Free T-shirt</span>
             </div>
 
             <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.heroBtn}>
