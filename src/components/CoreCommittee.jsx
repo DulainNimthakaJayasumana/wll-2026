@@ -86,7 +86,7 @@ const TEAM = [
       { name:'Binali',    role:'CCVP',   linkedin:'https://www.linkedin.com/in/binali-gajamange-572949231', image:'Binali_Gajamange_SLIIT.webp',    initials:'Bi', color:'#FCC30B' },
       { name:'Ashfaaq',   role:'Member', linkedin:'https://www.linkedin.com/in/ashfaaq-ashrak', image:'Ashfaaq Ashrak - Ashfaaq Ashrak.webp',   initials:'A',  color:'#DDA63A' },
       { name:'Chrishane', role:'Member', linkedin:'https://www.linkedin.com/in/chrishane-dimuthu/', image:'Chrishane_Dimuthu - Dimuthu Chrishane.webp', initials:'C',  color:'#FCC30B' },
-      { name:'Dulain',    role:'Member', linkedin:'https://www.linkedin.com/in/dulain-jayasumana', image:'USJ_Dulain _Jayasumana - Dulain Jayasumana.webp',    initials:'Du', color:'#BF8B2E', credit:true },
+      { name:'Dulain',    role:'Member', linkedin:'https://www.linkedin.com/in/dulain-jayasumana', image:'USJ_Dulain _Jayasumana - Dulain Jayasumana.webp',    initials:'Du', color:'#BF8B2E' },
       { name:'Isira',     role:'Member', linkedin:'https://www.linkedin.com/in/isira-fernando-353325283', image:'Isira fernando - Fernando Isira.webp',     initials:'Is', color:'#DDA63A' },
     ],
   },
