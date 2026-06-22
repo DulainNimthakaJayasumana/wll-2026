@@ -160,7 +160,7 @@ export default function ARGallery({ photos, onClose }) {
                 className={s.cell}
                 style={{
                   transform:
-                    `rotateY(${positions[i].lon}deg) rotateX(${-positions[i].lat}deg) translateZ(-${RADIUS}px) rotateY(180deg)`,
+                    `rotateY(${positions[i].lon}deg) rotateX(${-positions[i].lat}deg) translateZ(-${RADIUS}px)`,
                 }}
               >
                 <img src={p.thumb} alt="" draggable={false} />
