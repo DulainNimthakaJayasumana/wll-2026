@@ -1,22 +1,26 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import s from './ARGallery.module.css';
 
-/* Even point distribution on a sphere (Fibonacci) → per-tile lon/lat.
-   Latitude is gently compressed so photos sit roughly around eye level
-   instead of directly overhead / underfoot. */
-function spherePositions(n) {
-  const golden = Math.PI * (3 - Math.sqrt(5));
+/* Lay photos out as a curved wall across a 180° arc in front of the viewer.
+   A tidy grid: longitude spans −90°…+90°, latitude spans a gentle band. */
+function arcPositions(n) {
+  const LON_SPAN = 180;   // total horizontal sweep (degrees)
+  const LAT_SPAN = 70;    // total vertical sweep (degrees)
+  const cols = Math.ceil(Math.sqrt(n * 1.8));
+  const rows = Math.ceil(n / cols);
   const pts = [];
   for (let i = 0; i < n; i++) {
-    const y = (1 - (i / (n - 1)) * 2) * 0.7;
-    const r = Math.sqrt(Math.max(0, 1 - y * y));
-    const theta = golden * i;
-    const x = Math.cos(theta) * r;
-    const z = Math.sin(theta) * r;
-    pts.push({
-      lon: Math.atan2(x, z) * (180 / Math.PI),
-      lat: Math.asin(Math.max(-1, Math.min(1, y))) * (180 / Math.PI),
-    });
+    const r = Math.floor(i / cols);
+    const c = i % cols;
+    const colsInRow = Math.min(cols, n - r * cols);
+    // center each row's columns
+    const lon = colsInRow === 1
+      ? 0
+      : -LON_SPAN / 2 + (c / (cols - 1)) * LON_SPAN;
+    const lat = rows === 1
+      ? 0
+      : LAT_SPAN / 2 - (r / (rows - 1)) * LAT_SPAN;
+    pts.push({ lon, lat });
   }
   return pts;
 }
@@ -25,19 +29,24 @@ const isIOS = () =>
   typeof DeviceOrientationEvent !== 'undefined' &&
   typeof DeviceOrientationEvent.requestPermission === 'function';
 
+/* How much the view turns per degree of physical phone rotation.
+   <1 makes it calmer (the full 180° of photos needs less body turning). */
+const SENSITIVITY = 0.6;
+
 export default function ARGallery({ photos, onClose }) {
   const videoRef  = useRef(null);
   const worldRef  = useRef(null);
   const streamRef = useRef(null);
-  const orient    = useRef({ alpha: 0, beta: 90, gamma: 0 });
+  const heading   = useRef({ value: 0, prev: null }); // unwrapped compass heading
+  const orient    = useRef({ beta: 90 });
   const smooth    = useRef({ x: 0, y: 0 });
   const rafRef    = useRef(0);
 
   const [phase, setPhase] = useState('intro'); // intro | starting | live | error
   const [errMsg, setErrMsg] = useState('');
 
-  const positions = useMemo(() => spherePositions(photos.length), [photos.length]);
-  const RADIUS = 520;
+  const positions = useMemo(() => arcPositions(photos.length), [photos.length]);
+  const RADIUS = 760;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -49,14 +58,12 @@ export default function ARGallery({ photos, onClose }) {
   useEffect(() => {
     if (phase !== 'live') return;
     const tick = () => {
-      const o = orient.current;
-      const screenAngle = (window.screen?.orientation?.angle ?? window.orientation ?? 0);
-      // target rotations (degrees)
-      const ty = -o.alpha + screenAngle;   // turn around (compass)
-      const tx = o.beta - 90;              // look up / down
-      // light smoothing for stability
-      smooth.current.x += (tx - smooth.current.x) * 0.15;
-      smooth.current.y += (ty - smooth.current.y) * 0.15;
+      // target rotations (degrees), scaled down so it feels calm
+      const ty = -heading.current.value * SENSITIVITY;          // turn left/right
+      const tx = Math.max(-50, Math.min(50, (orient.current.beta - 90) * SENSITIVITY)); // look up/down
+      // smoothing for stability (lower = smoother / less twitchy)
+      smooth.current.x += (tx - smooth.current.x) * 0.1;
+      smooth.current.y += (ty - smooth.current.y) * 0.1;
       if (worldRef.current) {
         worldRef.current.style.transform =
           `rotateX(${smooth.current.x}deg) rotateY(${smooth.current.y}deg)`;
@@ -67,12 +74,21 @@ export default function ARGallery({ photos, onClose }) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [phase]);
 
-  /* Device orientation listener */
+  /* Device orientation listener — unwrap the compass heading so it never
+     jumps when crossing the 0°/360° boundary (that was the fast spin). */
   useEffect(() => {
     if (phase !== 'live') return;
     const onOrient = (e) => {
       if (e.alpha == null) return;
-      orient.current = { alpha: e.alpha, beta: e.beta ?? 90, gamma: e.gamma ?? 0 };
+      const a = e.alpha;
+      if (heading.current.prev != null) {
+        let d = a - heading.current.prev;
+        if (d > 180) d -= 360;
+        if (d < -180) d += 360;
+        heading.current.value += d;
+      }
+      heading.current.prev = a;
+      orient.current.beta = e.beta ?? 90;
     };
     window.addEventListener('deviceorientation', onOrient, true);
     return () => window.removeEventListener('deviceorientation', onOrient, true);

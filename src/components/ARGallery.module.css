@@ -22,7 +22,7 @@
 .stage {
   position: absolute; inset: 0;
   display: grid; place-items: center;
-  perspective: 700px;
+  perspective: 1100px;
   pointer-events: none;
 }
 .world {
