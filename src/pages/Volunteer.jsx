@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import s from './Volunteer.module.css';
 import Footer from '../components/Footer';
+import lahiruniePhoto from '../assets/team/Lahirunie Dulsara.webp';
+import chenuliPhoto from '../assets/team/Chenuli Ranaweera - Chenuli Ranaweera.webp';
+import sandaruPhoto from '../assets/team/SANDARU PIC - Sandaru Yahampath.webp';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfM5ZWsqod3nyWFJNacBGrPFUH_O-0iK4pwbMUnjgNvjlq5SA/viewform';
 
@@ -39,9 +42,9 @@ const POLICIES = [
 const VOL_PHOTOS = Array.from({ length: 13 }, (_, i) => `/assets/vol/vol-${String(i + 1).padStart(2, '0')}.webp`);
 
 const CONTACTS = [
-  { name:'Lahirunie Dulsara', role:'CCVP Human Resources · WLL 2026', phone:'+94 76 698 6042', email:'pasindu.serasinghe5@aiesec.net', initials:'LD', color:'#E5243B' },
-  { name:'Chenuli Ranaweera', role:'CC Member Human Resources · WLL 2026', phone:'+94 71 368 8349', email:'chenuliranaweera@aiesec.net', initials:'CR', color:'#FD6925' },
-  { name:'Sandaru Yahampath', role:'CC Member Human Resources · WLL 2026', phone:'+94 76 199 2137', email:'sandaruyahampath@aiesec.net', initials:'SY', color:'#4C9F38' },
+  { name:'Lahirunie Dulsara', role:'CC Vice President · Human Resources', phone:'+94 76 698 6042', email:'lahirunie.dulsara@aiesec.net', initials:'LD', color:'#E5243B', photo: lahiruniePhoto, pos:'50% 20%', zoom:1.4 },
+  { name:'Chenuli Ranaweera', role:'CC Member · Human Resources', phone:'+94 71 368 8349', email:'chenuliranaweera@aiesec.net', initials:'CR', color:'#FD6925', photo: chenuliPhoto },
+  { name:'Sandaru Yahampath', role:'CC Member · Human Resources', phone:'+94 76 199 2137', email:'sandaruyahampath@aiesec.net', initials:'SY', color:'#4C9F38', photo: sandaruPhoto },
 ];
 
 /* ── Origami SVG pieces ─────────────────────────────────── */
@@ -499,7 +502,18 @@ export default function Volunteer({ onBack }) {
               <div key={i} className={s.contactCard} data-reveal style={{'--c': c.color, '--delay': `${i * .1}s`}}>
                 <span className={s.contactFold}/>
                 <div className={s.contactTop}>
-                  <div className={s.avatar}>{c.initials}</div>
+                  <div className={s.avatar}>
+                    {c.photo ? (
+                      <img
+                        src={c.photo}
+                        alt={c.name}
+                        style={{
+                          ...(c.pos ? { objectPosition: c.pos } : {}),
+                          ...(c.zoom ? { transform: `scale(${c.zoom})` } : {}),
+                        }}
+                      />
+                    ) : c.initials}
+                  </div>
                   <div>
                     <div className={s.contactName}>{c.name}</div>
                     <div className={s.contactRole}>{c.role}</div>

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { goHome, goToRegister } from '../App';
 import s from './Run.module.css';
+import pasinduPhoto from '../assets/team/Pasindu.webp';
+import tanuriPhoto from '../assets/team/Tanuri Dissanayaka.webp';
 
 /* ── Countdown to July 4 2026 09:00 ─────────────────────── */
 function useRunCountdown() {
@@ -470,11 +472,22 @@ export default function Run({ onBack }) {
           </div>
           <div className={s.contactGridPeople}>
             {[
-              { name: 'Pasindu Serasinghe', role: 'Core Committee President', phone: '+94766365700', phoneDisplay: '+94 76 636 5700', email: 'pasindu.serasinghe5@aiesec.net' },
-              { name: 'Tanuri Dissanayaka', role: 'Core Committee Vice President Network Management', phone: '+94776202028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net' },
+              { name: 'Pasindu Serasinghe', role: 'Core Committee President', phone: '+94766365700', phoneDisplay: '+94 76 636 5700', email: 'pasindu.serasinghe5@aiesec.net', photo: pasinduPhoto, pos:'50% 35%', zoom:1.35 },
+              { name: 'Tanuri Dissanayaka', role: 'Core Committee Vice President Network Management', phone: '+94776202028', phoneDisplay: '+94 77 620 2028', email: 'tanuri.dissanayaka@aiesec.net', photo: tanuriPhoto },
             ].map(p => (
               <div key={p.name} className={s.personContactCard}>
-                <div className={s.personAvatar}>{p.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>
+                <div className={s.personAvatar}>
+                  {p.photo ? (
+                    <img
+                      src={p.photo}
+                      alt={p.name}
+                      style={{
+                        ...(p.pos ? { objectPosition: p.pos } : {}),
+                        ...(p.zoom ? { transform: `scale(${p.zoom})` } : {}),
+                      }}
+                    />
+                  ) : p.name.split(' ').map(w => w[0]).join('').slice(0,2)}
+                </div>
                 <div className={s.personName}>{p.name}</div>
                 <div className={s.personRole}>{p.role}</div>
                 <div className={s.personLinks}>
