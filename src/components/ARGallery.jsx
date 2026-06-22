@@ -1,13 +1,16 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
+import WheelSVG from './WheelSVG';
 import s from './ARGallery.module.css';
 
-/* Even point distribution over a full sphere (Fibonacci) → per-tile lon/lat,
-   so photos surround the viewer in every direction, including overhead. */
+/* Even point distribution around the viewer (Fibonacci), but the latitude is
+   compressed into a band so nothing sits at the exact poles — those caps are
+   reserved for the SDG wheel, top and bottom. */
 function spherePositions(n) {
   const golden = Math.PI * (3 - Math.sqrt(5));
+  const BAND = 0.82; // keep photos off the poles
   const pts = [];
   for (let i = 0; i < n; i++) {
-    const y = 1 - (i / (n - 1)) * 2;           // 1 → -1 (top to bottom)
+    const y = (1 - (i / (n - 1)) * 2) * BAND;  // top→bottom, poles excluded
     const r = Math.sqrt(Math.max(0, 1 - y * y));
     const theta = golden * i;
     const x = Math.cos(theta) * r;
@@ -41,7 +44,7 @@ export default function ARGallery({ photos, onClose }) {
   const [errMsg, setErrMsg] = useState('');
 
   const positions = useMemo(() => spherePositions(photos.length), [photos.length]);
-  const RADIUS = 720;
+  const RADIUS = 600;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -161,6 +164,20 @@ export default function ARGallery({ photos, onClose }) {
                 <img src={p.thumb} alt="" draggable={false} />
               </div>
             ))}
+
+            {/* SDG wheel caps — top & bottom poles */}
+            <div
+              className={s.wheelCap}
+              style={{ transform: `rotateX(-90deg) translateZ(-${RADIUS}px)` }}
+            >
+              <WheelSVG size={300} rotation={0} activeIdx={-1} />
+            </div>
+            <div
+              className={s.wheelCap}
+              style={{ transform: `rotateX(90deg) translateZ(-${RADIUS}px)` }}
+            >
+              <WheelSVG size={300} rotation={0} activeIdx={-1} />
+            </div>
           </div>
         </div>
       )}
