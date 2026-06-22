@@ -1,0 +1,82 @@
+.overlay {
+  position: fixed; inset: 0; z-index: 1200;
+  background: radial-gradient(circle at 50% 40%, #1a2236 0%, #0a0e1a 70%);
+  overflow: hidden;
+  animation: fadeIn .35s ease;
+  cursor: grab;
+  touch-action: none;
+}
+.overlay:active { cursor: grabbing; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* 3D stage */
+.stage {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  perspective: 1100px;
+}
+.globe {
+  position: relative;
+  width: 0; height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.cell {
+  position: absolute;
+  width: 150px; height: 112px;
+  margin: -56px 0 0 -75px;     /* center each tile on origin */
+  border-radius: 12px;
+  overflow: hidden;
+  backface-visibility: hidden;  /* hide far-side tiles for a clean look */
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 8px 28px rgba(0,0,0,.45);
+  border: 2px solid rgba(255,255,255,.12);
+}
+.cell img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  pointer-events: none;
+}
+
+/* Close button */
+.close {
+  position: fixed; top: 18px; right: 20px; z-index: 1210;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: grid; place-items: center;
+  backdrop-filter: blur(10px);
+  transition: background .2s, transform .2s;
+}
+.close:hover { background: rgba(255,255,255,.28); transform: scale(1.08); }
+
+/* Hint text */
+.hint {
+  position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+  z-index: 1210;
+  color: rgba(255,255,255,.8);
+  font-size: .82rem; font-weight: 700; letter-spacing: .04em;
+  background: rgba(255,255,255,.1);
+  padding: 8px 18px; border-radius: 999px;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Enable-motion button (mobile) */
+.motionBtn {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 1210;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #E5243B, #FD6925);
+  color: #fff; font-family: inherit; font-weight: 800; font-size: .9rem;
+  border: 0; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 10px 30px rgba(229,36,59,.45);
+  transition: transform .25s;
+}
+.motionBtn:active { transform: translateX(-50%) scale(.96); }
+
+@media (max-width: 600px) {
+  .cell { width: 120px; height: 90px; margin: -45px 0 0 -60px; }
+}

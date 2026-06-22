@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SphereGallery from './SphereGallery';
+import ARGallery from './ARGallery';
 import s from './Gallery.module.css';
 
-/* All photos — small thumb for the marquee, full-res only loaded in the lightbox */
+/* All photos — small thumb for the marquee/sphere, full-res only in the lightbox */
 const RAW_PHOTOS = [
   '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (8).webp',
   '/assets/photos/WhatsApp Image 2026-06-15 at 20.32.11 (1).webp',
@@ -18,6 +20,16 @@ const RAW_PHOTOS = [
   '/assets/photos/wll-tshirt.webp',
   '/assets/photos/aerial-group.webp',
   '/assets/photos/blackboard-teach.webp',
+  '/assets/photos/class-poster-smile.webp',
+  '/assets/photos/group-school.webp',
+  '/assets/photos/hug-green.webp',
+  '/assets/photos/poster-pair.webp',
+  '/assets/photos/volunteer-child.webp',
+  '/assets/photos/whiteboard-speak.webp',
+  '/assets/vol/vol-01.webp',
+  '/assets/vol/vol-02.webp',
+  '/assets/vol/vol-03.webp',
+  '/assets/vol/vol-04.webp',
   '/assets/vol/vol-05.webp',
   '/assets/vol/vol-06.webp',
   '/assets/vol/vol-07.webp',
@@ -64,6 +76,8 @@ function MarqueeRow({ photos, dir, speed, onPick }) {
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState(null);
+  const [sphere, setSphere] = useState(false);
+  const [ar, setAr] = useState(false);
 
   return (
     <section className={s.gallery} id="gallery">
@@ -72,6 +86,14 @@ export default function Gallery() {
         <span className={s.eyebrow}>Moments from WLL</span>
         <h2>Islandwide in Action</h2>
         <p>Real moments from World's Largest Lesson sessions across Sri Lanka.</p>
+        <div className={s.galleryBtns}>
+          <button className={s.sphereBtn} onClick={() => setSphere(true)}>
+            🌐 Explore in 360°
+          </button>
+          <button className={`${s.sphereBtn} ${s.arBtn}`} onClick={() => setAr(true)}>
+            📷 View in AR
+          </button>
+        </div>
       </div>
 
       <div className={s.marqueeWrap}>
@@ -79,6 +101,9 @@ export default function Gallery() {
           <MarqueeRow key={i} {...row} onPick={setLightbox} />
         ))}
       </div>
+
+      {sphere && <SphereGallery photos={ALL_PHOTOS} onClose={() => setSphere(false)} />}
+      {ar && <ARGallery photos={ALL_PHOTOS} onClose={() => setAr(false)} />}
 
       {/* Aftermovie */}
       <div className={`shell reveal ${s.aftermovie}`}>
