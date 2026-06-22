@@ -33,9 +33,9 @@
 }
 .cell {
   position: absolute;
-  width: 190px; height: 142px;
-  margin: -71px 0 0 -95px;
-  border-radius: 14px;
+  width: 300px; height: 225px;
+  margin: -112px 0 0 -150px;
+  border-radius: 16px;
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -95,5 +95,5 @@
 .note { font-size: .75rem !important; color: rgba(255,255,255,.45) !important; }
 
 @media (max-width: 600px) {
-  .cell { width: 150px; height: 112px; margin: -56px 0 0 -75px; }
+  .cell { width: 230px; height: 172px; margin: -86px 0 0 -115px; }
 }

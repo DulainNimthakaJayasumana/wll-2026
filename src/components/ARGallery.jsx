@@ -1,26 +1,21 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import s from './ARGallery.module.css';
 
-/* Lay photos out as a curved wall across a 180° arc in front of the viewer.
-   A tidy grid: longitude spans −90°…+90°, latitude spans a gentle band. */
-function arcPositions(n) {
-  const LON_SPAN = 180;   // total horizontal sweep (degrees)
-  const LAT_SPAN = 70;    // total vertical sweep (degrees)
-  const cols = Math.ceil(Math.sqrt(n * 1.8));
-  const rows = Math.ceil(n / cols);
+/* Even point distribution over a full sphere (Fibonacci) → per-tile lon/lat,
+   so photos surround the viewer in every direction, including overhead. */
+function spherePositions(n) {
+  const golden = Math.PI * (3 - Math.sqrt(5));
   const pts = [];
   for (let i = 0; i < n; i++) {
-    const r = Math.floor(i / cols);
-    const c = i % cols;
-    const colsInRow = Math.min(cols, n - r * cols);
-    // center each row's columns
-    const lon = colsInRow === 1
-      ? 0
-      : -LON_SPAN / 2 + (c / (cols - 1)) * LON_SPAN;
-    const lat = rows === 1
-      ? 0
-      : LAT_SPAN / 2 - (r / (rows - 1)) * LAT_SPAN;
-    pts.push({ lon, lat });
+    const y = 1 - (i / (n - 1)) * 2;           // 1 → -1 (top to bottom)
+    const r = Math.sqrt(Math.max(0, 1 - y * y));
+    const theta = golden * i;
+    const x = Math.cos(theta) * r;
+    const z = Math.sin(theta) * r;
+    pts.push({
+      lon: Math.atan2(x, z) * (180 / Math.PI),
+      lat: Math.asin(Math.max(-1, Math.min(1, y))) * (180 / Math.PI),
+    });
   }
   return pts;
 }
@@ -31,7 +26,7 @@ const isIOS = () =>
 
 /* How much the view turns per degree of physical phone rotation.
    <1 makes it calmer (the full 180° of photos needs less body turning). */
-const SENSITIVITY = 0.6;
+const SENSITIVITY = 1.0;
 
 export default function ARGallery({ photos, onClose }) {
   const videoRef  = useRef(null);
@@ -45,8 +40,8 @@ export default function ARGallery({ photos, onClose }) {
   const [phase, setPhase] = useState('intro'); // intro | starting | live | error
   const [errMsg, setErrMsg] = useState('');
 
-  const positions = useMemo(() => arcPositions(photos.length), [photos.length]);
-  const RADIUS = 760;
+  const positions = useMemo(() => spherePositions(photos.length), [photos.length]);
+  const RADIUS = 720;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -60,7 +55,7 @@ export default function ARGallery({ photos, onClose }) {
     const tick = () => {
       // target rotations (degrees), scaled down so it feels calm
       const ty = -heading.current.value * SENSITIVITY;          // turn left/right
-      const tx = Math.max(-50, Math.min(50, (orient.current.beta - 90) * SENSITIVITY)); // look up/down
+      const tx = Math.max(-90, Math.min(90, (orient.current.beta - 90) * SENSITIVITY)); // look up/down
       // smoothing for stability (lower = smoother / less twitchy)
       smooth.current.x += (tx - smooth.current.x) * 0.1;
       smooth.current.y += (ty - smooth.current.y) * 0.1;
