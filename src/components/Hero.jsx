@@ -126,7 +126,6 @@ export default function Hero() {
         </p>
         <div className={s.ctas}>
           <button onClick={goToRegister} className={`${s.btn} ${s.primary}`}>Volunteer with us</button>
-          <a href="#run" className={`${s.btn} ${s.runBtn}`}>Register for the Run</a>
         </div>
         <div className={s.countdown}>
           <div className={s.cdRow}>
