@@ -11,7 +11,7 @@ function scrollToSection(id) {
     window.__navScrollTimer = setTimeout(() => { window.__navScrolling = false; }, 1200);
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
-    // On another page — go home then scroll
+    // On another page
     if (id === 'home') {
       goHome();
     } else {
@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <>
       <a
-        href="https://www.linkedin.com/in/dulain-jayasumana"
+        href="https://github.com/DulainNimthakaJayasumana/wll-2026"
         target="_blank"
         rel="noopener noreferrer"
         className={s.creditCard}

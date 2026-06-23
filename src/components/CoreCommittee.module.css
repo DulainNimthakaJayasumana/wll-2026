@@ -1,10 +1,10 @@
-/* ── Section ─────────────────────────────────────────────── */
+/* Core Committee section styles */
 .section {
   background: var(--cream);
   padding: clamp(40px,6vh,70px) 0 80px;
 }
 
-/* ── Header ──────────────────────────────────────────────── */
+
 .header { text-align: center; margin-bottom: 56px; }
 
 .colorStrips {
@@ -47,20 +47,18 @@
 .subtitle    { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 0; }
 .subtitleSub { font-size: .88rem; color: var(--ink-muted); margin-top: 4px; }
 
-/* ── Leadership ──────────────────────────────────────────── */
+
 .leadership {
   display: flex; flex-direction: column; align-items: center;
   gap: 36px; margin-bottom: 64px;
 }
 
-/* ── Dept grid ───────────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
 }
 
-/* ── Dept card ───────────────────────────────────────────── */
 .card {
   background: var(--paper);
   border-radius: 22px; overflow: hidden;
@@ -93,7 +91,7 @@
   display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
 }
 
-/* ── Person card ─────────────────────────────────────────── */
+
 .person {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   text-decoration: none; color: var(--ink); cursor: pointer;
@@ -101,10 +99,10 @@
 }
 .person:hover { transform: translateY(-4px); }
 
-/* ── Avatar wrap (holds circle + LinkedIn badge) ─────────── */
+
 .avatarWrap { position: relative; }
 
-/* ── Avatar circle ───────────────────────────────────────── */
+
 .avatar {
   border-radius: 50%;
   display: grid; place-items: center;
@@ -118,20 +116,18 @@
   transform: scale(1.07);
 }
 
-/* size variants */
+
 .lg .avatar { width: 100px; height: 100px; }
 .sm .avatar { width: 76px;  height: 76px;  }
 .xs .avatar { width: 54px;  height: 54px;  }
 
-/* actual photo — fills the circle */
 .avatarImg {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 50% 22%; /* favour face, works across portrait/landscape photos */
+  object-position: 50% 22%; 
   display: block;
 }
 
-/* initials text */
 .initials {
   font-weight: 900; color: #fff; line-height: 1;
 }
@@ -139,7 +135,6 @@
 .sm .initials { font-size: 1.25rem; }
 .xs .initials { font-size: .9rem; }
 
-/* ── LinkedIn icon badge ─────────────────────────────────── */
 .liIcon {
   position: absolute; bottom: 1px; right: 1px;
   width: 20px; height: 20px; border-radius: 50%;
@@ -158,11 +153,9 @@
   opacity: 0.6;
 }
 
-/* xs — make badge smaller */
 .xs .liIcon { width: 16px; height: 16px; bottom: 0; right: 0; }
 .xs .liIcon svg { width: 8px; height: 8px; }
 
-/* name + role */
 .personName {
   font-weight: 700; text-align: center; color: var(--ink);
 }
@@ -177,7 +170,7 @@
   color: var(--ink-muted); text-align: center;
 }
 
-/* ── LinkedIn note ───────────────────────────────────────── */
+
 .note { margin-top: 48px; text-align: center; }
 .noteInner {
   display: inline-flex; align-items: center; gap: 10px;
@@ -187,7 +180,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
+
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .leadership { gap: 24px; }
