@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { goHome, goToRegister } from '../App';
 import s from './Run.module.css';
+
+const RUN_FORM_URL = 'https://forms.gle/FhED7mmarNr6Yu2Z8';
 import pasinduPhoto from '../assets/team/Pasindu.webp';
 import tanuriPhoto from '../assets/team/Tanuri Dissanayaka.webp';
 
@@ -266,7 +268,7 @@ export default function Run({ onBack }) {
           </div>
 
           <div className={s.heroCtas}>
-            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
+            <a href={RUN_FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>Register Now</a>
           </div>
         </div>
 
@@ -530,14 +532,14 @@ export default function Run({ onBack }) {
       <section className={s.ctaSection}>
         <div className={s.ctaInner}>
           <h2>Ready to Run Miles for Lessons?</h2>
-          <p>Join hundreds of Sri Lankan youth running for a better world on July 4th along the Colombo coast.</p>
+          <p>Join hundreds of Sri Lankan youth running for a better world on 18 July 2026 </p>
           <div className={s.ctaBtns}>
-            <button disabled className={`${s.ctaPrimary} ${s.ctaDisabled}`}>Registration Opening Soon</button>
+            <a href={RUN_FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>Register Now</a>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>
             Questions? DM us on Instagram <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener">@wll.srilanka</a>
-            &nbsp;· Call <a href="tel:+94701506924">070 150 6924</a>
+          
           </div>
         </div>
       </section>
