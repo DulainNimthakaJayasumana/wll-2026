@@ -26,26 +26,26 @@ function useRunCountdown() {
 
 const PAD = n => String(n).padStart(2, '0');
 
-/* ── Checkpoints — new route via Vihara Maha Devi Park loop ── */
+/* ── Checkpoints — Independence Square loop, ~5 km ── */
 const CHECKPOINTS = [
   {
     num: 'S',
     label: 'Start / Finish',
-    place: 'Race Course Vehicle Park',
-    street: 'Philip Gunawardena Mawatha, Colombo 07',
-    desc: 'Race begins and ends here at Race Course Vehicle Park. Collect your bib, warm up and line up at 4:00 PM!',
+    place: 'Independence Square',
+    street: 'Independence Ave, Colombo 07',
+    desc: 'Race begins and ends at Independence Square. Collect your bib, warm up and line up at 4:00 PM!',
     color: '#19486A',
     icon: '🏁',
     km: '0 / 5 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Race+Course+Vehicle+Park,+Philip+Gunawardena+Mawatha,+Colombo',
-    mapsLabel: 'Race Course Vehicle Park, Colombo',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Independence+Square,+Colombo+07',
+    mapsLabel: 'Independence Square, Colombo 07',
   },
   {
     num: 1,
     label: 'Checkpoint 1',
     place: 'Nelum Pokuna Flag Area',
     street: 'Nelum Pokuna Mawatha, Colombo 07',
-    desc: 'First water station near Nelum Pokuna. Hydrate and stay strong as you head north towards the park!',
+    desc: 'First water station at Nelum Pokuna Flag Area. Hydrate and push north towards Vihara Maha Devi Park!',
     color: '#E5243B',
     icon: '💧',
     km: '~1 km',
@@ -56,8 +56,8 @@ const CHECKPOINTS = [
     num: 2,
     label: 'Checkpoint 2',
     place: 'Vihara Maha Devi Park',
-    street: 'Ananda Coomaraswamy Mawatha, Colombo 07',
-    desc: 'Energy station at the north end of Vihara Maha Devi Park. Loop around the park — halfway there!',
+    street: 'Srimath Anagarika Dharmapala Mawatha, Colombo 07',
+    desc: 'Energy station at the north end of Vihara Maha Devi Park, near Buddhist Ladies College. Loop around the park — halfway there!',
     color: '#FCC30B',
     icon: '⚡',
     km: '~2 km',
@@ -67,9 +67,9 @@ const CHECKPOINTS = [
   {
     num: 3,
     label: 'Checkpoint 3',
-    place: 'Ladies College Junction',
+    place: 'Ladies College',
     street: 'Dharmapala Mawatha, Colombo 07',
-    desc: 'Refreshment stop near Ladies College. Turn south and keep your pace — you\'re past the halfway mark!',
+    desc: 'Refreshment stop near Ladies College and Colombo Public Library. Head south — you\'re over halfway!',
     color: '#FD6925',
     icon: '🏃',
     km: '~3 km',
@@ -79,21 +79,21 @@ const CHECKPOINTS = [
   {
     num: 4,
     label: 'Checkpoint 4',
-    place: 'University of Colombo',
-    street: 'College House, 94 Cumaratunga Munidasa Mawatha, Colombo 03',
-    desc: 'Final water stop near the University of Colombo. Turn east towards Independence Square — the finish is near!',
+    place: 'Faculty of Arts',
+    street: 'University of Colombo, Cumaratunga Munidasa Mawatha, Colombo 03',
+    desc: 'Final water stop near the Faculty of Arts, University of Colombo. Turn east towards BMICH — almost there!',
     color: '#4C9F38',
     icon: '💪',
     km: '~4 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=University+of+Colombo,+Colombo',
-    mapsLabel: 'University of Colombo',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Faculty+of+Arts+University+of+Colombo',
+    mapsLabel: 'Faculty of Arts, University of Colombo',
   },
   {
     num: 5,
     label: 'Checkpoint 5',
     place: 'BMICH Park',
     street: 'Bauddhaloka Mawatha, Colombo 07',
-    desc: 'Last push past BMICH Park and Independence Square. Head back to the Race Course and cross the finish line!',
+    desc: 'Last push past BMICH Park and Adventure Golf. Head back west to Independence Square and cross the finish line!',
     color: '#26BDE2',
     icon: '🏅',
     km: '~4.8 km',
@@ -221,7 +221,7 @@ export default function Run({ onBack }) {
           <img src="/assets/miles4lessons_logo.webp" alt="Nestomalt Miles for Lessons 2026" className={s.heroLogo} />
 
           <p className={s.heroSub}>
-            Run for the Global Goals · Race Course Grounds, Colombo 07
+            Run for the Global Goals · Independence Square, Colombo 07
           </p>
 
           <div className={s.heroCols}>
@@ -233,7 +233,7 @@ export default function Run({ onBack }) {
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📍</span>
-              <span className={s.heroStatVal}>Race Course Grounds</span>
+              <span className={s.heroStatVal}>Independence Square</span>
               <span className={s.heroStatLabel}>Start &amp; Finish · Colombo 07</span>
             </div>
             <div className={s.heroStatDivider} />
@@ -281,8 +281,8 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Cinnamon Gardens Loop — 5 km</h2>
-            <p>Start and finish at Race Course Vehicle Park. The loop takes you past Nelum Pokuna, around Vihara Maha Devi Park, through Ladies College, the University of Colombo, and past BMICH Park — through the heart of Colombo 07. <strong>Click any checkpoint for directions.</strong></p>
+            <h2>Independence Square Loop — 5 km</h2>
+            <p>Start and finish at Independence Square. The loop takes you past Nelum Pokuna, around Vihara Maha Devi Park, south through Ladies College, past the Faculty of Arts and BMICH Park — through the heart of Cinnamon Gardens. <strong>Click any checkpoint for directions.</strong></p>
           </div>
 
           <div className={s.mapLayout}>
@@ -364,11 +364,11 @@ export default function Run({ onBack }) {
             {[
               { icon:'🗓️', label:'Date',       val:'Saturday, 18 July 2026' },
               { icon:'⏰', label:'Start Time',  val:'4:00 PM sharp' },
-              { icon:'📍', label:'Start & Finish', val:'Race Course Grounds' },
-              { icon:'🔄', label:'Route',         val:'Nelum Pokuna · VMD Park · Ladies College · Uni · BMICH' },
+              { icon:'📍', label:'Start & Finish', val:'Independence Square, Colombo 07' },
+              { icon:'🔄', label:'Route',         val:'Nelum Pokuna · Vihara Maha Devi Park · Ladies College · Faculty of Arts · BMICH Park' },
               { icon:'📏', label:'Distance',      val:'5 km loop · 5 checkpoints' },
-              { icon:'👟', label:'Category',    val:'Open to all ages' },
-              { icon:'🎽', label:'Race Kit',    val:'Bib' },
+              { icon:'👟', label:'Category',    val:'Open to all ages & fitness levels' },
+              { icon:'🎽', label:'Race Kit',    val:'Bib + T-Shirt (free)' },
               { icon:'🏅', label:'Finisher',    val:'Certificates for all finishers' },
             ].map(d => (
               <div key={d.label} className={s.detailCard}>
@@ -414,40 +414,44 @@ export default function Run({ onBack }) {
           <div className={s.faqList}>
             {[
               {
-                q: 'What is Miles for Lessons?',
-                a: 'Miles for Lessons is a purpose-driven CSR fundraising run organized under the World’s Largest Lesson (WLL) initiative. It brings together individuals passionate about fitness, community impact, and creating positive change, while raising funds to support the Island Wide World’s Largest Lesson 2026 Sri Lanka initiative (Check the website for more info).',
+                q: "What is Miles for Lessons?",
+                a: "Miles for Lessons is a purpose-driven CSR fundraising run organized under the World’s Largest Lesson (WLL) initiative. It brings together individuals passionate about fitness, community impact, and creating positive change, while raising funds to support the Islandwide World’s Largest Lesson 2026 Sri Lanka initiative.",
               },
               {
-                q: 'How do I register?',
-                a: 'Click the Register button on the website and complete the Google Form. Please upload the registration fee payment slip as part of the form. You may register individually or as a group using the links provided on the website. Registration fee: Rs. 1,800 per individual🎽 Includes a complimentary event T-shirt',
+                q: "When and where is the race?",
+                a: "📅 Saturday, 18 July 2026 at 4:00 PM sharp. 📍 Start & Finish: Independence Square, Independence Ave, Colombo 07.",
               },
               {
-                q: 'Will I receive a T-shirt?',
-                a: 'Yes! Every registered participant will receive a free official event T-shirt.',
+                q: "What is the race route?",
+                a: "The 5 km Independence Square Loop starts and finishes at Independence Square. Head north to Nelum Pokuna (CP 1), loop around Vihara Maha Devi Park (CP 2), south past Ladies College (CP 3), past the Faculty of Arts (CP 4), east to BMICH Park (CP 5), and back to the finish!",
               },
               {
-                q: 'Who can participate?',
-                a: 'The run is open to everyone — all ages and fitness levels are welcome. Whether you choose to walk, jog, or sprint the 4.8 km loop, you’re encouraged to join.',
+                q: "Who can participate?",
+                a: "The run is open to everyone — all ages and fitness levels are welcome. Whether you choose to walk, jog, or sprint the 5 km loop through Cinnamon Gardens, you’re encouraged to join!",
               },
               {
-                q: 'Where does the race start?',
-                a: '📍 Race Course Car Park',
+                q: "How do I register?",
+                a: "Click the Register button on the website and complete the Google Form. Please upload the registration fee payment slip as part of the form. You may register individually or as a group. Registration fee: Rs. 1,800 per individual 🎽 — includes a complimentary event T-shirt.",
               },
               {
-                q: 'When will I receive my T-shirt?',
-                a: 'T-shirts will be distributed prior to the run. The organizing committee will share detailed instructions closer to the event date.',
+                q: "Will I receive a T-shirt?",
+                a: "Yes! Every registered participant will receive a free official event T-shirt along with a race bib and a finisher certificate.",
               },
               {
-                q: 'How can my company partner or sponsor the event?',
+                q: "When will I receive my race kit?",
+                a: "Race kits (bib + T-shirt) will be distributed prior to the event. The organizing committee will share detailed collection instructions closer to the event date.",
+              },
+              {
+                q: "How can my company partner or sponsor the event?",
                 a: (
                   <>
-                    <p>We'd love to collaborate! Please reach out to us via:</p>
+                    <p>We&apos;d love to collaborate! Please reach out to us via:</p>
                     <div className={s.faqContactList}>
                       <a href="mailto:pasindu.serasinghe5@aiesec.net" className={s.faqContactItem}>📧 pasindu.serasinghe5@aiesec.net</a>
                       <a href="mailto:poohbalarajavarun@aiesec.net" className={s.faqContactItem}>📧 poohbalarajavarun@aiesec.net</a>
                       <a href="tel:+94777867058" className={s.faqContactItem}>📞 +94 77 786 7058</a>
                     </div>
-                    <p>Whether you're here to promote your event, join as a corporate team, or help out with resources and logistics.</p>
+                    <p>Whether you&apos;re here to promote your brand, join as a corporate team, or help with resources and logistics — let&apos;s make it happen!</p>
                   </>
                 ),
               },
