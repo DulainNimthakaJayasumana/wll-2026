@@ -4,9 +4,9 @@ import s from './Run.module.css';
 import pasinduPhoto from '../assets/team/Pasindu.webp';
 import tanuriPhoto from '../assets/team/Tanuri Dissanayaka.webp';
 
-/* ── Countdown to July 4 2026 09:00 ─────────────────────── */
+/* ── Countdown to July 18 2026 16:00 ──────────────────────── */
 function useRunCountdown() {
-  const target = new Date('2026-07-11T16:30:00');
+  const target = new Date('2026-07-18T16:00:00');
   const calc = () => {
     const diff = Math.max(0, target - new Date());
     return {
@@ -26,14 +26,14 @@ function useRunCountdown() {
 
 const PAD = n => String(n).padStart(2, '0');
 
-/* ── Checkpoints — Race Course Grounds loop, ~4.8 km ── */
+/* ── Checkpoints — new route via Vihara Maha Devi Park loop ── */
 const CHECKPOINTS = [
   {
     num: 'S',
     label: 'Start / Finish',
     place: 'Race Course Vehicle Park',
     street: 'Philip Gunawardena Mawatha, Colombo 07',
-    desc: 'Race begins and ends here at Race Course Vehicle Park. Collect your bib, warm up and line up at 4:30 PM!',
+    desc: 'Race begins and ends here at Race Course Vehicle Park. Collect your bib, warm up and line up at 4:00 PM!',
     color: '#19486A',
     icon: '🏁',
     km: '0 / 5 km',
@@ -43,50 +43,62 @@ const CHECKPOINTS = [
   {
     num: 1,
     label: 'Checkpoint 1',
-    place: 'Bloomfield Cricket & Athletic Club',
-    street: 'Maitland Place, Colombo 07',
-    desc: 'First water station at Bloomfield Cricket and Athletic Club. Hydrate and keep your stride!',
+    place: 'Nelum Pokuna Flag Area',
+    street: 'Nelum Pokuna Mawatha, Colombo 07',
+    desc: 'First water station near Nelum Pokuna. Hydrate and stay strong as you head north towards the park!',
     color: '#E5243B',
     icon: '💧',
     km: '~1 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Bloomfield+Cricket+and+Athletic+Club,+Colombo',
-    mapsLabel: 'Bloomfield Cricket Club, Colombo',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Nelum+Pokuna+Mawatha,+Colombo+07',
+    mapsLabel: 'Nelum Pokuna, Colombo 07',
   },
   {
     num: 2,
     label: 'Checkpoint 2',
-    place: 'SLAF Circle',
-    street: 'SLAF Cir, Colombo 00500',
-    desc: 'Midway energy station at SLAF Circle. Electrolytes and an SDG fact board — you\'re halfway there!',
+    place: 'Vihara Maha Devi Park',
+    street: 'Ananda Coomaraswamy Mawatha, Colombo 07',
+    desc: 'Energy station at the north end of Vihara Maha Devi Park. Loop around the park — halfway there!',
     color: '#FCC30B',
     icon: '⚡',
-    km: '~1.8 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=SLAF+Circle,+Colombo',
-    mapsLabel: 'SLAF Circle, Colombo',
+    km: '~2 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Vihara+Maha+Devi+Park,+Colombo',
+    mapsLabel: 'Vihara Maha Devi Park, Colombo 07',
   },
   {
     num: 3,
     label: 'Checkpoint 3',
-    place: 'BMICH',
-    street: 'Bandaranaike Memorial International Conference Hall, Colombo 07',
-    desc: 'Energy boost at BMICH. Turn north towards Horton Place — the finish is close!',
+    place: 'Ladies College Junction',
+    street: 'Dharmapala Mawatha, Colombo 07',
+    desc: 'Refreshment stop near Ladies College. Turn south and keep your pace — you\'re past the halfway mark!',
     color: '#FD6925',
     icon: '🏃',
-    km: '~2.8 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=BMICH,+Colombo',
-    mapsLabel: 'BMICH, Colombo 07',
+    km: '~3 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Ladies+College,+Colombo+07',
+    mapsLabel: 'Ladies College, Colombo 07',
   },
   {
     num: 4,
     label: 'Checkpoint 4',
-    place: 'Horton Place',
-    street: 'Horton Pl, Colombo 00700',
-    desc: 'Final stretch! Head along Maitland Crescent back to the Race Course finish line. Sprint it out!',
+    place: 'University of Colombo',
+    street: 'College House, 94 Cumaratunga Munidasa Mawatha, Colombo 03',
+    desc: 'Final water stop near the University of Colombo. Turn east towards Independence Square — the finish is near!',
     color: '#4C9F38',
     icon: '💪',
-    km: '~3.8 km',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Horton+Place,+Colombo+7',
-    mapsLabel: 'Horton Place, Colombo 07',
+    km: '~4 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=University+of+Colombo,+Colombo',
+    mapsLabel: 'University of Colombo',
+  },
+  {
+    num: 5,
+    label: 'Checkpoint 5',
+    place: 'BMICH Park',
+    street: 'Bauddhaloka Mawatha, Colombo 07',
+    desc: 'Last push past BMICH Park and Independence Square. Head back to the Race Course and cross the finish line!',
+    color: '#26BDE2',
+    icon: '🏅',
+    km: '~4.8 km',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=BMICH+Park,+Bauddhaloka+Mawatha,+Colombo',
+    mapsLabel: 'BMICH Park, Colombo 07',
   },
 ];
 
@@ -215,8 +227,8 @@ export default function Run({ onBack }) {
           <div className={s.heroCols}>
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📅</span>
-              <span className={s.heroStatVal}>July 11, 2026</span>
-              <span className={s.heroStatLabel}>Race Day · 4:30 PM</span>
+              <span className={s.heroStatVal}>July 18, 2026</span>
+              <span className={s.heroStatLabel}>Race Day · 4:00 PM</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
@@ -228,7 +240,7 @@ export default function Run({ onBack }) {
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>🎯</span>
               <span className={s.heroStatVal}>5 km Loop</span>
-              <span className={s.heroStatLabel}>4 Checkpoints</span>
+              <span className={s.heroStatLabel}>5 Checkpoints</span>
             </div>
           </div>
 
@@ -250,7 +262,7 @@ export default function Run({ onBack }) {
                 </div>
               ))}
             </div>
-            <div className={s.cdDate}>Saturday, 11 July 2026 · 4:30 PM</div>
+            <div className={s.cdDate}>Saturday, 18 July 2026 · 4:00 PM</div>
           </div>
 
           <div className={s.heroCtas}>
@@ -269,8 +281,8 @@ export default function Run({ onBack }) {
         <div className={s.mapInner}>
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
-            <h2>Race Course Loop — 5 km</h2>
-            <p>Start and finish at Race Course Vehicle Park. The loop takes you past Bloomfield, SLAF Circle, BMICH and Horton Place through the heart of Colombo 07. <strong>Click any checkpoint to open in Google Maps.</strong></p>
+            <h2>Cinnamon Gardens Loop — 5 km</h2>
+            <p>Start and finish at Race Course Vehicle Park. The loop takes you past Nelum Pokuna, around Vihara Maha Devi Park, through Ladies College, the University of Colombo, and past BMICH Park — through the heart of Colombo 07. <strong>Click any checkpoint for directions.</strong></p>
           </div>
 
           <div className={s.mapLayout}>
@@ -279,25 +291,28 @@ export default function Run({ onBack }) {
               <div className={s.mapBadge}>Route Map</div>
 
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d10896.72794670756!2d79.86550290325994!3d6.904248024443626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e2!4m5!1s0x3ae25964ae7a513d%3A0x5e0f98de7dcf5267!2sRace%20Course%20Vehicle%20Park%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9043912!2d79.8628459!4m5!1s0x3ae2597b5a9638af%3A0x5ed02e982d98d6a8!2sBloomfield%20Cricket%20and%20Athletic%20Club%2C%20WV37%2BG34%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9037761!2d79.8626743!4m5!1s0x3ae25bd8892a5471%3A0xabdfd0223f51f893!2sSLAF%20Cir%2C%20Colombo%2000500!3m2!1d6.8974614!2d79.8600702!4m5!1s0x3ae2597f9d09a467%3A0xee0b9455e960eba5!2sBMICH%20(Bandaranaike%20Memorial%20International%20Conference%20Hall)%2C%20Bauddhaloka%20Mawatha%2C%20Colombo%2000700!3m2!1d6.901672!2d79.872709!4m5!1s0x3ae25977068a2f31%3A0x9f86e85d3d77711c!2sHorton%20Pl%2C%20Colombo%2000700!3m2!1d6.9114857!2d79.8700506!4m5!1s0x3ae2597063254717%3A0xff5be35ad76245cb!2sMaitland%20Cres%2C%20Colombo%2000700!3m2!1d6.9097085!2d79.8662576!4m5!1s0x3ae25964ae7a513d%3A0x5e0f98de7dcf5267!2sRace%20Course%20Vehicle%20Park%2C%20Philip%20Gunewardena%20Mawatha%2C%20Colombo%2000700!3m2!1d6.9043912!2d79.8628459!5e0!3m2!1sen!2slk!4v1781775338169!5m2!1sen!2slk"
+                id="mapmyfitness_route"
+                src="https://www.mapmyrun.com/routes/view/embedded/6739130676?width=600&height=401&elevation=true&line_color=E61900DC&rgbhex=DC0019&distance_markers=1&unit_type=metric&map_mode=ROADMAP&show_marker_every=1&last_updated=2026-06-29T09:04:21+00:00"
+                height="679px"
+                width="100%"
+                frameBorder="0"
                 className={s.mapIframe}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                allow="fullscreen"
                 title="Miles for Lessons 2026 route map"
               />
 
               {/* Full route button */}
               <a
                 className={s.fullRouteBtn}
-                href="https://maps.app.goo.gl/8mBQus9e3dKUdSjv7"
+                href="https://www.mapmyrun.com/routes/view/6739130676"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
-                View Full Route on Google Maps
+                View Full Route on MapMyRun
               </a>
             </div>
 
@@ -347,11 +362,11 @@ export default function Run({ onBack }) {
 
           <div className={s.detailGrid}>
             {[
-              { icon:'🗓️', label:'Date',       val:'Saturday, 11 July 2026' },
-              { icon:'⏰', label:'Start Time',  val:'4:30 PM sharp' },
+              { icon:'🗓️', label:'Date',       val:'Saturday, 18 July 2026' },
+              { icon:'⏰', label:'Start Time',  val:'4:00 PM sharp' },
               { icon:'📍', label:'Start & Finish', val:'Race Course Grounds' },
-              { icon:'🔄', label:'Route',         val:'Bloomfield · SLAF · BMICH · Horton Pl' },
-              { icon:'📏', label:'Distance',      val:'5 km loop · 4 checkpoints' },
+              { icon:'🔄', label:'Route',         val:'Nelum Pokuna · VMD Park · Ladies College · Uni · BMICH' },
+              { icon:'📏', label:'Distance',      val:'5 km loop · 5 checkpoints' },
               { icon:'👟', label:'Category',    val:'Open to all ages' },
               { icon:'🎽', label:'Race Kit',    val:'Bib' },
               { icon:'🏅', label:'Finisher',    val:'Certificates for all finishers' },
