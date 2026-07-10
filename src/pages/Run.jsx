@@ -6,9 +6,9 @@ const RUN_FORM_URL = 'https://forms.gle/FhED7mmarNr6Yu2Z8';
 import pasinduPhoto from '../assets/team/Pasindu.webp';
 import tanuriPhoto from '../assets/team/Tanuri Dissanayaka.webp';
 
-/* ── Countdown to July 19 2026 16:00 ──────────────────────── */
+/* ── Countdown to July 25 2026 07:00 ──────────────────────── */
 function useRunCountdown() {
-  const target = new Date('2026-07-19T16:00:00');
+  const target = new Date('2026-07-25T07:00:00');
   const calc = () => {
     const diff = Math.max(0, target - new Date());
     return {
@@ -35,7 +35,7 @@ const CHECKPOINTS = [
     label: 'Start / Finish',
     place: 'Independence Square',
     street: 'Independence Ave, Colombo 07',
-    desc: 'Race begins and ends at Independence Square. Collect your bib, warm up and line up at 4:00 PM!',
+    desc: 'Race begins and ends at Independence Square. Collect your bib, warm up and line up at 7:00 AM!',
     color: '#19486A',
     icon: '🏁',
     km: '0 / 5 km',
@@ -229,8 +229,8 @@ export default function Run({ onBack }) {
           <div className={s.heroCols}>
             <div className={s.heroStat}>
               <span className={s.heroStatIcon}>📅</span>
-              <span className={s.heroStatVal}>July 19, 2026</span>
-              <span className={s.heroStatLabel}>Race Day · 4:00 PM</span>
+              <span className={s.heroStatVal}>July 25, 2026</span>
+              <span className={s.heroStatLabel}>Race Day · 7:00 AM</span>
             </div>
             <div className={s.heroStatDivider} />
             <div className={s.heroStat}>
@@ -264,7 +264,7 @@ export default function Run({ onBack }) {
                 </div>
               ))}
             </div>
-            <div className={s.cdDate}>Sunday, 19 July 2026 · 4:00 PM</div>
+            <div className={s.cdDate}>Saturday, 25 July 2026 · 7:00 AM</div>
           </div>
 
           <div className={s.heroCtas}>
@@ -364,8 +364,8 @@ export default function Run({ onBack }) {
 
           <div className={s.detailGrid}>
             {[
-              { icon:'🗓️', label:'Date',       val:'Sunday, 19 July 2026' },
-              { icon:'⏰', label:'Start Time',  val:'4:00 PM sharp' },
+              { icon:'🗓️', label:'Date',       val:'Saturday, 25 July 2026' },
+              { icon:'⏰', label:'Start Time',  val:'7:00 AM sharp' },
               { icon:'📍', label:'Start & Finish', val:'Independence Square, Colombo 07' },
               { icon:'🔄', label:'Route',         val:'Nelum Pokuna · Vihara Maha Devi Park · Ladies College · Faculty of Arts · BMICH Park' },
               { icon:'📏', label:'Distance',      val:'5 km loop · 5 checkpoints' },
@@ -421,7 +421,7 @@ export default function Run({ onBack }) {
               },
               {
                 q: "When and where is the race?",
-                a: "📅 Sunday, 19 July 2026 at 4:00 PM sharp. 📍 Start & Finish: Independence Square, Independence Ave, Colombo 07.",
+                a: "📅 Saturday, 25 July 2026 at 7:00 AM sharp. 📍 Start & Finish: Independence Square, Independence Ave, Colombo 07.",
               },
               {
                 q: "What is the race route?",
@@ -532,7 +532,7 @@ export default function Run({ onBack }) {
       <section className={s.ctaSection}>
         <div className={s.ctaInner}>
           <h2>Ready to Run Miles for Lessons?</h2>
-          <p>Join hundreds of Sri Lankan youth running for a better world on 19 July 2026 </p>
+          <p>Join hundreds of Sri Lankan youth running for a better world on 25 July 2026 </p>
           <div className={s.ctaBtns}>
             <a href={RUN_FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>Register Now</a>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
