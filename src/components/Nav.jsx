@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { goToRun, goToVolunteer, goToSDGs, goHome } from '../App';
+import { goToRun, goToVolunteer, goToSDGs, goToAmbassadors, goToPartners, goHome } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
@@ -37,8 +37,10 @@ export default function Nav() {
   }, []);
 
   const handleLink = (id) => { scrollToSection(id); };
-  const handleRun       = () => { goToRun(); };
-  const handleVolunteer = () => { goToVolunteer(); };
+  const handleRun          = () => { goToRun(); };
+  const handleVolunteer    = () => { goToVolunteer(); };
+  const handleAmbassadors  = () => { goToAmbassadors(); };
+  const handlePartners     = () => { goToPartners(); };
   const handleSDGs      = () => {
     if (window.location.hash === '#sdgs') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -60,6 +62,12 @@ export default function Nav() {
         ))}
         <button className={s.sdgsLink} onClick={handleSDGs}>
           <span className={s.full}>SDGs</span><span className={s.short}>SDGs</span>
+        </button>
+        <button className={s.sdgsLink} onClick={handleAmbassadors}>
+          <span className={s.full}>⭐ Ambassadors</span><span className={s.short}>⭐</span>
+        </button>
+        <button className={s.sdgsLink} onClick={handlePartners}>
+          <span className={s.full}>🤝 Partners</span><span className={s.short}>🤝</span>
         </button>
         <button className={s.ctaRun} onClick={handleRun}>
           <span className={s.full}>🏃 Miles for Lesson</span><span className={s.short}>🏃 Run</span>
