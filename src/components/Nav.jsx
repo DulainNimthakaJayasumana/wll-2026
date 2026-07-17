@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { goToRun, goToVolunteer, goToSDGs, goToAmbassadors, goToPartners, goHome } from '../App';
+import { goToRun, goToVolunteer, goToSDGs, goToAmbassadors, goToPartners, goToMedia, goHome } from '../App';
 import s from './Nav.module.css';
 
 const LINKS = [
@@ -41,6 +41,7 @@ export default function Nav() {
   const handleVolunteer    = () => { goToVolunteer(); };
   const handleAmbassadors  = () => { goToAmbassadors(); };
   const handlePartners     = () => { goToPartners(); };
+  const handleMedia        = () => { goToMedia(); };
   const handleSDGs      = () => {
     if (window.location.hash === '#sdgs') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -68,6 +69,9 @@ export default function Nav() {
         </button>
         <button className={s.sdgsLink} onClick={handlePartners}>
           <span className={s.full}>🤝 Partners</span><span className={s.short}>🤝</span>
+        </button>
+        <button className={s.sdgsLink} onClick={handleMedia}>
+          <span className={s.full}>📺 In the Media</span><span className={s.short}>📺</span>
         </button>
         <button className={s.ctaRun} onClick={handleRun}>
           <span className={s.full}>🏃 Miles for Lesson</span><span className={s.short}>🏃 Run</span>

@@ -5,12 +5,12 @@ import Nav          from './components/Nav';
 import Hero         from './components/Hero';
 import About        from './components/About';
 import SDGTeaser    from './components/SDGTeaser';
+import MediaTeaser  from './components/MediaTeaser';
 
 /* Below-fold components — lazy loaded after initial paint */
 const Gallery           = lazy(() => import('./components/Gallery'));
 const CoreCommittee     = lazy(() => import('./components/CoreCommittee'));
 const BrandAmbassadors  = lazy(() => import('./components/BrandAmbassadors'));
-const EFMAudio          = lazy(() => import('./components/EFMAudio'));
 const Sponsors          = lazy(() => import('./components/Sponsors'));
 const Footer            = lazy(() => import('./components/Footer'));
 
@@ -20,6 +20,7 @@ const Volunteer   = lazy(() => import('./pages/Volunteer'));
 const SDGs        = lazy(() => import('./pages/SDGs'));
 const Ambassadors = lazy(() => import('./pages/Ambassadors'));
 const Partners    = lazy(() => import('./pages/Partners'));
+const Media       = lazy(() => import('./pages/Media'));
 
 /* Hash-based page router — no extra packages needed */
 function getPage() {
@@ -29,6 +30,7 @@ function getPage() {
   if (h === '#sdgs')         return 'sdgs';
   if (h === '#ambassadors')  return 'ambassadors';
   if (h === '#partners')     return 'partners';
+  if (h === '#media')        return 'media';
   return 'home';
 }
 
@@ -61,12 +63,16 @@ export function goToPartners() {
   window.location.hash = 'partners';
 }
 
+export function goToMedia() {
+  window.location.hash = 'media';
+}
+
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const PAGE_HASHES = new Set(['#run', '#volunteer', '#sdgs', '#ambassadors', '#partners', '', '#']);
+    const PAGE_HASHES = new Set(['#run', '#volunteer', '#sdgs', '#ambassadors', '#partners', '#media', '', '#']);
     const onHash = () => {
       const h = window.location.hash;
       const newPage = getPage();
@@ -130,6 +136,7 @@ export default function App() {
   if (page === 'sdgs')         return <Suspense fallback={null}><SDGs onBack={goHome} /></Suspense>;
   if (page === 'ambassadors')  return <Suspense fallback={null}><Ambassadors onBack={goHome} /></Suspense>;
   if (page === 'partners')     return <Suspense fallback={null}><Partners onBack={goHome} /></Suspense>;
+  if (page === 'media')        return <Suspense fallback={null}><Media onBack={goHome} /></Suspense>;
 
   return (
     <>
@@ -139,10 +146,10 @@ export default function App() {
         <Hero />
         <About />
         <SDGTeaser />
+        <MediaTeaser />
         <Suspense fallback={null}>
           <Gallery />
           <BrandAmbassadors />
-          <EFMAudio />
           <CoreCommittee />
         </Suspense>
       </main>

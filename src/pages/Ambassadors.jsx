@@ -17,7 +17,7 @@ const AMBASSADORS = [
 const RUN_AMBASSADORS = [
   { name: 'Nuvira De Silva',     title: 'Recreational Runner & Entrepreneur',          initials: 'ND', color: '#E5243B', photo: '/assets/run-ambassadors/nuvira.jpeg',   pos: '50% 15%' },
   { name: 'Kavishka Wijesinghe', title: 'Marathoner & Director',                       initials: 'KW', color: '#4C9F38', photo: '/assets/run-ambassadors/kavishka.jpeg', pos: '50% 15%' },
-  { name: 'Neesh',               title: 'Athlete · Youth Leader · Public Personality', initials: 'NE', color: '#FCC30B', photo: '/assets/run-ambassadors/neesh-c.jpeg',  pos: '50% 38%', scale: 1.4 },
+  { name: 'Neesh',               title: 'Athlete · Youth Leader · Public Personality', initials: 'NE', color: '#FCC30B', photo: '/assets/run-ambassadors/neesh.jpeg',  pos: '50% 10%', scale: 1.2 },
 ];
 
 const SDG_COLORS = ['#E5243B','#DDA63A','#4C9F38','#C5192D','#FF3A21','#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367','#FD9D24','#BF8B2E','#3F7E44','#0A97D9','#56C02B','#00689D','#19486A'];
