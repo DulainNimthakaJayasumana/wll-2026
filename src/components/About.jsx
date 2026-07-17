@@ -27,7 +27,7 @@ export default function About() {
 Everyone that promotes the Sustainable Development Goals (SDGs)
 through creative and engaging learning experiences for children and
 young people. Working alongside partners such as UNICEF and
-UNESCO, WWL has reached millions of students across more than
+UNESCO, WLL has reached millions of students across more than
 160 countries since 2015.</p>
             <p className="reveal d2">After a 5-year hiatus, this inspiring initiative is being organized once
 again to empower the next generation to create a better and more
