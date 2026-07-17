@@ -4,20 +4,20 @@ import Footer from '../components/Footer';
 
 const AMBASSADORS = [
   { name: 'Udani Senanayake',     title: 'Miss Sri Lanka Earth 2022 · Miss Supermodel Worldwide 2026',                    initials: 'US', color: '#E5243B', photo: '/assets/ambassadors/udani.jpeg',     pos: '50% 8%'  },
-  { name: 'Sade Greenwood',       title: 'Miss World Sri Lanka 2021 · Radio Presenter · Model',                           initials: 'SG', color: '#FD6925', photo: '/assets/ambassadors/sade.jpeg',      pos: '50% 5%'  },
+  { name: 'Sade Greenwood',       title: 'Miss World Sri Lanka 2021 · Radio Presenter · Model',                           initials: 'SG', color: '#FD6925', photo: '/assets/ambassadors/sade.jpeg',      pos: '50% 5%' ,scale: 1.5 },
   { name: 'Subhashi Tania',       title: 'Climate Journalist',                                                            initials: 'ST', color: '#FCC30B', photo: '/assets/ambassadors/subhashi.jpeg',  pos: '50% 8%'  },
-  { name: 'Senuri Rupasinghe',    title: 'Volunteer · Advocate · Hybrid Athlete',                                         initials: 'SR', color: '#4C9F38', photo: '/assets/ambassadors/senuri.jpeg',    pos: '50% 5%'  },
+  { name: 'Senuri Rupasinghe',    title: 'Volunteer · Advocate · Hybrid Athlete',                                         initials: 'SR', color: '#4C9F38', photo: '/assets/ambassadors/senuri.jpeg',    pos: '40% -200%', scale: 2 },
   { name: 'Dr. Anoka Abeyrathne', title: 'Social Entrepreneur · Regional Coordinator, Royal Commonwealth Society',        initials: 'DA', color: '#26BDE2', photo: '/assets/ambassadors/dr-anoka.jpeg',  pos: '50% 12%' },
   { name: 'Yuneth Wijenayake',    title: 'Co-Founder & Director of Technology, The Climate Intelligence Network',         initials: 'YW', color: '#19486A', photo: '/assets/ambassadors/yuneth.jpeg',    pos: '50% 8%'  },
   { name: 'Kyle Abeysinghe',      title: '2024 Olympian · Swimmer · Mental Health Advocate',                              initials: 'KA', color: '#A21942', photo: '/assets/ambassadors/kyle.webp',       pos: '50% 20%' },
-  { name: 'Chamanthi Bandara',    title: 'Marketer · Miss Universe Sri Lanka 4th Runner-Up 2024',                         initials: 'CB', color: '#DD1367', photo: '/assets/ambassadors/chamanthi.jpeg',  pos: '50% 5%'  },
+  { name: 'Chamanthi Bandara',    title: 'Marketer · Miss Universe Sri Lanka 4th Runner-Up 2024',                         initials: 'CB', color: '#DD1367', photo: '/assets/ambassadors/chamanthi.jpeg',  pos: '50% -150%'  ,scale: 2},
   { name: 'Belinda Seneviratne',  title: 'Humanitarian · Model',                                                          initials: 'BS', color: '#0A97D9', photo: '/assets/ambassadors/belinda.jpeg',   pos: '50% 10%' },
 ];
 
 const RUN_AMBASSADORS = [
   { name: 'Nuvira De Silva',     title: 'Recreational Runner & Entrepreneur',          initials: 'ND', color: '#E5243B', photo: '/assets/run-ambassadors/nuvira.jpeg',   pos: '50% 15%' },
   { name: 'Kavishka Wijesinghe', title: 'Marathoner & Director',                       initials: 'KW', color: '#4C9F38', photo: '/assets/run-ambassadors/kavishka.jpeg', pos: '50% 15%' },
-  { name: 'Neesh',               title: 'Athlete · Youth Leader · Public Personality', initials: 'NE', color: '#FCC30B', photo: '/assets/run-ambassadors/neesh-c.jpeg',  pos: '50% 20%' },
+  { name: 'Neesh',               title: 'Athlete · Youth Leader · Public Personality', initials: 'NE', color: '#FCC30B', photo: '/assets/run-ambassadors/neesh-c.jpeg',  pos: '50% 38%', scale: 1.4 },
 ];
 
 const SDG_COLORS = ['#E5243B','#DDA63A','#4C9F38','#C5192D','#FF3A21','#26BDE2','#FCC30B','#A21942','#FD6925','#DD1367','#FD9D24','#BF8B2E','#3F7E44','#0A97D9','#56C02B','#00689D','#19486A'];
@@ -26,7 +26,7 @@ function AmbCard({ a }) {
   return (
     <div className={s.card} style={{ '--ac': a.color }}>
       {a.photo
-        ? <img className={s.photo} src={a.photo} alt={a.name} style={{ objectPosition: a.pos }} />
+        ? <img className={s.photo} src={a.photo} alt={a.name} style={{ objectPosition: a.pos, transform: `scale(${a.scale || 1})`, transformOrigin: 'center center' }} />
         : <div className={s.initials}>{a.initials}</div>
       }
       <div className={s.overlay}>

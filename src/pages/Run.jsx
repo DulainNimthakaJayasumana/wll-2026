@@ -420,12 +420,12 @@ export default function Run({ onBack }) {
           {[
             { name: 'Nuvira De Silva',     initials: 'ND', color: '#E5243B', title: 'Recreational Runner & Entrepreneur',          photo: '/assets/run-ambassadors/nuvira.jpeg',   pos: '50% 15%' },
             { name: 'Kavishka Wijesinghe', initials: 'KW', color: '#4C9F38', title: 'Marathoner & Director',                        photo: '/assets/run-ambassadors/kavishka.jpeg', pos: '50% 15%' },
-            { name: 'Neesh',              initials: 'NE', color: '#FCC30B', title: 'Athlete · Youth Leader · Public Personality',   photo: '/assets/run-ambassadors/neesh-c.jpeg',  pos: '50% 20%' },
+            { name: 'Neesh',              initials: 'NE', color: '#FCC30B', title: 'Athlete · Youth Leader · Public Personality',   photo: '/assets/run-ambassadors/neesh-c.jpeg',  pos: '50% 38%', scale: 1.4 },
           ].map((a, i) => (
             <div key={i} className={s.runAmbCard} style={{ '--ac': a.color }}>
               <div className={s.runAmbAvatar}>
                 {a.photo
-                  ? <img src={a.photo} alt={a.name} style={{ objectPosition: a.pos || '50% 20%' }} />
+                  ? <img src={a.photo} alt={a.name} style={{ objectPosition: a.pos || '50% 20%', transform: `scale(${a.scale || 1})`, transformOrigin: 'center center' }} />
                   : <span>{a.initials}</span>
                 }
               </div>

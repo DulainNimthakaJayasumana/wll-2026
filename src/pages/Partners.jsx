@@ -38,7 +38,7 @@ const MEDIA_PARTNERS = [
   { name: 'Eduwire',            role: 'National Media Partner',        logo: '/assets/media-logos/eduwire.png',       url: 'https://eduwire.lk' },
   { name: 'eFM',                role: 'Official Radio Partner',        logo: '/assets/media-logos/efm.jpeg',          url: '#' },
   { name: 'Channel 9',          role: 'Official Digital Media Partner',logo: null,                                    url: '#' },
-  { name: 'SL Webcast',         role: 'National Media Partner',        logo: '/assets/media-logos/sl-webcast.png',    url: '#' },
+  { name: 'SL Webcast',         role: 'National Media Partner',        logo: '/assets/media-logos/sl-webcast-black.png', url: '#' },
   { name: 'Lake House',         role: 'Official News Media Partner',   logo: '/assets/media-logos/lake-house.png',    url: 'https://lakehouse.lk' },
   { name: 'Upali Newspapers',   role: 'Official Print Media Partner',  logo: '/assets/media-logos/upali.jpg',         url: '#' },
   { name: 'UniToday',           role: 'Official Youth Media Partner',  logo: '/assets/media-logos/unitoday.png',      url: 'https://unitoday.lk' },
