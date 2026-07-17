@@ -10,6 +10,7 @@ import SDGTeaser    from './components/SDGTeaser';
 const Gallery           = lazy(() => import('./components/Gallery'));
 const CoreCommittee     = lazy(() => import('./components/CoreCommittee'));
 const BrandAmbassadors  = lazy(() => import('./components/BrandAmbassadors'));
+const EFMAudio          = lazy(() => import('./components/EFMAudio'));
 const Sponsors          = lazy(() => import('./components/Sponsors'));
 const Footer            = lazy(() => import('./components/Footer'));
 
@@ -141,6 +142,7 @@ export default function App() {
         <Suspense fallback={null}>
           <Gallery />
           <BrandAmbassadors />
+          <EFMAudio />
           <CoreCommittee />
         </Suspense>
       </main>
