@@ -11,7 +11,7 @@ const STEPS = [
   { num:'01', icon:'📚', title:'Training Workshop', sub:'You will participate in a training workshop designed to familiarize you with the World’s Largest Lesson, the SDGs, facilitation techniques, and the session materials.', color:'#E5243B' },
   { num:'02', icon:'🗂️', title:'Session Planning', sub:'Our team will guide you through the session plans and provide all the resources you need to confidently conduct a lesson.', color:'#FD6925' },
   { num:'03', icon:'🏫', title:'School Assigned', sub:'Based on your preferences and availability, you will be assigned to a school where you will represent the initiative.', color:'#FCC30B' },
-  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'On 20th July 2026, you will deliver a World’s Largest Lesson session to students, helping them understand global challenges and empowering them to become changemakers.', color:'#4C9F38' },
+  { num:'04', icon:'🌍', title:'Deliver the Lesson', sub:'On 3rd August 2026, you will deliver a World’s Largest Lesson session to students, helping them understand global challenges and empowering them to become changemakers.', color:'#4C9F38' },
 ];
 
 const EXPECT = [
@@ -192,7 +192,7 @@ const FAQS = [
   },
   {
     q: '📅 When and where will it happen?',
-    a: '30th July 2026. Your assigned school will be selected based on your preferred location and hometown.',
+    a: '3rd August 2026. Your assigned school will be selected based on your preferred location and hometown.',
   },
   {
     q: '🎓 Will I receive training?',
@@ -271,7 +271,7 @@ export default function Volunteer({ onBack }) {
             </p>
 
             <div className={s.heroPills}>
-              <span style={{'--pc':'#E5243B'}}>📅 20 July 2026</span>
+              <span style={{'--pc':'#E5243B'}}>📅 3 August 2026</span>
               <span style={{'--pc':'#4C9F38'}}>🏫 Island-wide</span>
               <span style={{'--pc':'#FD6925'}}>👤 Ages 18–30</span>
               <span style={{'--pc':'#26BDE2'}}>🆓 Free to join</span>
@@ -484,7 +484,7 @@ export default function Volunteer({ onBack }) {
           <span className={`${s.ctaShape} ${s.ctaShape3}`}><MiniShape kind="fish" color="#FD6925"/></span>
           <span className={`${s.ctaShape} ${s.ctaShape4}`}><MiniShape kind="butterfly" color="#56C02B"/></span>
           <h2>Ready to unfold your impact?</h2>
-          <p>Join volunteers across Sri Lanka on <strong>20th of July 2026</strong>.</p>
+          <p>Join volunteers across Sri Lanka on <strong>3rd of August 2026</strong>.</p>
           <a href={FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaBtn}>
             Register Now — It's Free
           </a>
