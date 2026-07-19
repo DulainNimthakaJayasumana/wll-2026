@@ -5,7 +5,7 @@ import Nav          from './components/Nav';
 import Hero         from './components/Hero';
 import About        from './components/About';
 import SDGTeaser    from './components/SDGTeaser';
-import MediaTeaser  from './components/MediaTeaser';
+const HomeMedia = lazy(() => import('./components/HomeMedia'));
 
 /* Below-fold components — lazy loaded after initial paint */
 const Gallery           = lazy(() => import('./components/Gallery'));
@@ -146,9 +146,9 @@ export default function App() {
         <Hero />
         <About />
         <SDGTeaser />
-        <MediaTeaser />
         <Suspense fallback={null}>
           <Gallery />
+          <HomeMedia />
           <BrandAmbassadors />
           <CoreCommittee />
         </Suspense>

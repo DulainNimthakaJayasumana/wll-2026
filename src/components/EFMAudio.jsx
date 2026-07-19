@@ -42,18 +42,6 @@ export default function EFMAudio() {
   const [spinDeg,      setSpinDeg]      = useState(0);
   const spinRef = useRef(0); // live degree for animation frame
 
-  /* ── Autoplay when section enters viewport ──────────────── */
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !autoPlayed.current) {
-        autoPlayed.current = true;
-        audioRef.current?.play().catch(() => {});
-      }
-    }, { threshold: 0.5 });
-    io.observe(sectionRef.current);
-    return () => io.disconnect();
-  }, []);
 
   /* ── Spin animation loop ────────────────────────────────── */
   useEffect(() => {

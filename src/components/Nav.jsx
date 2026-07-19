@@ -70,9 +70,6 @@ export default function Nav() {
         <button className={s.sdgsLink} onClick={handlePartners}>
           <span className={s.full}>🤝 Partners</span><span className={s.short}>🤝</span>
         </button>
-        <button className={s.sdgsLink} onClick={handleMedia}>
-          <span className={s.full}>📺 In the Media</span><span className={s.short}>📺</span>
-        </button>
         <button className={s.ctaRun} onClick={handleRun}>
           <span className={s.full}>🏃 Miles for Lesson</span><span className={s.short}>🏃 Run</span>
         </button>
