@@ -421,6 +421,7 @@ export default function Run({ onBack }) {
             { name: 'Nuvira De Silva',     initials: 'ND', color: '#E5243B', title: 'Recreational Runner & Entrepreneur',          photo: '/assets/run-ambassadors/nuvira.jpeg',   pos: '50% 15%' },
             { name: 'Kavishka Wijesinghe', initials: 'KW', color: '#4C9F38', title: 'Marathoner & Director',                        photo: '/assets/run-ambassadors/kavishka.jpeg', pos: '50% 15%' },
             { name: 'Neesh',              initials: 'NE', color: '#FCC30B', title: 'Athlete · Youth Leader · Public Personality',   photo: '/assets/run-ambassadors/neesh.jpeg',  pos: '50% 10%', scale: 1.2},
+            { name: 'Tharindu Wickramasekera', initials: 'TW', color: '#26BDE2', title: 'Founding Member, Colombo Night Run · Marathoner · Running Coach', photo: '/assets/run-ambassadors/tharindu.jpeg', pos: '50% 0%', scale: 2 },
           ].map((a, i) => (
             <div key={i} className={s.runAmbCard} style={{ '--ac': a.color }}>
               <div className={s.runAmbAvatar}>
