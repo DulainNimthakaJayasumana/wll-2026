@@ -163,7 +163,7 @@ TRUSTED FACTS (use these when relevant):
 - WLL 2026 is organized by AIESEC in Sri Lanka.
 - Current scope: 10+ districts, 40+ schools, 30,000+ students islandwide.
 - Miles for Lessons run: Saturday, 11 July 2026, 4:30 PM, Race Course Grounds (Colombo 07), about 5 km.
-- Volunteer day: 20 July 2026, ages 18-30, registration is free.
+- Volunteer day: 3 August 2026, ages 18-30, registration is free.
 - Art competition: ages 11-15, free entry, deadline 31 August 2026.
 - Contact: 070 150 6924, Instagram @wll.srilanka, email wll26coreteam@aiesec.net.
 - SDGs: answer accurately for all 17 UN Sustainable Development Goals.
