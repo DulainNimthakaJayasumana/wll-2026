@@ -168,20 +168,6 @@ export default function Partners({ onBack }) {
         </div>
       </section>
 
-      {/* ── BECOME A PARTNER CTA ──────────────────────────── */}
-      <section className={s.ctaSection} data-reveal>
-        <div className={s.container}>
-          <div className={s.ctaCard}>
-            <span className={s.ctaIcon}>🤝</span>
-            <h3 className={s.ctaTitle}>Become a Sponsor or Partner</h3>
-            <p className={s.ctaSub}>
-              Join us in empowering Sri Lankan youth with the knowledge to create a
-              sustainable future. Sponsorship opportunities available across all tiers.
-            </p>
-            <a href="mailto:wll26coreteam@aiesec.net" className={s.ctaBtn}>Get in Touch →</a>
-          </div>
-        </div>
-      </section>
 
     </div>
     <Footer />

@@ -15,7 +15,7 @@ const EVENT = {
     perks: 'race bib + official WLL t-shirt',
   },
   volunteer: {
-    date: '20 July 2026',
+    date: '3 August 2026',
     age: '18-30 years',
     fee: 'free',
   },
