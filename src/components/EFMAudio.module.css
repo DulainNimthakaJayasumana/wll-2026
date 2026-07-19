@@ -1,0 +1,293 @@
+/* ── Section ────────────────────────────────────────────────── */
+.section {
+  padding: 80px 0 72px;
+  background: linear-gradient(160deg, #0a0f1e 0%, #0f1c2e 50%, #19486A 100%);
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.head { text-align: center; margin-bottom: 48px; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: .72rem; font-weight: 800; letter-spacing: .12em;
+  color: #FCC30B; background: rgba(252,195,11,0.15);
+  border-radius: 99px; padding: 5px 16px; margin-bottom: 14px;
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900; color: #fff; margin: 0 0 14px;
+}
+
+.sub {
+  font-size: 1rem; color: rgba(255,255,255,0.65);
+  max-width: 480px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ── Turntable wrapper ──────────────────────────────────────── */
+.turntableWrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+/* ── Vinyl disk ─────────────────────────────────────────────── */
+.disk {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  cursor: grab;
+  will-change: transform;
+}
+.disk:active, .disk.scratching { cursor: grabbing; }
+
+.vinyl {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      #1a1a1a 0%,
+      #111 30%,
+      #222 32%,
+      #111 33%,
+      #1c1c1c 60%,
+      #0d0d0d 61%,
+      #1c1c1c 100%
+    );
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.7),
+    inset 0 0 40px rgba(0,0,0,0.5);
+}
+
+.groovesSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(255,255,255,0.0) 0deg,
+    rgba(255,255,255,0.08) 60deg,
+    rgba(255,255,255,0.0) 120deg,
+    rgba(255,255,255,0.05) 200deg,
+    rgba(255,255,255,0.0) 300deg
+  );
+  pointer-events: none;
+}
+
+/* ── Center label — STATIC (not a child of rotating disk) ───── */
+.centerLabel {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 3px #FCC30B,
+    0 0 0 6px rgba(252,195,11,0.2),
+    0 4px 20px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+.centerLogo {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Center spindle dot */
+.centerLabel::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #0a0f1e;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* ── Tonearm ─────────────────────────────────────────────────── */
+.tonearm {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+  width: 140px;
+  height: 160px;
+  transform-origin: 22px 22px;   /* pivot centre */
+  transition: transform 0.25s ease-out;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.tonearmPivot {
+  position: absolute;
+  top: 8px; left: 8px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #e8e8e8, #777);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* Arm starts at pivot and rotates around it */
+.tonearmArm {
+  position: absolute;
+  top: 22px;        /* pivot centre y */
+  left: 25px;       /* pivot centre x */
+  width: 5px;
+  height: 130px;
+  background: linear-gradient(to right, #c8c8c8, #d8d8d8, #a0a0a0);
+  border-radius: 3px 3px 2px 2px;
+  transform-origin: top center;
+  transform: rotate(32deg);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* Yellow cartridge at the very tip of the arm */
+.tonearmCartridge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 12px;
+  background: #FCC30B;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(252,195,11,0.8), 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* ── Track info ─────────────────────────────────────────────── */
+.trackInfo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.trackLabel {
+  display: block;
+  font-size: 1rem; font-weight: 800; color: #fff;
+  margin-bottom: 4px;
+}
+.trackDesc {
+  display: block;
+  font-size: .82rem; color: rgba(255,255,255,0.5);
+}
+
+/* ── Progress bar ───────────────────────────────────────────── */
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 28px;
+}
+
+.time {
+  font-size: .72rem;
+  color: rgba(255,255,255,0.45);
+  font-variant-numeric: tabular-nums;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.progressBar {
+  flex: 1;
+  position: relative;
+  height: 5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 99px;
+  cursor: pointer;
+}
+.progressFill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: #FCC30B;
+  border-radius: 99px;
+  transition: width .1s linear;
+}
+.progressThumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: #FCC30B;
+  box-shadow: 0 0 8px rgba(252,195,11,0.7);
+  transition: left .1s linear;
+}
+
+/* ── Controls ───────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.ctrlBtn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
+}
+.ctrlBtn:hover {
+  background: rgba(255,255,255,0.15);
+  transform: scale(1.08);
+}
+
+.playBtn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: #FCC30B;
+  color: #0a0f1e;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(252,195,11,0.15), 0 8px 24px rgba(252,195,11,0.4);
+  transition: transform .15s, box-shadow .15s;
+}
+.playBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 12px rgba(252,195,11,0.2), 0 12px 32px rgba(252,195,11,0.5);
+}
+
+/* ── Track dots ─────────────────────────────────────────────── */
+.dots {
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  padding: 0;
+}
+.dotActive {
+  background: #FCC30B;
+  transform: scale(1.3);
+}

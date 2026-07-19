@@ -5,23 +5,32 @@ import Nav          from './components/Nav';
 import Hero         from './components/Hero';
 import About        from './components/About';
 import SDGTeaser    from './components/SDGTeaser';
+const HomeMedia = lazy(() => import('./components/HomeMedia'));
 
 /* Below-fold components — lazy loaded after initial paint */
-const Gallery      = lazy(() => import('./components/Gallery'));
-const CoreCommittee = lazy(() => import('./components/CoreCommittee'));
-const Footer       = lazy(() => import('./components/Footer'));
+const Gallery           = lazy(() => import('./components/Gallery'));
+const CoreCommittee     = lazy(() => import('./components/CoreCommittee'));
+const BrandAmbassadors  = lazy(() => import('./components/BrandAmbassadors'));
+const Sponsors          = lazy(() => import('./components/Sponsors'));
+const Footer            = lazy(() => import('./components/Footer'));
 
 /* Route pages — only loaded when user navigates there */
-const Run       = lazy(() => import('./pages/Run'));
-const Volunteer = lazy(() => import('./pages/Volunteer'));
-const SDGs      = lazy(() => import('./pages/SDGs'));
+const Run         = lazy(() => import('./pages/Run'));
+const Volunteer   = lazy(() => import('./pages/Volunteer'));
+const SDGs        = lazy(() => import('./pages/SDGs'));
+const Ambassadors = lazy(() => import('./pages/Ambassadors'));
+const Partners    = lazy(() => import('./pages/Partners'));
+const Media       = lazy(() => import('./pages/Media'));
 
 /* Hash-based page router — no extra packages needed */
 function getPage() {
   const h = window.location.hash;
-  if (h === '#run')       return 'run';
-  if (h === '#volunteer') return 'volunteer';
-  if (h === '#sdgs')      return 'sdgs';
+  if (h === '#run')          return 'run';
+  if (h === '#volunteer')    return 'volunteer';
+  if (h === '#sdgs')         return 'sdgs';
+  if (h === '#ambassadors')  return 'ambassadors';
+  if (h === '#partners')     return 'partners';
+  if (h === '#media')        return 'media';
   return 'home';
 }
 
@@ -46,12 +55,24 @@ export function goToSDGs() {
   window.location.hash = 'sdgs';
 }
 
+export function goToAmbassadors() {
+  window.location.hash = 'ambassadors';
+}
+
+export function goToPartners() {
+  window.location.hash = 'partners';
+}
+
+export function goToMedia() {
+  window.location.hash = 'media';
+}
+
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const PAGE_HASHES = new Set(['#run', '#volunteer', '#sdgs', '', '#']);
+    const PAGE_HASHES = new Set(['#run', '#volunteer', '#sdgs', '#ambassadors', '#partners', '#media', '', '#']);
     const onHash = () => {
       const h = window.location.hash;
       const newPage = getPage();
@@ -97,6 +118,7 @@ export default function App() {
     import('./pages/SDGs');
     import('./pages/Run');
     import('./pages/Volunteer');
+    import('./pages/Ambassadors');
     import('./components/Gallery');
     import('./components/CoreCommittee');
 
@@ -109,9 +131,12 @@ export default function App() {
     });
   }, [loaded]);
 
-  if (page === 'run')       return <Suspense fallback={null}><Run onBack={goHome} /></Suspense>;
-  if (page === 'volunteer') return <Suspense fallback={null}><Volunteer onBack={goHome} /></Suspense>;
-  if (page === 'sdgs')      return <Suspense fallback={null}><SDGs onBack={goHome} /></Suspense>;
+  if (page === 'run')          return <Suspense fallback={null}><Run onBack={goHome} /></Suspense>;
+  if (page === 'volunteer')    return <Suspense fallback={null}><Volunteer onBack={goHome} /></Suspense>;
+  if (page === 'sdgs')         return <Suspense fallback={null}><SDGs onBack={goHome} /></Suspense>;
+  if (page === 'ambassadors')  return <Suspense fallback={null}><Ambassadors onBack={goHome} /></Suspense>;
+  if (page === 'partners')     return <Suspense fallback={null}><Partners onBack={goHome} /></Suspense>;
+  if (page === 'media')        return <Suspense fallback={null}><Media onBack={goHome} /></Suspense>;
 
   return (
     <>
@@ -123,6 +148,8 @@ export default function App() {
         <SDGTeaser />
         <Suspense fallback={null}>
           <Gallery />
+          <HomeMedia />
+          <BrandAmbassadors />
           <CoreCommittee />
         </Suspense>
       </main>
