@@ -788,7 +788,10 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 28px;
-  max-width: 960px;
+
+
+  max-width: 760px;
+
   margin: 0 auto;
 }
 
