@@ -4,7 +4,7 @@
 
 .page {
   min-height: 100vh;
-  background: #fff;
+  background: var(--paper);
   font-family: 'Lato', sans-serif;
   overflow-x: hidden;
 }
@@ -296,11 +296,11 @@
 }
 .sectionHead h2 {
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 900; color: #1a1a2e;
+  font-weight: 900; color: var(--ink);
   letter-spacing: -0.03em; margin: 0 0 12px;
 }
 .sectionHead p {
-  color: #64748b; font-size: 1.05rem;
+  color: var(--ink-soft); font-size: 1.05rem;
   max-width: 520px; margin: 0 auto;
   line-height: 1.65;
 }
@@ -308,7 +308,7 @@
 /* ── Map section ─────────────────────────────────────────── */
 .mapSection {
   padding: clamp(60px, 10vh, 120px) 0;
-  background: #f8f9fa;
+  background: var(--cream);
 }
 .mapInner {
   max-width: 1200px; margin: 0 auto;
@@ -328,7 +328,7 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  box-shadow: var(--shadow);
   width: 100%;
 }
 .mapBadge {
@@ -457,15 +457,15 @@
 }
 .cpIcon { font-size: 1.4rem; margin-bottom: 4px; }
 .cpLabel {
-  font-size: 1rem; font-weight: 900; color: #1a1a2e;
+  font-size: 1rem; font-weight: 900; color: var(--ink);
   margin-bottom: 2px;
 }
 .cpPlace {
   font-size: .85rem; font-weight: 700;
-  color: #64748b; margin-bottom: 6px;
+  color: var(--ink-soft); margin-bottom: 6px;
 }
 .cpDesc {
-  font-size: .85rem; color: #94a3b8;
+  font-size: .85rem; color: var(--ink-muted);
   line-height: 1.55; margin: 0 0 8px;
 }
 
@@ -495,7 +495,7 @@
 /* ── Event details grid ──────────────────────────────────── */
 .details {
   padding: clamp(60px, 10vh, 120px) 0;
-  background: #fff;
+  background: var(--paper);
 }
 .detailsInner {
   max-width: 1100px; margin: 0 auto;
@@ -509,24 +509,25 @@
 .detailCard {
   display: flex; flex-direction: column; gap: 6px;
   padding: 28px 24px;
-  background: #f8f9fa;
-  border-radius: 20px;
-  border: 1.5px solid #f0f0f0;
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  background: var(--cream);
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s, border-color 0.4s;
 }
 .detailCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
   border-color: #E5243B;
 }
 .detailIcon { font-size: 1.8rem; }
 .detailLabel {
   font-size: .72rem; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
-  color: #94a3b8;
+  color: var(--ink-muted);
 }
 .detailVal {
-  font-size: 1rem; font-weight: 900; color: #1a1a2e;
+  font-size: 1rem; font-weight: 900; color: var(--ink);
 }
 
 /* ── Free Merch Banner ───────────────────────────────────── */
@@ -545,11 +546,11 @@
 .merchEmoji { font-size: 3.5rem; line-height: 1; }
 .merchText h2 {
   font-size: clamp(1.9rem, 4vw, 2.8rem);
-  font-weight: 900; color: #1a1a2e;
+  font-weight: 900; color: var(--ink);
   letter-spacing: -0.03em; margin: 0 0 12px;
 }
 .merchText p {
-  font-size: 1.05rem; color: #64748b;
+  font-size: 1.05rem; color: var(--ink-soft);
   line-height: 1.65; max-width: 560px; margin: 0 auto;
 }
 .merchItems {
@@ -565,14 +566,14 @@
   box-shadow: 0 4px 20px rgba(229,100,0,0.07);
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.merchItem:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(229,100,0,0.13); }
+.merchItem:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(229,100,0,0.16); }
 .merchItemIcon { font-size: 2rem; }
-.merchItemLabel { font-size: .85rem; font-weight: 800; color: #1a1a2e; letter-spacing: .04em; }
+.merchItemLabel { font-size: .85rem; font-weight: 800; color: var(--ink); letter-spacing: .04em; }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
 .faqSection {
   padding: clamp(60px, 10vh, 120px) 0;
-  background: #f8f9fa;
+  background: var(--cream);
 }
 .faqInner {
   max-width: 780px; margin: 0 auto;
@@ -580,10 +581,11 @@
 }
 .faqList { display: flex; flex-direction: column; gap: 12px; }
 .faqItem {
-  background: #fff;
-  border: 1.5px solid #f0f0f0;
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .faqItem:hover, .faqOpen {
@@ -594,7 +596,7 @@
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 20px 24px;
   background: none; border: none; cursor: pointer;
-  font-family: inherit; font-weight: 800; font-size: 1rem; color: #1a1a2e;
+  font-family: inherit; font-weight: 800; font-size: 1rem; color: var(--ink);
   text-align: left;
 }
 .faqChevron {
@@ -605,7 +607,7 @@
 .faqOpen .faqChevron { transform: rotate(180deg); }
 .faqA {
   padding: 0 24px 20px;
-  font-size: .95rem; color: #64748b; line-height: 1.7;
+  font-size: .95rem; color: var(--ink-soft); line-height: 1.7;
 }
 .faqA p { margin: 0 0 12px; }
 .faqA p:last-child { margin-bottom: 0; }
@@ -629,7 +631,7 @@
 /* ── Contact ─────────────────────────────────────────────── */
 .contactSection {
   padding: clamp(60px, 10vh, 120px) 0;
-  background: #fff;
+  background: var(--paper);
 }
 .contactInner {
   max-width: 900px; margin: 0 auto;
@@ -664,37 +666,39 @@
 .contactCard {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   padding: 36px 24px;
-  background: #f8f9fa;
-  border: 1.5px solid #f0f0f0;
+  background: var(--cream);
+  border: 1px solid var(--line);
   border-radius: 24px;
   text-decoration: none; color: inherit;
   text-align: center;
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s, border-color 0.4s;
 }
 .contactCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
   border-color: #E5243B;
 }
 .contactIcon { font-size: 2rem; }
 .contactLabel {
   font-size: .72rem; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase; color: #94a3b8;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted);
 }
-.contactVal { font-size: 1rem; font-weight: 900; color: #1a1a2e; }
+.contactVal { font-size: 1rem; font-weight: 900; color: var(--ink); }
 
 .personContactCard {
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   padding: 32px 24px;
-  background: #f8f9fa;
-  border: 1.5px solid #f0f0f0;
+  background: var(--cream);
+  border: 1px solid var(--line);
   border-radius: 24px;
   text-align: center;
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s, border-color 0.4s;
 }
 .personContactCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
   border-color: #E5243B;
 }
 .personAvatar {
@@ -706,16 +710,16 @@
   overflow: hidden;
 }
 .personAvatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
-.personName { font-size: 1rem; font-weight: 900; color: #1a1a2e; }
+.personName { font-size: 1rem; font-weight: 900; color: var(--ink); }
 .personRole {
   font-size: .72rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase; color: #94a3b8;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted);
 }
 .personLinks { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; width: 100%; }
 .personLink {
-  font-size: .82rem; font-weight: 700; color: #1a1a2e;
+  font-size: .82rem; font-weight: 700; color: var(--ink);
   text-decoration: none; padding: 8px 12px;
-  background: #fff; border: 1.5px solid #f0f0f0; border-radius: 10px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
   transition: border-color 0.2s, color 0.2s;
   word-break: break-all;
 }
@@ -774,45 +778,47 @@
 
 /* ── Run Ambassadors ─────────────────────────────────────────── */
 .runAmbSection {
-  padding: 72px 24px;
-  background: #f8fafc;
+  padding: clamp(60px, 10vh, 120px) 24px;
+  background: var(--cream);
   text-align: center;
 }
-@media (prefers-color-scheme: dark) { .runAmbSection { background: #161b27; } }
 
 .runAmbGrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 28px;
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
 .runAmbCard {
-  background: #fff;
-  border-radius: 20px;
+  background: var(--paper);
+  border-radius: 22px;
   display: flex; flex-direction: column; align-items: center;
-  padding: 28px 20px 20px;
-  width: 180px;
+  padding: 34px 24px 26px;
+  width: 210px;
   position: relative; overflow: hidden;
-  box-shadow: 0 2px 14px rgba(0,0,0,0.08);
-  transition: transform .2s, box-shadow .2s;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .4s var(--ease-spring), box-shadow .4s;
 }
-.runAmbCard:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.13); }
-@media (prefers-color-scheme: dark) { .runAmbCard { background: #1e2230; } }
+.runAmbCard:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
 
 .runAmbAvatar {
-  width: 80px; height: 80px; border-radius: 50%;
+  width: 96px; height: 96px; border-radius: 50%;
   background: var(--ac, #19486A);
   display: flex; align-items: center; justify-content: center;
-  overflow: hidden; margin-bottom: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  overflow: hidden; margin-bottom: 16px;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ac, #19486A) 35%, transparent);
 }
 .runAmbAvatar img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
-.runAmbAvatar span { font-size: 1.5rem; font-weight: 900; color: #fff; }
+.runAmbAvatar span { font-size: 1.7rem; font-weight: 900; color: #fff; }
 
-.runAmbName { font-size: .95rem; font-weight: 800; color: #0f172a; }
-@media (prefers-color-scheme: dark) { .runAmbName { color: #f1f5f9; } }
-.runAmbRole { font-size: .72rem; font-weight: 600; color: var(--ac, #19486A); margin-top: 4px; }
-.runAmbBar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ac); }
+.runAmbName { font-size: 1rem; font-weight: 900; color: var(--ink); }
+.runAmbRole {
+  font-size: .72rem; font-weight: 700; color: var(--ac, #19486A);
+  margin-top: 6px; letter-spacing: .04em; line-height: 1.4;
+}
+.runAmbBar { position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: var(--ac); }
+
