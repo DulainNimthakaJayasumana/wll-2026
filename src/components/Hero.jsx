@@ -55,11 +55,11 @@ export default function Hero() {
           particles.push({
             x:  c * cellW + Math.random() * cellW,
             y:  r * cellH + Math.random() * cellH,
-            r:  4 + Math.random() * 10,
+            r:  6 + Math.random() * 14,
             vx: (Math.random() - 0.5) * 0.28,
             vy: (Math.random() - 0.5) * 0.28,
             c:  color,
-            a:  0.12 + Math.random() * 0.20,
+            a:  0.22 + Math.random() * 0.28,
             // each particle bobs on its own sine wave
             phase: Math.random() * Math.PI * 2,
             freq:  0.005 + Math.random() * 0.008,

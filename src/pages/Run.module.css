@@ -771,3 +771,48 @@
   transition: color 0.2s;
 }
 .ctaMeta a:hover { color: #fff; }
+
+/* ── Run Ambassadors ─────────────────────────────────────────── */
+.runAmbSection {
+  padding: 72px 24px;
+  background: #f8fafc;
+  text-align: center;
+}
+@media (prefers-color-scheme: dark) { .runAmbSection { background: #161b27; } }
+
+.runAmbGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.runAmbCard {
+  background: #fff;
+  border-radius: 20px;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 28px 20px 20px;
+  width: 180px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+  transition: transform .2s, box-shadow .2s;
+}
+.runAmbCard:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.13); }
+@media (prefers-color-scheme: dark) { .runAmbCard { background: #1e2230; } }
+
+.runAmbAvatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--ac, #19486A);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+.runAmbAvatar img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.runAmbAvatar span { font-size: 1.5rem; font-weight: 900; color: #fff; }
+
+.runAmbName { font-size: .95rem; font-weight: 800; color: #0f172a; }
+@media (prefers-color-scheme: dark) { .runAmbName { color: #f1f5f9; } }
+.runAmbRole { font-size: .72rem; font-weight: 600; color: var(--ac, #19486A); margin-top: 4px; }
+.runAmbBar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ac); }

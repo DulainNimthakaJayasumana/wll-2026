@@ -2,8 +2,29 @@
   position:relative; min-height:100svh;
   display:flex; align-items:center;
   padding-top:130px; padding-bottom:80px;
-  overflow:hidden; background:var(--cream);
+  overflow:hidden;
+  background: linear-gradient(145deg, #fff9f2 0%, #fff3e0 35%, #f0f8ff 65%, #fff8f5 100%);
 }
+
+/* ── Animated gradient orbs ──────────────────────────── */
+.hero::before, .hero::after {
+  content:''; position:absolute; border-radius:50%; pointer-events:none;
+  filter:blur(100px); z-index:0;
+}
+.hero::before {
+  width:700px; height:700px;
+  background: radial-gradient(circle, rgba(248,155,41,.18) 0%, rgba(229,36,59,.10) 40%, transparent 70%);
+  top:-200px; right:-100px;
+  animation:heroOrbA 16s ease-in-out infinite alternate;
+}
+.hero::after {
+  width:600px; height:600px;
+  background: radial-gradient(circle, rgba(38,189,226,.12) 0%, rgba(76,159,56,.08) 50%, transparent 70%);
+  bottom:-200px; left:-80px;
+  animation:heroOrbB 20s ease-in-out infinite alternate;
+}
+@keyframes heroOrbA { to{transform:translate(-80px,60px) scale(1.08)} }
+@keyframes heroOrbB { to{transform:translate(60px,-80px) scale(1.1)} }
 .bgWheel {
   position:absolute; top:50%; right:-16vw; transform:translateY(-50%);
   width:62vw; max-width:720px; opacity:.18;
