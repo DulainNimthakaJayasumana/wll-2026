@@ -33,7 +33,7 @@ const SPONSOR_TIERS = [
 
 /* ── Media partners — real logos ─────────────────────────────── */
 const MEDIA_PARTNERS = [
-  { name: 'Derana',             role: 'National Media Partner',        logo: null,                                    url: 'https://derana.lk' },
+  { name: 'Derana',             role: 'National Media Partner',        logo: '/assets/media-logos/derana.jpg',       url: 'https://derana.lk' },
   { name: 'Newswire',           role: 'National Media Partner',        logo: '/assets/media-logos/newswire.png',      url: 'https://newswire.lk' },
   { name: 'Eduwire',            role: 'National Media Partner',        logo: '/assets/media-logos/eduwire.png',       url: 'https://eduwire.lk' },
   { name: 'eFM',                role: 'Official Radio Partner',        logo: '/assets/media-logos/efm.jpeg',          url: '#' },
@@ -43,7 +43,7 @@ const MEDIA_PARTNERS = [
   { name: 'Upali Newspapers',   role: 'Official Print Media Partner',  logo: '/assets/media-logos/upali.jpg',         url: '#' },
   { name: 'UniToday',           role: 'Official Youth Media Partner',  logo: '/assets/media-logos/unitoday.png',      url: 'https://unitoday.lk' },
   { name: 'A R T Magazine',     role: 'Official Magazine Media Partner',logo: '/assets/media-logos/art-magazine.png', url: '#' },
-  { name: 'Bizwire',            role: 'Official Business News Partner', logo: null,                                   url: '#' },
+  { name: 'Bizwire',            role: 'Official Business News Partner', logo: '/assets/media-logos/bizwire.png',      url: '#' },
 ];
 
 /* ── Networking partners ─────────────────────────────────────── */
