@@ -7,11 +7,11 @@ const EVENT = {
   scope: 'WLL 2026 in Sri Lanka targets 10+ districts, 40+ schools, and 30,000+ students islandwide.',
   run: {
     name: 'Miles for Lessons',
-    date: 'Saturday, 11 July 2026',
-    time: '4:30 PM',
-    place: 'Race Course Grounds, Colombo 07',
+    date: 'Saturday, 25 July 2026',
+    time: '7:00 AM',
+    place: 'Independence Square, Colombo 07',
     distance: 'about 5 km',
-    fee: 'Rs. 1,800 per person',
+    status: 'already took place — registration is closed',
     perks: 'race bib + official WLL t-shirt',
   },
   volunteer: {
@@ -97,8 +97,8 @@ function topicReply(topic, detailed = false) {
         : `WLL 2026 is AIESEC Sri Lanka's SDG education initiative for schools. ${EVENT.scope} 🌍`;
     case 'run':
       return detailed
-        ? `${EVENT.run.name} is a purpose-driven fundraising run under WLL 2026.\nDate & time: ${EVENT.run.date}, ${EVENT.run.time}.\nLocation: ${EVENT.run.place}. Distance: ${EVENT.run.distance}.\nRegistration: ${EVENT.run.fee}, and participants receive ${EVENT.run.perks}. 🏃`
-        : `${EVENT.run.name} is on ${EVENT.run.date} at ${EVENT.run.time}, ${EVENT.run.place} (${EVENT.run.distance}). Fee: ${EVENT.run.fee}. 🏃`;
+        ? `${EVENT.run.name} was a purpose-driven fundraising run under WLL 2026.\nIt was held on ${EVENT.run.date} at ${EVENT.run.time}, at ${EVENT.run.place}. Distance: ${EVENT.run.distance}.\nThis event has ${EVENT.run.status}. Participants received ${EVENT.run.perks}. 🏃`
+        : `${EVENT.run.name} took place on ${EVENT.run.date} at ${EVENT.run.place} (${EVENT.run.distance}). This event has ${EVENT.run.status}. 🏃`;
     case 'volunteer':
       return detailed
         ? `Volunteer registration is open and ${EVENT.volunteer.fee}.\nVolunteer day is ${EVENT.volunteer.date}.\nEligibility: ${EVENT.volunteer.age}.\nEach volunteer supports one lesson in one assigned school. 🙌`
@@ -162,7 +162,7 @@ const SYSTEM = `You are WLL Helper, the official chatbot for Islandwide World's 
 TRUSTED FACTS (use these when relevant):
 - WLL 2026 is organized by AIESEC in Sri Lanka.
 - Current scope: 10+ districts, 40+ schools, 30,000+ students islandwide.
-- Miles for Lessons run: Saturday, 11 July 2026, 4:30 PM, Race Course Grounds (Colombo 07), about 5 km.
+- Miles for Lessons run: already took place on Saturday, 25 July 2026, 7:00 AM, Independence Square (Colombo 07), about 5 km. Registration is closed.
 - Volunteer day: 3 August 2026, ages 18-30, registration is free.
 - Art competition: ages 11-15, free entry, deadline 31 August 2026.
 - Contact: 070 150 6924, Instagram @wll.srilanka, email wll26coreteam@aiesec.net.

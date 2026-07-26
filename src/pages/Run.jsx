@@ -1,32 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { goHome, goToRegister } from '../App';
+import { goHome } from '../App';
 import s from './Run.module.css';
 
-const RUN_FORM_URL = 'https://forms.gle/FhED7mmarNr6Yu2Z8';
 import pasinduPhoto from '../assets/team/Pasindu.webp';
 import tanuriPhoto from '../assets/team/Tanuri Dissanayaka.webp';
-
-/* ── Countdown to July 25 2026 07:00 ──────────────────────── */
-function useRunCountdown() {
-  const target = new Date('2026-07-25T07:00:00');
-  const calc = () => {
-    const diff = Math.max(0, target - new Date());
-    return {
-      d: Math.floor(diff / 86400000),
-      h: Math.floor((diff % 86400000) / 3600000),
-      m: Math.floor((diff % 3600000) / 60000),
-      s: Math.floor((diff % 60000) / 1000),
-    };
-  };
-  const [val, setVal] = useState(calc);
-  useEffect(() => {
-    const t = setInterval(() => setVal(calc()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  return val;
-}
-
-const PAD = n => String(n).padStart(2, '0');
 
 /* ── Checkpoints — Independence Square loop, ~5 km ── */
 const CHECKPOINTS = [
@@ -126,7 +103,6 @@ function FAQItem({ q, a }) {
 }
 
 export default function Run({ onBack }) {
-  const cd = useRunCountdown();
   const canvasRef = useRef(null);
   const heroRef   = useRef(null);
   const [activeCP, setActiveCP] = useState(null);
@@ -217,13 +193,13 @@ export default function Run({ onBack }) {
         <div className={s.heroInner}>
           <div className={s.eventBadge}>
             <span className={s.pulseDot} />
-            <span>AIESEC in Sri Lanka · WLL 2026</span>
+            <span>AIESEC in Sri Lanka · WLL 2026 · Event Completed</span>
           </div>
 
           <img src="/assets/miles4lessons_logo.webp" alt="Nestomalt Miles for Lessons 2026" className={s.heroLogo} />
 
           <p className={s.heroSub}>
-            Run for the Global Goals · Independence Square, Colombo 07
+            Thank you for running for the Global Goals · Independence Square, Colombo 07
           </p>
 
           <div className={s.heroCols}>
@@ -246,29 +222,8 @@ export default function Run({ onBack }) {
             </div>
           </div>
 
-          {/* ── Marathon Countdown ────────────────────────── */}
-          <div className={s.cdWrap}>
-            <div className={s.cdLabel}>Race starts in</div>
-            <div className={s.cd}>
-              {[
-                { val: cd.d, label: 'Days',    col: '#E5243B' },
-                { val: cd.h, label: 'Hours',   col: '#FCC30B' },
-                { val: cd.m, label: 'Minutes', col: '#26BDE2' },
-                { val: cd.s, label: 'Seconds', col: '#4C9F38' },
-              ].map(c => (
-                <div key={c.label} className={s.cdCell} style={{ '--accent': c.col }}>
-                  <div className={s.cdFlip}>
-                    <span className={s.cdNum}>{PAD(c.val)}</span>
-                  </div>
-                  <span className={s.cdUnit}>{c.label}</span>
-                </div>
-              ))}
-            </div>
-            <div className={s.cdDate}>Saturday, 25 July 2026 · 7:00 AM</div>
-          </div>
-
           <div className={s.heroCtas}>
-            <a href={RUN_FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>Register Now</a>
+            <button onClick={onBack || goHome} className={s.ctaGlass}>← Back to Main Site</button>
           </div>
         </div>
 
@@ -284,7 +239,7 @@ export default function Run({ onBack }) {
           <div className={s.sectionHead}>
             <span className={s.eyebrow}>📍 Race Route</span>
             <h2>Independence Square Loop — 5 km</h2>
-            <p>Start and finish at Independence Square. The loop takes you past Nelum Pokuna, around Vihara Maha Devi Park, south through Ladies College, past the Faculty of Arts and BMICH Park — through the heart of Cinnamon Gardens. <strong>Click any checkpoint for directions.</strong></p>
+            <p>The route started and finished at Independence Square, looping past Nelum Pokuna, around Vihara Maha Devi Park, south through Ladies College, past the Faculty of Arts and BMICH Park — through the heart of Cinnamon Gardens. <strong>Click any checkpoint for directions.</strong></p>
           </div>
 
           <div className={s.mapLayout}>
@@ -358,8 +313,8 @@ export default function Run({ onBack }) {
       <section className={s.details}>
         <div className={s.detailsInner}>
           <div className={s.sectionHead}>
-            <span className={s.eyebrow}>📋 Event Details</span>
-            <h2>Everything You Need to Know</h2>
+            <span className={s.eyebrow}>📋 Event Recap</span>
+            <h2>How Race Day Went</h2>
           </div>
 
           <div className={s.detailGrid}>
@@ -370,8 +325,8 @@ export default function Run({ onBack }) {
               { icon:'🔄', label:'Route',         val:'Nelum Pokuna · Vihara Maha Devi Park · Ladies College · Faculty of Arts · BMICH Park' },
               { icon:'📏', label:'Distance',      val:'5 km loop · 5 checkpoints' },
               { icon:'👟', label:'Category',    val:'Open to all ages & fitness levels' },
-              { icon:'🎽', label:'Race Kit',    val:'Bib + T-Shirt (free)' },
-              { icon:'🏅', label:'Finisher',    val:'Certificates for all finishers' },
+              { icon:'🎽', label:'Race Kit',    val:'Bib + T-Shirt (given free)' },
+              { icon:'🏅', label:'Finisher',    val:'Certificates awarded to all finishers' },
             ].map(d => (
               <div key={d.label} className={s.detailCard}>
                 <span className={s.detailIcon}>{d.icon}</span>
@@ -389,7 +344,7 @@ export default function Run({ onBack }) {
           <div className={s.merchEmoji}>🎁</div>
           <div className={s.merchText}>
             <h2>Free Merch for Every Runner</h2>
-            <p>Every registered participant gets a <strong>race bib</strong>, an <strong>exclusive WLL 2026 t-shirt</strong>- completely free. Limited stock, first come first served!</p>
+            <p>Every registered participant received a <strong>race bib</strong> and an <strong>exclusive WLL 2026 t-shirt</strong> — completely free, as a thank-you for running with us.</p>
           </div>
           <div className={s.merchItems}>
             {[
@@ -412,7 +367,7 @@ export default function Run({ onBack }) {
           <span className={s.eyebrow}>🏃 MILES FOR LESSON 2026</span>
           <h2 className={s.sectionTitle}>Run Ambassadors</h2>
           <p className={s.sectionSub}>
-            These athletes and community leaders are running with us to champion
+            These athletes and community leaders ran with us to champion
             education and the Global Goals across Sri Lanka.
           </p>
         </div>
@@ -448,32 +403,24 @@ export default function Run({ onBack }) {
           <div className={s.faqList}>
             {[
               {
-                q: "What is Miles for Lessons?",
-                a: "Miles for Lessons is a purpose-driven CSR fundraising run organized under the World’s Largest Lesson (WLL) initiative. It brings together individuals passionate about fitness, community impact, and creating positive change, while raising funds to support the Islandwide World’s Largest Lesson 2026 Sri Lanka initiative.",
+                q: "What was Miles for Lessons?",
+                a: "Miles for Lessons was a purpose-driven CSR fundraising run organized under the World’s Largest Lesson (WLL) initiative. It brought together individuals passionate about fitness, community impact, and creating positive change, while raising funds to support the Islandwide World’s Largest Lesson 2026 Sri Lanka initiative.",
               },
               {
-                q: "When and where is the race?",
-                a: "📅 Saturday, 25 July 2026 at 7:00 AM sharp. 📍 Start & Finish: Independence Square, Independence Ave, Colombo 07.",
+                q: "When and where was the race held?",
+                a: "📅 Saturday, 25 July 2026 at 7:00 AM. 📍 Start & Finish: Independence Square, Independence Ave, Colombo 07.",
               },
               {
-                q: "What is the race route?",
-                a: "The 5 km Independence Square Loop starts and finishes at Independence Square. Head north to Nelum Pokuna (CP 1), loop around Vihara Maha Devi Park (CP 2), south past Ladies College (CP 3), past the Faculty of Arts (CP 4), east to BMICH Park (CP 5), and back to the finish!",
+                q: "What was the race route?",
+                a: "The 5 km Independence Square Loop started and finished at Independence Square. Runners headed north to Nelum Pokuna (CP 1), looped around Vihara Maha Devi Park (CP 2), south past Ladies College (CP 3), past the Faculty of Arts (CP 4), east to BMICH Park (CP 5), and back to the finish!",
               },
               {
-                q: "Who can participate?",
-                a: "The run is open to everyone — all ages and fitness levels are welcome. Whether you choose to walk, jog, or sprint the 5 km loop through Cinnamon Gardens, you’re encouraged to join!",
+                q: "Who took part?",
+                a: "The run was open to everyone — all ages and fitness levels. Participants walked, jogged, and sprinted the 5 km loop through Cinnamon Gardens together.",
               },
               {
-                q: "How do I register?",
-                a: "Click the Register button on the website and complete the Google Form. Please upload the registration fee payment slip as part of the form. You may register individually or as a group. Registration fee: Rs. 1,800 per individual 🎽 — includes a complimentary event T-shirt.",
-              },
-              {
-                q: "Will I receive a T-shirt?",
-                a: "Yes! Every registered participant will receive a free official event T-shirt along with a race bib and a finisher certificate.",
-              },
-              {
-                q: "When will I receive my race kit?",
-                a: "Race kits (bib + T-shirt) will be distributed prior to the event. The organizing committee will share detailed collection instructions closer to the event date.",
+                q: "Did participants receive a race kit?",
+                a: "Yes! Every registered participant received a free official event T-shirt along with a race bib and a finisher certificate.",
               },
               {
                 q: "How can my company partner or sponsor the event?",
@@ -563,15 +510,14 @@ export default function Run({ onBack }) {
       {/* ── CTA FOOTER ────────────────────────────────────── */}
       <section className={s.ctaSection}>
         <div className={s.ctaInner}>
-          <h2>Ready to Run Miles for Lessons?</h2>
-          <p>Join hundreds of Sri Lankan youth running for a better world on 25 July 2026 </p>
+          <h2>Thank You for Running with Us!</h2>
+          <p>Miles for Lessons 2026 brought together hundreds of Sri Lankan youth running for a better world on 25 July 2026.</p>
           <div className={s.ctaBtns}>
-            <a href={RUN_FORM_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>Register Now</a>
             <button onClick={onBack || goHome} className={s.ctaOutline}>← Back to Main Site</button>
           </div>
           <div className={s.ctaMeta}>
-            Questions? DM us on Instagram <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener">@wll.srilanka</a>
-          
+            Relive the moments on Instagram <a href="https://instagram.com/wll.srilanka" target="_blank" rel="noopener">@wll.srilanka</a>
+
           </div>
         </div>
       </section>
